@@ -1,0 +1,224 @@
+h1 {
+    margin: 0;
+}
+
+.img {
+    display: block;
+    width: 100%;
+}
+
+.header_landing {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #2d3648;
+    padding-bottom: 24px;
+}
+
+.logo_landing {
+    display: flex;
+
+    align-items: flex-start;
+    gap: 10px;
+    background-color: #2d3648;
+    color: white;
+    border-radius: 6px;
+    margin-left: 2rem;
+}
+
+.logo_landing h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    /* 150% */
+    letter-spacing: -0.16px;
+    padding: 12px 40px;
+}
+
+.navigation_landing ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    padding-right: 2rem;
+}
+
+.navigation_landing ul li {
+    display: flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    font-feature-settings: "calt" off;
+    border: 2px solid #2d3648;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    line-height: 24px;
+    /* 150% */
+    letter-spacing: -0.16px;
+}
+
+.--bg-button {
+    background-color: #2d3648;
+    color: white;
+}
+
+/* ////////////////////////////////////HERO SECTION /////////////////// */
+
+.hero_landing {
+    width: 1242px;
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img_hero_landing img {
+    margin-top: 5rem;
+    width: 494.99px;
+    height: 462.6064px;
+}
+
+.action_hero_landing {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.action_hero_landing h1 {
+    font-family: Helvetica;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 67.2px */
+    letter-spacing: 0.56px;
+}
+
+.action_hero_landing p {
+    color: #000;
+    font-family: Helvetica;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 33.6px */
+    letter-spacing: 0.24px;
+}
+
+.action_hero_landing button {
+    display: flex;
+    width: 207px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    background-color: #2d3648;
+    color: white;
+}
+
+/* ////////////////////////////// FIN HERO SECTION //////////////////// */
+
+.separator {
+    width: 80%;
+    height: 1px;
+    background-color: #2d3648;
+    margin: 68px auto;
+    align-self: stretch;
+}
+
+/* /////////////////////////INFO LANDING ///////////////////////////////////////// */
+
+.info_landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info_landing p {
+    width: 617px;
+
+    color: #000;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 33.6px */
+    letter-spacing: 0.24px;
+}
+
+.info_landing h3 {
+    width: 655px;
+
+    color: var(--wf-base-800, #2d3648);
+    font-family: Helvetica;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 48px */
+    letter-spacing: 0.4px;
+}
+
+
+/* //////////////////////////  CONTAINER ICONS ///////////////////////  */
+.info_icons_landing{
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat( 4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    width: 60%;
+    gap: 2rem;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    
+
+
+
+}
+
+.container_icon{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+
+}
+
+.container_icon img{
+
+    width: 200px;
+    height: 100px;
+}
+
+.container_icon p{
+
+    width: 155px;
+    height: 66px;
+}
+
+.--min{
+
+    width: 128px;
+    height: 44px;
+
+}
