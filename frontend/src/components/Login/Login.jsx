@@ -42,30 +42,39 @@ function Login() {
       {/* cuadro de login */}
       <div className="login_panel">
         {/* formulario de login  */}
+          <div className="login_image_logo">
+           {/*  <img src="#" alt="Logo" /> */}
+          </div>
+          <h1>Nombre app</h1>
+
+
+          <h2>Iniciar sesión con correo electrónico</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
-          <div className="login_image_logo">
-            <img src="#" alt="Logo" />
-          </div>
           {/* input de usuario  */}
           <div className="login_input">
-            <label>Usuario</label>
-            <input type="email" onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          {/* input password */}
-          <div className="login_input">
-            <label>Contraseña</label>
+          
+            <input type="email" placeholder="Dirección de correo electrónico" onChange={(e) => setEmail(e.target.value)} />
+  {/* input password */}
             <input
               type="password"
+              placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+      
+         
 
+
+          <a className="recover_link_login" href="#">¿Olvidó su contraseña?</a>
+        
           <input type="submit" value={"Login"} />
         </form>
 
-        <a href="#">Olvidé mi contraseña</a>
+        <p className="--mt">¿No tiene una cuenta? <a href="#" className="recover_link_login ">Registrarse ahora</a></p>
       </div>
+
+
 
       {errores?.length > 0 ? <p>{errores} </p> : ""}
     </section>
