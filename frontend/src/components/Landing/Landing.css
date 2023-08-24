@@ -51,6 +51,7 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    color: #2d3648;
 
     font-feature-settings: "calt" off;
     border: 2px solid #2d3648;
@@ -62,11 +63,24 @@ h1 {
     line-height: 24px;
     /* 150% */
     letter-spacing: -0.16px;
+    transition: all 300mx ;
+}
+
+.navigation_landing ul li:hover {
+
+    background-color: #2d3648;
+    color: white;
 }
 
 .--bg-button {
     background-color: #2d3648;
-    color: white;
+    color: white !important;
+}
+
+.--bg-button:hover{
+    color: #2d3648 !important;
+    background-color: white !important;
+
 }
 
 /* ////////////////////////////////////HERO SECTION /////////////////// */

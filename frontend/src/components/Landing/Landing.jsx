@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Landing.css";
 
 function Landing() {
@@ -13,8 +14,8 @@ function Landing() {
 
         <nav className="navigation_landing">
           <ul>
-            <li>Iniciar sesión</li>
-            <li className="--bg-button">Registrarse</li>
+          <Link to={'/login'}>  <li>Iniciar sesión </li></Link>
+           <Link to={'/register'}> <li className="--bg-button">Registrarse</li></Link>
           </ul>
         </nav>
       </header>
@@ -56,7 +57,7 @@ function Landing() {
         </div>
         <div className="container_icon">
           <img src="./icons/Group 2.svg" alt="icons" />
-          <p>Carga tus productos y sepáralos por categorías</p>
+          <p>Carga tus productos y separarlos por categorías</p>
         </div>
         <div className="container_icon">
           <img src="./icons/Group 6.svg" alt="icons" />

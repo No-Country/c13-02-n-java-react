@@ -1,52 +1,124 @@
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+.register {
+  width: 100vw;
+  height: 100vh;
+
+  background: #2d3648;
+}
+
+.register h1 {
+  color: #000;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 75% */
+  letter-spacing: -0.32px;
+  margin-bottom: 106px;
+  margin-left: 89px;
+}
+
+.register_panel {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: start;
+  justify-content: center;
+  background-color: #e8f0fe;
+}
+
+.register_panel form {
+  margin-left: 89px;
+
+  width: 80%;
+}
+
+.div_container_input {
+  flex-direction: row;
+
+  margin-bottom: 35px;
+}
+.register_panel div {
+  width: 100%;
+  display: flex;
+
+  gap: 35px;
+}
+
+.register_input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register_input label {
+  position: absolute;
+  margin-top: -15px;
+  margin-left: 13px;
+  padding: 2px 3px;
+  border-radius: 10px;
+
+  z-index: 10;
+
+  text-align: start;
+  background-color: #e8f0fe;
+  color: black;
+}
+
+.register_input input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: transparent;
+  padding: 10px 5px;
+  width: 100%;
+  transition: all 300ms;
+}
+
+.register_input input:focus {
+  background-color: #e8f0fe;
+
+  transform: scale(1.01);
+}
+
+.--50 {
+  display: flex;
+  width: 50%;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-feature-settings: "calt" off;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px;
+  gap: 8px;
+  border-radius: 6px;
+  background: var(--wf-base-800, #2d3648);
+  border: none;
+}
+
+
+
+@media(max-width:768px) {
+
+  .register h1 {
+    margin: 0 auto 30px auto;
+  }
+  
+  .register_panel form {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .div_container_input{
+
+    flex-direction: column;
+  }
+  
+}

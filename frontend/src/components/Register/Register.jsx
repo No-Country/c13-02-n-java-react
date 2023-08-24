@@ -11,11 +11,12 @@ function Register() {
     password: localStorage.getItem("password") || undefined,
   };
 
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [empresa, setEmpresa] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordrepeat, setPasswordrepeat] = useState("");
 
   /* array de errores */
 
@@ -31,7 +32,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (![email,password,nombre,apellido,telefono].includes('') ) {
+    if (![email,password,usuario,empresa,telefono].includes('') ) {
       if (email != user.email && regex.test(email)  && password != user.password) {
         
         localStorage.setItem('email',JSON.stringify(email))
@@ -52,45 +53,60 @@ function Register() {
   };
 
   return (
-    <section className="login">
-      {/* cuadro de login */}
-      <div className="login_panel">
-        {/* formulario de login  */}
+    <section className="register">
+      {/* cuadro de registro */}
+
+      <div className="register_panel">
+      <h1>Regístrate ahora</h1>
+        {/* formulario de registro  */}
         <form onSubmit={(e) => handleSubmit(e)}>
-          {/* div del logo  */}
-          <div className="login_image_logo">
-            <img src="#" alt="Logo" />
+       <div className="div_container_input">
+         
+          {/* input de usuario  */}
+          <div className="register_input">
+            <label>Usuario</label>
+            <input type="text" onChange={(e) => setUsuario(e.target.value)} />
           </div>
-          {/* input de nombre  */}
-          <div className="login_input">
-            <label>Nombre</label>
-            <input type="text" onChange={(e) => setNombre(e.target.value)} />
+          {/* input de empresa  */}
+          <div className="register_input">
+            <label>Empresa</label>
+            <input type="text" onChange={(e) => setEmpresa(e.target.value)} />
           </div>
-          {/* input de apellido  */}
-          <div className="login_input">
-            <label>Apellido</label>
-            <input type="text" onChange={(e) => setApellido(e.target.value)} />
-          </div>
-          {/* input de teléfono  */}
-          <div className="login_input">
+       </div>
+         <div className="div_container_input">
+           {/* input de teléfono  */}
+           <div className="register_input">
             <label>Teléfono</label>
-            <input type="tel" onChange={(e) => setTelefono(e.target.value)} />
+            <input type="tel"  autoComplete="false"  onChange={(e) => setTelefono(e.target.value)} />
           </div>
           {/* input de email  */}
-          <div className="login_input">
+          <div className="register_input">
             <label>Email</label>
-            <input type="email" onChange={(e) => setEmail(e.target.value)} />
+
+            <input type="email"  autoComplete="false" onChange={(e) => setEmail(e.target.value)} />
           </div>
-          {/* input password */}
-          <div className="login_input">
+         </div>
+        <div className="div_container_input">
+            {/* input password */}
+            <div className="register_input">
             <label>Contraseña</label>
             <input
+            autoComplete="false"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {/* input password */}
+          <div className="register_input">
+            <label>Confirmar contraseña</label>
+            <input
+              type="password"
+              onChange={(e) => setPasswordrepeat(e.target.value)}
+            />
+          </div>
+        </div>
 
-          <input type="submit" value={"Registro"} />
+          <input type="submit" className="--50"  value={"Crear cuenta"} />
         </form>
       </div>
 

@@ -1,7 +1,12 @@
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 
-function Login() {
+function Login({setAuth,props}) {
+  const navigate = useNavigate();
+
+  localStorage.setItem("email", "exelu1495@gmail.com");
+  localStorage.setItem("password", "exequiel");
   /* Usuario registrado */
 
   const user = {
@@ -21,9 +26,14 @@ function Login() {
     e.preventDefault();
 
     if (email && password) {
+      if (email == user.email && password == user.password) {
         
-      if (email == JSON.parse(user.email) && password == JSON.parse(user.password)) {
-        console.log("Usuario permitido");
+        setAuth(true)
+        navigate('/dashboard')
+
+      
+        
+        
       } else {
         setErrores(["Verifique sus datos, usuario no válido"]);
       }
@@ -42,41 +52,51 @@ function Login() {
       {/* cuadro de login */}
       <div className="login_panel">
         {/* formulario de login  */}
-          <div className="login_image_logo">
-           {/*  <img src="#" alt="Logo" /> */}
-          </div>
-          <h1>Nombre app</h1>
+        <div className="login_image_logo">
+          {/*  <img src="#" alt="Logo" /> */}
+        </div>
+        <h1>Nombre app</h1>
 
-
-          <h2>Iniciar sesión con correo electrónico</h2>
+        <h2>Iniciar sesión con correo electrónico</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
+          {errores?.length > 0 ? <p className="error">{errores} </p> : ""}
           <div className="login_input">
-          
-            <input type="email" placeholder="Dirección de correo electrónico" onChange={(e) => setEmail(e.target.value)} />
-  {/* input password */}
+            <input
+              type="email"
+              placeholder="Dirección de correo electrónico"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {/* input password */}
+
             <input
               type="password"
               placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-      
-         
 
+          <a className="recover_link_login" href="#">
+            ¿Olvidó su contraseña?
+          </a>
 
-          <a className="recover_link_login" href="#">¿Olvidó su contraseña?</a>
-        
-          <input type="submit" value={"Login"} />
+          <div className="option_login">
+            <input type="submit" value={"Login"} />
+            <button className="google_login">
+              {" "}
+              <img src="./icons/google.svg" /> Iniciar sesión con Google
+            </button>
+          </div>
         </form>
 
-        <p className="--mt">¿No tiene una cuenta? <a href="#" className="recover_link_login ">Registrarse ahora</a></p>
+        <p className="--mt">
+          ¿No tiene una cuenta?{" "}
+          <Link className="recover_link_login" to={"/register"}>
+            Registrarse ahora
+          </Link>
+        </p>
       </div>
-
-
-
-      {errores?.length > 0 ? <p>{errores} </p> : ""}
     </section>
   );
 }
