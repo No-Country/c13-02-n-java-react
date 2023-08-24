@@ -5,17 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "buys")
+@Entity(name = "orders")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Buy {
+public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double totalPrice;
+    private String clientName;
     @ManyToOne
-    @JoinColumn(name = "fk_provider")
-    private Provider provider;
+    @JoinColumn(name = "fk_user")
+    private CustomerUser user;
+
 }

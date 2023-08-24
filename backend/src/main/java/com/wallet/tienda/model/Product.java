@@ -27,5 +27,11 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "fk_category")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name = "fk_provider")
+    private Provider provider;
+    @ManyToOne
+    @JoinColumn(name = "fk_order")
+    private Order order;
 
 }
