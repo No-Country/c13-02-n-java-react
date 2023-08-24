@@ -51,8 +51,8 @@ useEffect(() => {
 
   return (
     <>
-   
    <BrowserRouter>
+   
       <Routes>
         {/* Rutas sin proteger  */}
         <Route path="/" element={<Landing/>}  />
@@ -67,9 +67,9 @@ useEffect(() => {
         </Route>
       </Routes>
 
-   </BrowserRouter>
     {/*   <RouterProvider router={router} /> */}
 
+   </BrowserRouter>
     </>
   );
 }

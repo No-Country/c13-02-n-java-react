@@ -1,0 +1,11 @@
+.footer{
+
+    width: 100%;
+    display: flex;
+    min-height: 337px;
+    background-color: #D9D9D9;
+   
+  
+    z-index: 99;
+    position: absolute;
+}

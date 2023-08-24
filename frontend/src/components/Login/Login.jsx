@@ -55,27 +55,39 @@ function Login({setAuth,props}) {
         <div className="login_image_logo">
           {/*  <img src="#" alt="Logo" /> */}
         </div>
-        <h1>Nombre app</h1>
+        <h1>FIMA</h1>
 
         <h2>Iniciar sesión con correo electrónico</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
           {errores?.length > 0 ? <p className="error">{errores} </p> : ""}
-          <div className="login_input">
-            <input
-              type="email"
-              placeholder="Dirección de correo electrónico"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {/* input password */}
 
-            <input
+
+          <div className="login_input">
+         
+         {/* input de usuario  */}
+         <div className="register_input --min ">
+           <label className="bg-select">Usuario</label>
+           <input type="text"
+           placeholder="Correo eléctronico" onChange={(e) => setEmail(e.target.value)} />
+         </div>
+         {/* input de empresa  */}
+         <div className="register_input --min">
+           <label className="bg-select">Contraseña</label>
+           {/* input password */}
+
+           <input
               type="password"
               placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
+         </div>
+      </div>
+
+
+
+        
 
           <a className="recover_link_login" href="#">
             ¿Olvidó su contraseña?
