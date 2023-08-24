@@ -1,21 +1,6 @@
 import React, { useState } from 'react'
 
 const Profile = () => {
-    const [editingUsername, setEditingUsername] = useState(false)
-    const [newUsername, setNewUsername] = useState('Nombre de Usuario')
-
-    const handleUsernameEdit = () => {
-        setEditingUsername(true)
-    }
-
-    const handleUsernameSave = () => {
-        setEditingUsername(false)
-    }
-
-    const handleUsernameChange = (event) => {
-        setNewUsername(event.target.value)
-    }
-
     return (
         <div className='bg-white p-8 shadow-md rounded-md mt-4'>
             <h2 className='text-xl font-semibold mb-4'>Perfil de Usuario</h2>
