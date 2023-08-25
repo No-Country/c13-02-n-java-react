@@ -72,6 +72,25 @@ public class JWTUtils {
     }
 
     /**
+     * Obtener la fecha de expiracion del token
+     * @param token
+     * @return date
+     */
+    public Date getExpirationDate(String token){
+        return getClaim(token, Claims::getIssuedAt);
+    }
+
+    /**
+     * Devuelve true si la fecha del token expiro, sino devuelve false
+     * @param token
+     * @return boolean
+     */
+    public boolean isTokenExpired(String token) {
+        Date expirationDate = getExpirationDate(token);
+        return expirationDate.before(new Date());
+    }
+
+    /**
      * Obtener un solo claim
      * @param token
      * @param claimsTFunction

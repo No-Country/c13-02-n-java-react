@@ -16,12 +16,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
     final JWTUtils jwtUtils;
     final UserDetailsService userDetailsService;
+    private final List<String> excludedPaths = Arrays.asList("/api/v1/login", "/api/v1/register","/swagger-ui/**", "/v3/api-docs/**");
 
 
     /**
@@ -42,11 +45,16 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String username;
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+        final String requestUri = request.getRequestURI();
+        if (authHeader == null || !authHeader.startsWith("Bearer ") && excludedPaths.contains(requestUri)) {
             filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(7);
+        if(jwtUtils.isTokenExpired(jwt)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         username = jwtUtils.extractUsername(jwt);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
