@@ -1,14 +1,33 @@
 package com.wallet.tienda.service;
 
+import com.wallet.tienda.dto.request.ProductDTOReq;
+import com.wallet.tienda.dto.response.ProductDTORes;
+import com.wallet.tienda.exception.IdNotFoundException;
+import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Product;
+import com.wallet.tienda.repository.IProductRepository;
+import com.wallet.tienda.util.IWordsConverter;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-public class ProductService {
+import java.util.ArrayList;
+
+@Service
+public class ProductService implements IProductService{
     @Autowired
-    private ModelMapper modelMapper;
+    private static IProductRepository productRepository;
+    @Autowired
+    private static IWordsConverter wordsConverter;
+    @Autowired
+    private static ModelMapper modelMapper;
 
     //    CREA UN PRODUCTO
     @Override
-    public void createProduct(ProductDTOReq productDTO) throws NameExistsException {
+    public void saveProduct(ProductDTOReq productDTO) throws NameExistsException {
         if (productRepository.existsByName(productDTO.getName())) {
             throw new NameExistsException("El nombre " + productDTO.getName() + " ya existe. Ingrese un nuevo nombre");
         }
@@ -27,7 +46,7 @@ public class ProductService {
 
     //LISTA PRODUCTOS PAGINADOS
     @Override
-    public Page<ProductDTORes> getAllProductS(Pageable pageable) {
+    public Page<ProductDTORes> getAllProducts(Pageable pageable) {
         var productsBD = productRepository.findAll(pageable);
         var productsDTO = new ArrayList<ProductDTORes>();
         //recorre la lista de productos de la BD, los convierte a DTO y los guarda en una listaDTO
@@ -53,7 +72,7 @@ public class ProductService {
 
     //ELIMINA UN PRODUCTO
     @Override
-    public void deleteproduct(Long productID) {
+    public void deleteProduct(Long productID) {
         productRepository.deleteById(productID);
     }
 }
