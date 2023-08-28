@@ -9,15 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTOReq {
-
+public class CategoryDTOReq {
+}
     private Long id;
     @Pattern(regexp = "[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]*", message = "Debe contener solo letras y espacios")
     @NotNull(message = "No puede estar vacio")
     private String name;
-    @NotNull(message = "No puede estar vacio")
-    private Double price;
-    @NotNull(message = "No puede estar vacio")
-    private int stock;
 
 }

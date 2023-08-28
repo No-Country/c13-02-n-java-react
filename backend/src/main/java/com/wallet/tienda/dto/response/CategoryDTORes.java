@@ -8,16 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTORes {
+public class CategoryDTORes {
 
     private Long id;
     private String name;
-    private Double price;
-    private int stock;
-    private String imageUrl;
-    private CustomerUser user;
-    private Brand brand;
-    private Category category;
-    private Provider provider;
-    private Order order;
 }
