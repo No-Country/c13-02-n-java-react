@@ -1,36 +1,29 @@
-package com.wallet.tienda.controllerBrand;
+package com.wallet.tienda.controller;
 
-import com.wallet.tienda.ServicieBrand.BrandService;
+import com.wallet.tienda.service.BrandService;
+import com.wallet.tienda.dto.response.BrandDTORes;
 import com.wallet.tienda.model.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/brand")
 public class BrandController {
 
     @Autowired
     private BrandService brandService;
 
-    @GetMapping("/brand")
-    public String listallbrands(Model model) {
-        model.addAttribute("brands", brandService.listallbrands());
-        return "brand";
+    @GetMapping()
+    public ResponseEntity<List<BrandDTORes>> listallbrands() {
+        return ResponseEntity.status(HttpStatus.CREATED).body(brandService.listallbrands());
     }
 
-    @GetMapping("/new/brand")
-    public String createbrandform(Model model) {
-        Brand brand = new Brand();
-        model.addAttribute("brand", brand);
-        return "new_brand";
-    }
 
     @PostMapping("/brand")
     public String savebrand(@ModelAttribute("brand") Brand brand, RedirectAttributes redirect) {

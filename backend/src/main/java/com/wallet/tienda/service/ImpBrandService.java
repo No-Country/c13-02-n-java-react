@@ -1,5 +1,6 @@
-package com.wallet.tienda.ServicieBrand;
+package com.wallet.tienda.service;
 
+import com.wallet.tienda.dto.response.BrandDTORes;
 import com.wallet.tienda.model.Brand;
 import com.wallet.tienda.repository.RepositoryBrand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class ImpBrandService implements BrandService{
     RepositoryBrand repositoryBrand;
 
     @Override
-    public List<Brand> listallbrands() {
+    public List<BrandDTORes> listallbrands() {
         return repositoryBrand.findAll();
     }
 
