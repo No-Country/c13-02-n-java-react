@@ -47,10 +47,10 @@ public class CategoryService implements ICategoryService{
     //LISTA CATEGORIAS PAGINADAS
     @Override
     public Page<CategoryDTORes> getAllCategories(Pageable pageable) {
-        var categoriesBD = categoryRepository.findAll(pageable);
+        var categoriesDB = categoryRepository.findAll(pageable);
         var categoriesDTO = new ArrayList<CategoryDTORes>();
-        //recorre la lista de categorias de la BD, los convierte a DTO y los guarda en una listaDTO
-        for (Category category : categoriesBD) {
+        //recorre la lista de categorias de la DB, los convierte a DTO y los guarda en una listaDTO
+        for (Category category : categoriesDB) {
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
         return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
@@ -59,10 +59,10 @@ public class CategoryService implements ICategoryService{
     //ACTUALIZA UNA CATEGORIA
     @Override
     public void updateCategory(CategoryDTOReq categoryDTO) throws IdNotFoundException, NameExistsException {
-        var categoryBD = categoryRepository.findById(categoryDTO.getId())
+        var categoryDB = categoryRepository.findById(categoryDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + categoryDTO + " no existe. Ingrese un nuevo id"));
         //valida que el nombre de la categoria no exista y si existe que coincida con la categoria encontrada
-        if (!categoryDTO.getName().equals(categoryBD.getName()) && categoryRepository.existsByName(categoryDTO.getName())) {
+        if (!categoryDTO.getName().equals(categoryDB.getName()) && categoryRepository.existsByName(categoryDTO.getName())) {
             throw new NameExistsException("El nombre " + categoryDTO.getName() + " ya existe. Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula
