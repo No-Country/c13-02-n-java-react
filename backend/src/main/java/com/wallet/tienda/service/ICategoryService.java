@@ -13,5 +13,7 @@ public interface ICategoryService {
     CategoryDTORes getCategoryById(Long categoryId) throws IdNotFoundException;
 
     Page<CategoryDTORes> getAllCategories(Pageable pageable);
+    void updateCategory(CategoryDTOReq categoryDTO) throws IdNotFoundException, NameExistsException;
+    void deleteCategory(Long categoryID);
 
 }

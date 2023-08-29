@@ -25,7 +25,7 @@ public class CategoryService implements ICategoryService{
     @Autowired
     private static ModelMapper modelMapper;
 
-    //    CREA UNA CATEGORIA
+    //CREA UNA CATEGORIA
     @Override
     public void saveCategory(CategoryDTOReq categoryDTO) throws NameExistsException {
         if (categoryRepository.existsByName(categoryDTO.getName())) {
@@ -54,5 +54,25 @@ public class CategoryService implements ICategoryService{
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
         return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
+    }
+
+    //ACTUALIZA UNA CATEGORIA
+    @Override
+    public void updateCategory(CategoryDTOReq categoryDTO) throws IdNotFoundException, NameExistsException {
+        var categoryBD = categoryRepository.findById(categoryDTO.getId())
+                .orElseThrow(() -> new IdNotFoundException("El id " + categoryDTO + " no existe. Ingrese un nuevo id"));
+        //valida que el nombre de la categoria no exista y si existe que coincida con la categoria encontrada
+        if (!categoryDTO.getName().equals(categoryBD.getName()) && categoryRepository.existsByName(categoryDTO.getName())) {
+            throw new NameExistsException("El nombre " + categoryDTO.getName() + " ya existe. Ingrese un nuevo nombre");
+        }
+        //convierte la primer letra de cada palabra en mayúscula
+        categoryDTO.setName(wordsConverter.capitalizeWords(categoryDTO.getName()));
+        categoryRepository.save(modelMapper.map(categoryDTO, Category.class));
+    }
+
+    //ELIMINA UNA CATEGORIA
+    @Override
+    public void deleteCategory(Long categoryID) {
+        categoryRepository.deleteById(categoryID);
     }
 }

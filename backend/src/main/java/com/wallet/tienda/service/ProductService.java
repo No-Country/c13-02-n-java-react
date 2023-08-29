@@ -25,7 +25,7 @@ public class ProductService implements IProductService{
     @Autowired
     private static ModelMapper modelMapper;
 
-    //    CREA UN PRODUCTO
+    //CREA UN PRODUCTO
     @Override
     public void saveProduct(ProductDTOReq productDTO) throws NameExistsException {
         if (productRepository.existsByName(productDTO.getName())) {
@@ -61,7 +61,7 @@ public class ProductService implements IProductService{
     public void updateProduct(ProductDTOReq productDTO) throws IdNotFoundException, NameExistsException {
         var productBD = productRepository.findById(productDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + productDTO + " no existe. Ingrese un nuevo id"));
-        //valida que el nombre del juego no exista y si existe que coincida con el juego encontrado
+        //valida que el nombre del producto no exista y si existe que coincida con el producto encontrado
         if (!productDTO.getName().equals(productBD.getName()) && productRepository.existsByName(productDTO.getName())) {
             throw new NameExistsException("El nombre " + productDTO.getName() + " ya existe. Ingrese un nuevo nombre");
         }

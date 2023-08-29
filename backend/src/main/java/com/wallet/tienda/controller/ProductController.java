@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de productos")
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/api/v1/product")
 public class ProductController {
 
     @Autowired
@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     //@Operation(
-//summary = "Traer todos los productos",
+            //summary = "Traer todos los productos",
            // description = "Trae todos los productos de base de datos y devuelve un Codigo de estado 200 y el listado de productos"
     //)
     @GetMapping()
