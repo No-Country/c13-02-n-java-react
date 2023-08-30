@@ -47,14 +47,14 @@ public class BoughtProductService implements IBoughtProductService {
     }
 
     @Override
-    public BoughtProductDTORes getById(Long id) throws IdNotFoundException {
+    public BoughtProductDTORes getBoughtProductById(Long id) throws IdNotFoundException {
         var boughtProduct = repository.findById(id).orElseThrow(
                 () -> new IdNotFoundException("El producto con el id ingresado no se encuentra registado"));
         return modelMapper.map(boughtProduct, BoughtProductDTORes.class);
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteBoughtProduct(Long id) {
         repository.deleteById(id);
     }
 

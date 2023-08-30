@@ -9,7 +9,7 @@ public interface IBoughtProductService {
 
     void saveBoughtProduct(BoughtProductDTOReq ticket) throws IdNotFoundException;
     Page<BoughtProductDTORes> getAllBoughtProducts(Pageable pageable);
-    BoughtProductDTORes getById(Long id) throws IdNotFoundException;
-    void delete(Long id);
+    BoughtProductDTORes getBoughtProductById(Long id) throws IdNotFoundException;
+    void deleteBoughtProduct(Long id);
 
 }

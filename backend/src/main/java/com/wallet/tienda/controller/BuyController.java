@@ -53,7 +53,7 @@ public class BuyController {
     //@Operation(
             //summary = "Actualiza una compra",
             //description = "Busca una compra por id y la actualiza, devuelve un Codigo de estado 204"
-    /)
+    //)
     @PutMapping()
     public ResponseEntity<HttpStatus> updateBuy(@Valid @RequestBody BuyDTOReq buyDTOReq) throws Exception {
         buyService.updateBuy(buyDTOReq);

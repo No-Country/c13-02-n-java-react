@@ -1,10 +1,13 @@
 package com.wallet.tienda.service;
 
+import com.wallet.tienda.dto.request.BoughtProductDTOReq;
+import com.wallet.tienda.model.BoughtProduct;
 import com.wallet.tienda.model.Buy;
 import com.wallet.tienda.dto.request.BuyDTOReq;
 import com.wallet.tienda.dto.response.BuyDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.repository.IBuyRepository;
+import com.wallet.tienda.repository.IBoughtProductRepository;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BuyService {
+public class BuyService implements IBuyService{
     private final IBuyRepository buyRepository;
     private final IBoughtProductRepository boughtProductRepository;
     private final ModelMapper modelMapper;
@@ -50,7 +53,7 @@ public class BuyService {
         return new PageImpl<>(buysDTO, pageable, buysDTO.size());
     }
 
-    //MODIFICA UNA LISTA POR ID
+    //MODIFICA UNA COMPRA POR ID
     @Override
     public void updateBuy(BuyDTOReq buyDTOReq) throws IdNotFoundException {
         if (!buyRepository.existsById(buyDTOReq.getId())) {
@@ -61,7 +64,7 @@ public class BuyService {
         buyRepository.save(buyUpdate);
     }
 
-    //ELIMINA UNA LISTA POR ID
+    //ELIMINA UNA COMPRA POR ID
     @Override
     public void deleteBuy(Long id){
         buyRepository.deleteById(id);
@@ -78,7 +81,7 @@ public class BuyService {
                     () -> new IdNotFoundException("No se encontro el producto comprado")
             );
             if (boughtProduct != null) {
-                totalPrice += boughtProduct.getPrice();
+                totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
             }
         }
         return totalPrice;
