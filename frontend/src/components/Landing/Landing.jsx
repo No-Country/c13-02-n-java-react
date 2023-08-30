@@ -98,6 +98,7 @@ function Landing() {
 				<img src={Imagenes.group9} alt='bubbles' />
 			</div>
 
+
 			<Footer />
 		</section>
 	);

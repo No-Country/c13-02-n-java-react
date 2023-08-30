@@ -7,18 +7,18 @@ function TopBar() {
 
   return (
     <>
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <Link class="nav-link " to={"/dashboard/profile"}>
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+      <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item ">
+            <Link className="nav-link " to={"/dashboard/profile"}>
+              <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {nickName}
               </span>
-              <img class="img-profile rounded-circle" src={Imagenes.avatar} />
+              <img className="img-profile rounded-circle" src={Imagenes.avatar} />
             </Link>
           </li>
         </ul>
-      </nav>
+      </nav> 
     </>
   );
 }

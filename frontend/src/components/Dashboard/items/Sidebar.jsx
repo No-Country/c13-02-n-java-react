@@ -21,7 +21,7 @@ function Sidebar() {
     <>
       {/* <!-- Sidebar --> */}
       <ul
-        className="navbar-nav bg-gradient-secondary sidebar sidebar-dark "
+        className="navbar-nav bg-gradient-primary sidebar sidebar-dark "
         id="accordionSidebar"
       >
         {/*    <!-- Sidebar - Brand --> */}
@@ -50,11 +50,11 @@ function Sidebar() {
         <hr className="sidebar-divider" />
 
         {/*  <!-- Heading --> */}
-        <div className="sidebar-heading">Acciones</div>
+        <div className="sidebar-heading">Reportes</div>
 
         {Links.map((link, key) => {
           return (
-            <li className="nav-item">
+            <li key={key} className="nav-item">
               <Link className="nav-link collapsed" to={link.route}>
                 <i className={link.icon}></i>
                 <span>{link.label} </span>
@@ -67,12 +67,12 @@ function Sidebar() {
         <hr className="sidebar-divider" />
         {/* 
             <!-- Heading --> */}
-        <div className="sidebar-heading">Reportes</div>
+        <div className="sidebar-heading">Acciones</div>
 
         {/* <!-- Nav Item - Charts --> */}
         <li className="nav-item">
           <Link className="nav-link" to={"/dashboard/settings"}>
-            <i class="fa-solid fa-gear"></i>
+            <i className="fa-solid fa-gear"></i>
             <span>Ajustes</span>
           </Link>
         </li>
@@ -80,7 +80,7 @@ function Sidebar() {
         {/*    <!-- Nav Item - Tables --> */}
         <li className="nav-item">
           <Link className="nav-link" to={"/"}>
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
             <span>Salir</span>
           </Link>
         </li>
