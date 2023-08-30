@@ -25,7 +25,7 @@ public class CustomerUser implements UserDetails {
     private String username;
     private String password;
     private String photoUrl;
-    private int phone;
+    private String phone;
     private String businessName;
     private boolean isEnable;
     @OneToOne(mappedBy = "customerUser")
