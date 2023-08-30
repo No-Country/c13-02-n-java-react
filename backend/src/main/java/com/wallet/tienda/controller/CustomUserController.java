@@ -22,7 +22,7 @@ public class CustomUserController {
     @Autowired
     private ICustomerUserService userService;
 
-    @PostMapping()
+    @PostMapping("/registro")
     public ResponseEntity<HttpStatus> createUser(@RequestBody UserDTOReq userDTO) throws PasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.saveUser(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);

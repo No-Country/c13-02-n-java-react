@@ -2,7 +2,6 @@ package com.wallet.tienda.config;
 
 import com.wallet.tienda.config.filter.JWTAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,7 +39,7 @@ public class CustomSecurityFilterChain {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/**", "/api/v1/login", "/api/v1/register", "/swagger-ui/**", "/v3/api-docs/**")
+                        auth.requestMatchers("/**", "api/v1/contrasena/**", "api/v1/login", "/api/v1/usuarios/registro", "/swagger-ui/**", "/v3/api-docs/**")
                                 .permitAll()
                                 .anyRequest().authenticated()
                 )
