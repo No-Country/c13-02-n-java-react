@@ -1,16 +1,18 @@
-package com.wallet.tienda.dto.request;
+package com.wallet.tienda.dto.response;
 
-import jakarta.validation.constraints.NotNull;
+import com.wallet.tienda.model.CustomerUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTOReq {
-    private Long id;
-    @NotNull(message = "No puede estar vacio")
-    private String name;
+public class ProviderDTORes {
 
+    private Long id;
+    private String name;
+    private List<CustomerUser> users;
 }
