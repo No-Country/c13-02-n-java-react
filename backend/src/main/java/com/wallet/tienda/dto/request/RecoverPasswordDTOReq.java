@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class RecoverPasswordDTOReq {
 
     @Email(message = "debe ingresar un email valido. Ej: example@example.com")
-    @NotNull()
+    @NotNull(message = "No puede estar vacio")
     private String email;
 }

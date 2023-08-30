@@ -61,7 +61,7 @@ public class EmailSenderController {
 //    )
 
     @PostMapping("/cambiar")
-    public ResponseEntity<HttpStatus> resetPassword(@RequestBody ResetPasswordDTOReq resetPassword) throws Exception {
+    public ResponseEntity<HttpStatus> resetPassword(@Valid @RequestBody ResetPasswordDTOReq resetPassword) throws Exception {
         emailService.resetPassword(resetPassword);
         return new ResponseEntity<>(HttpStatus.OK);
 

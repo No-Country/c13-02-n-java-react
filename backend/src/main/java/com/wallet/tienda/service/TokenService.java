@@ -1,5 +1,6 @@
 package com.wallet.tienda.service;
 
+import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.model.Token;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.ITokenRepository;
@@ -23,15 +24,23 @@ public class TokenService implements ITokenService{
     @Override
     public Token saveToken(String username) throws UsernameNotFoundException {
 
-        var userBD = userRepository.findByUsername(username)
+        var userDB = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("El usuario no se encuentra registrado"));
 
         String generateToken = UUID.randomUUID().toString();
         var token = new Token();
         token.setToken(generateToken);
         token.setExpirationTime(LocalDateTime.now().plusMinutes(15));
-        token.setCustomerUser(userBD);
-        return tokenRepository.save(token);
+
+        if (userDB.getToken() == null) {
+            token.setCustomerUser(userDB);
+            return tokenRepository.save(token);
+        }
+        else {
+            this.deleteById(userDB.getToken().getId());
+            token.setCustomerUser(userDB);
+            return tokenRepository.save(token);
+        }
     }
 
     @Override
