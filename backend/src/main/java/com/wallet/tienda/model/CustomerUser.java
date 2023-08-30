@@ -28,6 +28,8 @@ public class CustomerUser implements UserDetails {
     private int phone;
     private String businessName;
     private boolean isEnable;
+    @OneToOne(mappedBy = "customerUser")
+    private Token token;
     @ManyToOne
     @JoinColumn(name = "fk_role")
     private Role role;

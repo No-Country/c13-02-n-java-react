@@ -73,7 +73,7 @@ public class EmailService implements IEmailService{
         }
         else {
             tokenRepository.deleteById(token.getId());
-            throw new Exception("El link ah expirado");
+            throw new Exception("El link ha expirado");
         }
 
 
