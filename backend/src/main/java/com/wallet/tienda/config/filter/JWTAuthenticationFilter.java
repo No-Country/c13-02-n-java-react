@@ -22,9 +22,9 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
-    final JWTUtils jwtUtils;
-    final UserDetailsService userDetailsService;
-    private final List<String> excludedPaths = Arrays.asList("/api/v1/login", "/api/v1/register","/swagger-ui/**", "/v3/api-docs/**");
+    private final JWTUtils jwtUtils;
+    private final UserDetailsService userDetailsService;
+    private final List<String> excludedPaths = Arrays.asList("/api/v1/login","api/v1/contrasena/**" , "/api/v1/usuarios/registro","/swagger-ui/**", "/v3/api-docs/**");
 
 
     /**
