@@ -4,6 +4,8 @@ import Footer from "../Footer/Footer";
 import Imagenes from "../../assets/imagenes";
 
 function Landing() {
+
+
 	return (
 		<section className='landing'>
 			<header className='header_landing'>
@@ -39,7 +41,7 @@ function Landing() {
 						finanzas de una manera mas organizada.
 					</p>
 
-					<button>Comenzar ahora</button>
+				<Link to={'/login'}>	<button  >Comenzar ahora</button></Link>
 				</div>
 			</div>
 
