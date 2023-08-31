@@ -6,7 +6,7 @@ function Dashboard() {
   /* data para las cards de prueba  */
   const data = [
     {
-      type: "Ganancias Mensuales",
+      type: "Ganancias netas (Mes)",
       mount: `$ ${12000}`,
       icon: "fas fa-calendar",
       color: "primary",
@@ -24,8 +24,8 @@ function Dashboard() {
       color: "success",
     },
     {
-      type: "Pedidos Pendientes",
-      mount: 15,
+      type: "Costos",
+      mount:  `$ ${1000}`,
       icon: "fa-regular fa-clock",
       color: "danger",
     },

@@ -14,7 +14,7 @@ function Sidebar() {
     },
     { label: "Inventario", icon: `fa-solid fa-box`, route: "/dashboard/inventario" },
     { label: "Productos", icon: `fa-solid fa-list-check`, route: "/dashboard/productos" },
-    { label: "Pedidos", icon: `fa-regular fa-square-check`, route: "/dashboard/pedidos" },
+    { label: "Ordenes", icon: `fa-regular fa-square-check`, route: "/dashboard/pedidos" },
   ];
 
   return (

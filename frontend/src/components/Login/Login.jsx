@@ -62,7 +62,7 @@ function Login({setAuth}) {
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
-          {errores?.length > 0 ? <p className="error">{errores} </p> : ""}
+          {errores?.length > 0 ? <p className="errores">{errores} </p> : ""}
 
 
           <div className="login_input">

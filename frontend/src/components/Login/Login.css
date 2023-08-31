@@ -161,12 +161,13 @@
 
 
 
-.error{
+.errores{
  
     margin: 0;
     padding: 0;
     position: absolute;
     color: red;
-    top: 40%;
+    top: 35%;
+    font-size:16px
 
 }

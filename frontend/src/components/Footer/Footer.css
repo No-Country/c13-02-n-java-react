@@ -3,9 +3,12 @@
     width: 100%;
     display: flex;
     min-height: 337px;
-    background-color: #D9D9D9;
+    background-color: white;
+    background: linear-gradient(360deg, #01579B 0%, rgba(42, 203, 218, 0.00) 100%);
+    margin-top: 200px;
+    padding: 20px;
+
    
   
-    z-index: 99;
-    position: absolute;
+    
 }

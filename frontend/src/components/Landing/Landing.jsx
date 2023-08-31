@@ -94,9 +94,9 @@ function Landing() {
 				<p>Digitalízate con FIMA y optimiza el rendimiento de tu negocio</p>
 			</div>
 
-			<div className='bubbles_landing'>
+			{/* <div className='bubbles_landing'>
 				<img src={Imagenes.group9} alt='bubbles' />
-			</div>
+			</div> */}
 
 
 			<Footer />
