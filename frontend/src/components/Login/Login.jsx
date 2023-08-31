@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
+import Imagenes from "../../assets/imagenes";
 
-function Login({setAuth,props}) {
+function Login({setAuth}) {
   const navigate = useNavigate();
 
-  localStorage.setItem("email", "exelu1495@gmail.com");
-  localStorage.setItem("password", "exequiel");
+  localStorage.setItem("email", "correo@correo.com");
+  localStorage.setItem("password", "123");
   /* Usuario registrado */
 
   const user = {
@@ -61,7 +62,7 @@ function Login({setAuth,props}) {
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
-          {errores?.length > 0 ? <p className="error">{errores} </p> : ""}
+          {errores?.length > 0 ? <p className="errores">{errores} </p> : ""}
 
 
           <div className="login_input">
@@ -97,7 +98,7 @@ function Login({setAuth,props}) {
             <input type="submit" value={"Login"} />
             <button className="google_login">
               {" "}
-              <img src="./icons/google.svg" /> Iniciar sesión con Google
+              <img src={Imagenes.google} /> Iniciar sesión con Google
             </button>
           </div>
         </form>

@@ -9,10 +9,13 @@ import group9 from "./icons/Group9.svg";
 import negocio from "./icons/negocio.svg";
 import perfil from "./icons/perfil.svg";
 import vector from "./icons/Vector.svg";
+
+
 import alcancia from "./img/alcancia.svg";
 import pieCharts from "./img/PieCharts.svg";
 import rectangle from "./img/Rectangle.svg";
 import perfil2 from "./img/perfil.png";
+import avatar from "./img/person.png";
 
 const Imagenes = {
 	barras,
@@ -30,6 +33,7 @@ const Imagenes = {
 	pieCharts,
 	rectangle,
 	perfil2,
+	avatar
 };
 
 export default Imagenes;
