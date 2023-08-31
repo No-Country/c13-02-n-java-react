@@ -56,30 +56,13 @@ function Dashboard() {
         ))}
       </div>
 
-      <div className="row ">
-        <ChartBarMes />
-      </div>
+      
+          <div className="row">
 
-      <div className="d-flex gap-5">
-        <ChartPie
-          title={"Porcentaje de Pedidos"}
-          nameOne={"Pedidos Entregados"}
-          valueOne={75}
-          nameTwo={"Pedidos Pendientes"}
-          valueTwo={15}
-          colorOne={'#1CC88A'}
-          colorTwo={'#E85345'}
-        />
-        <ChartPie
-         title={"Porcentaje de Ganancias"}
-          nameOne={"Ganancias Mensuales"}
-          valueOne={75}
-          nameTwo={"Ganancias Pendientes"}
-          valueTwo={15}
-          colorOne={'#486DDA'}
-          colorTwo={'#F9CD3E'}
-        />
-      </div>
+            <ChartBarMes/>
+          </div>
+
+
     </>
   );
 }
