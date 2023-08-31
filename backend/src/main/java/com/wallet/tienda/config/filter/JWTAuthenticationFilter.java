@@ -28,8 +28,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
 
     /**
-     * Metodo para autenticar al usuario por jwt y cargar datos del usuario autenticado en el contexto de seguridad,
-     * o continuar el flujo de filtrado
+     * Metodo para validar expiracion del token, autenticar al usuario por jwt y cargar datos del usuario autenticado en el contexto de seguridad,
+     * y/o continuar el flujo de filtrado
      * @param request
      * @param response
      * @param filterChain

@@ -1,17 +1,20 @@
 package com.wallet.tienda.dto.request;
 
-import jakarta.validation.constraints.Email;
+import com.wallet.tienda.model.CustomerUser;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RecoverPasswordDTOReq {
-
-    @Email(message = "debe ingresar un email valido. Ej: example@example.com")
+public class ProviderDTOReq {
+    private Long id;
     @NotNull(message = "No puede estar vacio")
-    private String email;
+    private String name;
+    @NotNull(message = "No puede estar vacio")
+    private List<CustomerUser> users;
 }

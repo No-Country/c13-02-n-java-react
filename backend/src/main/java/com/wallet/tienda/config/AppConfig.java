@@ -17,16 +17,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {
-    //Confiduraciones de beans necesarios para la app
     private final ICustomerUserRepository userRepository;
     /**
-     * Configurar el codificador de contraseña
-     * @return codificador de contraseña
+     * Configurar el encriptador de contraseña
+     * @return contraseña encriptada
      */
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    /**
+     * Configura el bean de busqueda de informacion de usuario necesario para spring security
+     * @return UserDetails
+     */
     @Bean
     public UserDetailsService userDetailsService(){
         return username -> userRepository.findByUsername(username).orElseThrow( () -> new UsernameNotFoundException("User not found"));
@@ -56,7 +60,7 @@ public class AppConfig {
     }
 
     /**
-     * Bean for map model to DTO or DTO to model
+     * Bean para mapear del modelo al DTO o del DTO al modelo
      * @return modelMapper
      */
     @Bean
