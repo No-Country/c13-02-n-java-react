@@ -58,6 +58,8 @@ function Register() {
 
       <div className="register_panel">
       <h1>Regístrate ahora</h1>
+
+      
         {/* formulario de registro  */}
         <form onSubmit={(e) => handleSubmit(e)}>
        <div className="div_container_input">
@@ -106,11 +108,16 @@ function Register() {
           </div>
         </div>
 
+        <div className="d-flex align-items-center ">
+        <input type="checkbox" />
+        <p className="w-50 ">Acepto los Términos y condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</p>
+
+        </div>
           <input type="submit" className="--50"  value={"Crear cuenta"} />
         </form>
       </div>
 
-      {errores?.length > 0 ? <p>{errores} </p> : ""}
+     
     </section>
   );
 }

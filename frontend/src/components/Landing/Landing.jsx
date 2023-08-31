@@ -24,7 +24,7 @@ function Landing() {
 						</Link>
 						<Link to={"/register"}>
 							{" "}
-							<li className='--bg-button'>Registrarse</li>
+							<li className='--bg-button  '>Registrarse</li>
 						</Link>
 					</ul>
 				</nav>

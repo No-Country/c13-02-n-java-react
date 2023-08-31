@@ -1,8 +1,15 @@
+
+import '../customcolors.css'
 import CardValues from "../CardValues";
 import ChartBarMes from "../ChartBarMes";
 import ChartPie from "./ChartPie";
 
 function Dashboard() {
+
+  const currentDate = new Date
+
+  const year = currentDate.getFullYear()
+
   /* data para las cards de prueba  */
   const data = [
     {
@@ -13,7 +20,7 @@ function Dashboard() {
     },
     {
       type: "Ganancias Diarias",
-      mount: `$ ${1000}`,
+      mount: `$ ${5000}`,
       icon: "fas fa-calendar",
       color: "warning",
     },
@@ -25,11 +32,33 @@ function Dashboard() {
     },
     {
       type: "Costos",
-      mount:  `$ ${1000}`,
+      mount:  `$ ${5900}`,
       icon: "fa-regular fa-clock",
       color: "danger",
     },
   ];
+
+  const dataMeses = [
+    ["Meses", "Ganancias"],
+    ["Enero", 1150],
+    ["Febrero", 12200],
+    ["Marzo", 7851],
+    ["Abril", 5230],
+    ["Mayo ", 7845],
+    ["Junio ", 9632],
+    ["Julio", 4123],
+    ["Agosto", 12008],
+    ["Setiembre", 7895],
+    ["Octubre", 7451],
+    ["Noviembre", 12365],
+    ["Diciembre", 4578],
+  ];
+
+  const Balance = [["Ganancias Diarias", "Gastos Diarios"],
+
+  ["Ganancias",5000],
+  ["Costos",5900],
+]
 
   return (
     <>
@@ -57,10 +86,19 @@ function Dashboard() {
       </div>
 
       
-          <div className="row">
-
-            <ChartBarMes/>
+          <div className="  container-fluid   d-flex flex-wrap  justify-content-between   ">
+<div className='w-50    '>
+<ChartBarMes data={dataMeses} titulo={`Ganancias Anuales (${year})`}/>
+</div>
+<div className='w-50 '>
+<ChartBarMes data={Balance} titulo={'Balance Diario'}/>
+</div>
+         
           </div>
+           
+        
+
+        
 
 
     </>

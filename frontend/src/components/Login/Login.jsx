@@ -56,7 +56,10 @@ function Login({setAuth}) {
         <div className="login_image_logo">
           {/*  <img src="#" alt="Logo" /> */}
         </div>
-        <h1>FIMA</h1>
+       <div className="text-center ">
+       <h1>FIMA</h1>
+        <p>Finance Manager</p>
+       </div>
 
         <h2>Iniciar sesión con correo electrónico</h2>
         <form onSubmit={(e) => handleSubmit(e)}>

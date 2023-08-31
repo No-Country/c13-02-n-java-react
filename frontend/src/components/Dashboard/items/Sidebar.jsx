@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   const Links = [
     { label: "Inicio", icon: `fa-solid fa-house`, route: "/dashboard" },
-    { label: "Perfil", icon: `fa-solid fa-user-pen`, route: "/dashboard/profile" },
+    
     { label: "Ingresos", icon: `fa-solid fa-coins`, route: "/dashboard/ingresos" },
     {
       label: "Egresos",
@@ -21,7 +21,7 @@ function Sidebar() {
     <>
       {/* <!-- Sidebar --> */}
       <ul
-        className="navbar-nav bg-gradient-primary sidebar sidebar-dark "
+        className="navbar-nav bg-gradient-primary  sidebar sidebar-dark "
         id="accordionSidebar"
       >
         {/*    <!-- Sidebar - Brand --> */}
@@ -71,12 +71,12 @@ function Sidebar() {
 
         {/* <!-- Nav Item - Charts --> */}
         <li className="nav-item">
-          <Link className="nav-link" to={"/dashboard/settings"}>
-            <i className="fa-solid fa-gear"></i>
+          <Link className="nav-link" to={"/dashboard/profile"}>
+            <i className="fa-solid fa-user-pen"></i>
             <span>Ajustes</span>
           </Link>
         </li>
-
+     
         {/*    <!-- Nav Item - Tables --> */}
         <li className="nav-item">
           <Link className="nav-link" to={"/"}>
