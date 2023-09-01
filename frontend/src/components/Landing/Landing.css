@@ -17,7 +17,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #2d3648;
+
     padding-bottom: 24px;
 }
 
@@ -26,7 +26,7 @@ h1 {
 
     align-items: flex-start;
     gap: 10px;
-    background-color: #2d3648;
+    background-color: #AD3CC5;;
     color: white;
     border-radius: 6px;
     margin-left: 2rem;
@@ -57,10 +57,10 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    color: #2d3648;
+    color: #AD3CC5;;
 
     font-feature-settings: 'calt' off;
-    border: 2px solid #2d3648;
+    border: 2px solid #AD3CC5;;
     border-radius: 6px;
     font-size: 16px;
     font-weight: 700;
@@ -73,17 +73,17 @@ h1 {
 }
 
 .navigation_landing ul li:hover {
-    background-color: #2d3648;
+    background-color: #AD3CC5;;
     color: white;
 }
 
 .--bg-button {
-    background-color: #2d3648;
+    background-color: #AD3CC5;;
     color: white !important;
 }
 
 .--bg-button:hover {
-    color: #2d3648 !important;
+    color: #AD3CC5 !important;
     background-color: white !important;
 }
 
@@ -142,7 +142,7 @@ h1 {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    background-color: #2d3648;
+    background-color: #AD3CC5;
     color: white;
 }
 

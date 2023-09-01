@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(220, 220, 220, 0.459);
 }
 
 .login_panel {
@@ -12,11 +13,12 @@
  
   width: 30.5%;
 
-  background-color: #d9d9d9;
+  background-color: white;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   justify-content: start;
+  box-shadow: 1px 1px 13px rgb(194, 193, 193);
 
   align-items: center;
   padding-left: 62px;
@@ -24,15 +26,15 @@
 }
 
 .login_image_logo {
-  width: 145px;
-  height: 145px;
+  width: 125px;
+  height: 125px;
   margin-top: 20px;
   border-radius: 50%;
   background-color: black;
 }
 
 .login_panel h1 {
-  margin-top: 15px;
+  margin-top: 10px;
   color: #000;
   font-feature-settings: "calt" off;
   font-family: Arial, Helvetica, sans-serif;
@@ -45,7 +47,7 @@
 }
 
 .login_panel h2 {
-  margin-top: 25px;
+  margin-top: 15px;
   color: #000;
   font-family: Helvetica;
   font-size: 16px;
@@ -72,14 +74,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
  
 }
 
 
 .bg-select{
 
-  background-color: #d9d9d9 !important
+  background-color: white !important
 }
 
 
@@ -120,7 +122,7 @@
   letter-spacing: -0.18px;
   gap: 8px;
   border-radius: 6px;
-  background: var(--wf-base-800, #2d3648);
+  background: var(--wf-base-800, #AD3CC5);
   border: none;
 }
 
@@ -145,7 +147,7 @@
   border-radius: 6px;
   border: 1px solid #000;
   font-family: Helvetica;
-  color: white;
+  color: gray;
   background-color: transparent;
 
   font-style: normal;
@@ -167,7 +169,7 @@
     padding: 0;
     position: absolute;
     color: red;
-    top: 35%;
+    top: 40%;
     font-size:16px
 
 }

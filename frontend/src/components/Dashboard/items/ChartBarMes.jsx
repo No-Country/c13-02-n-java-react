@@ -1,35 +1,37 @@
 import { Chart } from "react-google-charts";
 
-function ChartBarMes() {
-  const data = [
-    ["Mes", "Ventas", "Gastos", "Ganancias"],
-    ["Enero", 1000, 400, 200],
-    ["Febrero", 1170, 460, 250],
-    ["Marzo", 660, 1120, 300],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-    ["Abril", 1030, 540, 350],
-  ];
+function ChartBarMes({data,titulo}) {
+  
 
   const options = {
-    chart: {
-      title: "Ganancias",
-      subtitle: "Sales, Expenses, and Profit: 2014-2017",
+    title: titulo,
+    titleTextStyle: {
+      color: "#577AE1",
     },
+
+    colors: [
+      "#F9CD3E",
+      "#E74A3B",
+      "#1CC88A",
+      "#3D63D2",
+      "#D9D9D9",
+      "#3730A3",
+      "#8F3D6F",
+      "#5F54CB",
+      "#6610F2",
+      "#8C68CD",
+      "#FD9843",
+      "#867571",
+    ],
+    is3D: true,
   };
   return (
     <Chart
-      chartType="Bar"
-      width="100%"
-      height="400px"
+      chartType="PieChart"
       data={data}
       options={options}
-
+      width={"100%"}
+      height={"400px"}
     />
   );
 }

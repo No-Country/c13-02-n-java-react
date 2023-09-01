@@ -16,6 +16,7 @@ import pieCharts from "./img/PieCharts.svg";
 import rectangle from "./img/Rectangle.svg";
 import perfil2 from "./img/perfil.png";
 import avatar from "./img/person.png";
+import background from "./img/bg.svg"
 
 const Imagenes = {
 	barras,
@@ -33,7 +34,8 @@ const Imagenes = {
 	pieCharts,
 	rectangle,
 	perfil2,
-	avatar
+	avatar,
+	background
 };
 
 export default Imagenes;
