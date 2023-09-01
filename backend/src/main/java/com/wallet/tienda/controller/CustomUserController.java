@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.management.relation.RoleNotFoundException;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1/users")
 public class CustomUserController {
 
     @Autowired
     private ICustomerUserService userService;
 
-    @PostMapping("/registro")
+    @PostMapping("/register")
     public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody UserDTOReq userDTO) throws ConfirmPasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.saveUser(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);

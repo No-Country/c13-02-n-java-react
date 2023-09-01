@@ -24,7 +24,7 @@ import java.util.List;
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private final JWTUtils jwtUtils;
     private final UserDetailsService userDetailsService;
-    private final List<String> excludedPaths = Arrays.asList("/api/v1/login","api/v1/contrasena/**" , "/api/v1/usuarios/registro","/swagger-ui/**", "/v3/api-docs/**");
+    private final List<String> excludedPaths = Arrays.asList("/api/v1/login","api/v1/password/**" , "/api/v1/users/register","/swagger-ui/**", "/v3/api-docs/**");
 
 
     /**
