@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de productos vendidos")
 @RestController
-@RequestMapping("api/v1/bought-product")
+@RequestMapping("api/v1/bought-products")
 @RequiredArgsConstructor
 public class BoughtProductController {
 

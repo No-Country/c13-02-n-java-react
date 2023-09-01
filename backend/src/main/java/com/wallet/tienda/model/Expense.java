@@ -4,23 +4,21 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-@Entity(name = "orders")
+@Entity
+@Table(name = "expenses")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
-
+public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany
-    private List<Product> reservedProducts;
-    @ManyToOne
-    @JoinColumn(name = "fk_user")
-    private CustomerUser user;
-
+    private Double price;
+    @CreationTimestamp
+    private LocalDateTime date;
 }
