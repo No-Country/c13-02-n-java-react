@@ -7,7 +7,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
 import ProtectedRoute from "./hooks/ProtectedRoute";
-import Profile from "./components/Profile/Profile";
+import Setting from "./components/Profile/Setting.jsx";
 import Layout from "./components/Dashboard/Layout";
 import Dashboard from "./components/Dashboard/items/pages/Dashboard";
 import Ingresos from "./components/Dashboard/items/pages/Ingresos";
@@ -41,9 +41,9 @@ function App() {
             <Route
               path="/dashboard"
               element={<Layout />}
+
               children={[
                 <Route index={true} element={<Dashboard />} />,
-                <Route path="/dashboard/profile" element={<Profile />} />,
                 <Route path={"/dashboard/ingresos"} element={<Ingresos />} />,
                 <Route path={"/dashboard/egresos"} element={<Egresos />} />,
                 <Route
@@ -52,7 +52,7 @@ function App() {
                 />,
                 <Route path={"/dashboard/productos"} element={<Productos />} />,
                 <Route path={"/dashboard/pedidos"} element={<Pedidos />} />,
-                <Route path={"/dashboard/settings"} element={<Settings />} />,
+                <Route path={"/dashboard/settings"} element={<Setting />} />,
               ]}
             />
           </Route>

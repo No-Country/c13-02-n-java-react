@@ -116,11 +116,3 @@ function Register() {
 }
 
 export default Register;
-
-/*   if (email  && ) {
-      console.log("email válido");
-    } else {
-      console.log("error");
-    } */
-
-

@@ -14,7 +14,7 @@
 	<name>tienda</name>
 	<description>Api rest for commercial venture´s users</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

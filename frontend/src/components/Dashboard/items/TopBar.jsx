@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Imagenes from "../../../assets/imagenes";
 
 function TopBar() {
-  const nickName = localStorage.getItem("email");
+  const nickName = localStorage.getItem("username");
 
   return (
     <>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   const Links = [
     { label: "Inicio", icon: `fa-solid fa-house`, route: "/dashboard" },
-    { label: "Perfil", icon: `fa-solid fa-user-pen`, route: "/dashboard/profile" },
+    /*{ label: "Perfil", icon: `fa-solid fa-user-pen`, route: "/dashboard/profile" },*/
     { label: "Ingresos", icon: `fa-solid fa-coins`, route: "/dashboard/ingresos" },
     {
       label: "Egresos",

@@ -1,52 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useState } from "react";
 import Imagenes from "../../assets/imagenes";
+import useAuth from "../../hooks/useAuth.jsx";
 
-function Login({setAuth}) {
-  const navigate = useNavigate();
-
-  localStorage.setItem("email", "correo@correo.com");
-  localStorage.setItem("password", "123");
-  /* Usuario registrado */
-
-  const user = {
-    email: localStorage.getItem("email"),
-    password: localStorage.getItem("password"),
-  };
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  /* array de errores */
-
-  const [errores, setErrores] = useState([]);
-  /* controla el submit */
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (email && password) {
-      if (email == user.email && password == user.password) {
-        
-        setAuth(true)
-        navigate('/dashboard')
-
-      
-        
-        
-      } else {
-        setErrores(["Verifique sus datos, usuario no válido"]);
-      }
-    } else {
-      setErrores(["Complete sus datos"]);
-      console.log(errores);
-    }
-
-    setTimeout(() => {
-      setErrores("");
-    }, 1500);
-  };
+function Login() {
+  const {username, setUsername, password, setPassword, errors, handleSubmit} = useAuth();
 
   return (
     <section className="login">
@@ -62,7 +20,7 @@ function Login({setAuth}) {
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
-          {errores?.length > 0 ? <p className="errores">{errores} </p> : ""}
+          {errors?.length > 0 ? <p className="errores">{errors} </p> : "" }
 
 
           <div className="login_input">
@@ -70,8 +28,8 @@ function Login({setAuth}) {
          {/* input de usuario  */}
          <div className="register_input --min ">
            <label className="bg-select">Usuario</label>
-           <input type="text"
-           placeholder="Correo eléctronico" onChange={(e) => setEmail(e.target.value)} />
+           <input type="text" value={username}
+           placeholder="Correo eléctronico" onChange={(e) => setUsername(e.target.value)} />
          </div>
          {/* input de empresa  */}
          <div className="register_input --min">
@@ -81,14 +39,11 @@ function Login({setAuth}) {
            <input
               type="password"
               placeholder="Contraseña"
+                value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
          </div>
       </div>
-
-
-
-        
 
           <a className="recover_link_login" href="#">
             ¿Olvidó su contraseña?
