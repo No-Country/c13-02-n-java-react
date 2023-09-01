@@ -12,6 +12,6 @@ public interface IExpenseService {
     void saveExpense(ExpenseDTOReq expenseDTOReq) throws NameExistsException;
     ExpenseDTORes getExpenseById(Long expenseId) throws IdNotFoundException;
     Page<ExpenseDTORes> getExpenses(Pageable pageable);
-    void updateExpense(ExpenseDTOReq expenseDTOReq) throws IdNotFoundException;
+    void updateExpense(ExpenseDTOReq expenseDTOReq) throws IdNotFoundException, NameExistsException;
     void deleteExpense(Long expenseId);
 }

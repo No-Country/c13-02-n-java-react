@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de proovedores")
 @RestController
-@RequestMapping("/api/v1/provider")
+@RequestMapping("/api/v1/providers")
 public class ProviderController {
 
     @Autowired

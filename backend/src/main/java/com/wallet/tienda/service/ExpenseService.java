@@ -1,10 +1,12 @@
 package com.wallet.tienda.service;
 
 import com.wallet.tienda.dto.request.ExpenseDTOReq;
+import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.response.ExpenseDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Expense;
+import com.wallet.tienda.model.Product;
 import com.wallet.tienda.repository.IExpenseRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import lombok.RequiredArgsConstructor;
@@ -61,12 +63,16 @@ public class ExpenseService implements IExpenseService {
 
     //MODIFICA UN GASTO POR ID
     @Override
-    public void updateExpense(ExpenseDTOReq expenseDTOReq) throws IdNotFoundException {
-        if (!expenseRepository.existsById(expenseDTOReq.getId())) {
-            throw new IdNotFoundException("El id " + expenseDTOReq.getId() + " no existe");
+    public void updateExpense(ExpenseDTOReq expenseDTO) throws IdNotFoundException, NameExistsException {
+        var productDB = expenseRepository.findById(expenseDTO.getId())
+                .orElseThrow(() -> new IdNotFoundException("El id " + expenseDTO + " no existe. Ingrese un nuevo id"));
+        //valida que el nombre del gasto no exista y si existe que coincida con el gasto encontrado
+        if (!expenseDTO.getName().equals(productDB.getName()) && expenseRepository.existsByName(expenseDTO.getName())) {
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe. Ingrese un nuevo nombre");
         }
-        var expenseUpdate = modelMapper.map(expenseDTOReq, Expense.class);
-        expenseRepository.save(expenseUpdate);
+        //convierte la primer letra de cada palabra en mayúscula
+        expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
+        expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
 
     //ELIMINA UN GASTO POR ID
