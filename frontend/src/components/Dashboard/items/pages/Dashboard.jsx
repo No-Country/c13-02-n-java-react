@@ -86,11 +86,11 @@ function Dashboard() {
       </div>
 
       
-          <div className="  container-fluid   d-flex flex-wrap  justify-content-between   ">
-<div className='w-50    '>
+          <div   className= "  container-fluid   d-flex justify-content-center    ">
+<div   className=' col-lg-6  col-xs-12  col-md-12   '>
 <ChartBarMes data={dataMeses} titulo={`Ganancias Anuales (${year})`}/>
 </div>
-<div className='w-50 '>
+<div className=' col-lg-6  col-xs-12  col-md-12  '>
 <ChartBarMes data={Balance} titulo={'Balance Diario'}/>
 </div>
          
