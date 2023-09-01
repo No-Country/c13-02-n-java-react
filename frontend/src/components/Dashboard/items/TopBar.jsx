@@ -10,7 +10,7 @@ function TopBar() {
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item ">
-            <Link className="nav-link " to={"/dashboard/profile"}>
+            <Link className="nav-link " to={"/dashboard/settings"}>
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {nickName}
               </span>

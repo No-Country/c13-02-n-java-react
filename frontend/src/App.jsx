@@ -21,7 +21,7 @@ function App() {
   const [auth, setAuth] = useState(true);
 
   useEffect(() => {
-    console.log(auth);
+    auth ? localStorage.setItem("auth", "true") : localStorage.removeItem("auth");
   }, [auth]);
 
   return (
@@ -43,16 +43,13 @@ function App() {
               element={<Layout />}
 
               children={[
-                <Route index={true} element={<Dashboard />} />,
-                <Route path={"/dashboard/ingresos"} element={<Ingresos />} />,
-                <Route path={"/dashboard/egresos"} element={<Egresos />} />,
-                <Route
-                  path={"/dashboard/inventario"}
-                  element={<Inventario />}
-                />,
-                <Route path={"/dashboard/productos"} element={<Productos />} />,
-                <Route path={"/dashboard/pedidos"} element={<Pedidos />} />,
-                <Route path={"/dashboard/settings"} element={<Setting />} />,
+                <Route key="dashboard" index={true} element={<Dashboard />} />,
+                <Route key="ingresos" path={"/dashboard/ingresos"} element={<Ingresos />} />,
+                <Route key="egresos" path={"/dashboard/egresos"} element={<Egresos />} />,
+                <Route key="inventario" path={"/dashboard/inventario"} element={<Inventario />} />,
+                <Route key="productos" path={"/dashboard/productos"} element={<Productos />} />,
+                <Route key="pedidos" path={"/dashboard/pedidos"} element={<Pedidos />} />,
+                <Route key="settings" path={"/dashboard/settings"} element={<Setting />} />,
               ]}
             />
           </Route>
