@@ -3,7 +3,7 @@ import "./Login.css";
 import { useState } from "react";
 import Imagenes from "../../assets/imagenes";
 
-function Login({setAuth}) {
+function Login({ setAuth }) {
   const navigate = useNavigate();
 
   localStorage.setItem("email", "correo@correo.com");
@@ -28,13 +28,8 @@ function Login({setAuth}) {
 
     if (email && password) {
       if (email == user.email && password == user.password) {
-        
-        setAuth(true)
-        navigate('/dashboard')
-
-      
-        
-        
+        setAuth(true);
+        navigate("/dashboard");
       } else {
         setErrores(["Verifique sus datos, usuario no válido"]);
       }
@@ -56,10 +51,10 @@ function Login({setAuth}) {
         <div className="login_image_logo">
           {/*  <img src="#" alt="Logo" /> */}
         </div>
-       <div className="text-center ">
-       <h1>FIMA</h1>
-        <p>Finance Manager</p>
-       </div>
+        <div className="text-center ">
+          <h1>FIMA</h1>
+          <p>Finance Manager</p>
+        </div>
 
         <h2>Iniciar sesión con correo electrónico</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
@@ -67,31 +62,28 @@ function Login({setAuth}) {
           {/* input de usuario  */}
           {errores?.length > 0 ? <p className="errores">{errores} </p> : ""}
 
-
           <div className="login_input">
-         
-         {/* input de usuario  */}
-         <div className="register_input --min ">
-           <label className="bg-select">Usuario</label>
-           <input type="text"
-           placeholder="Correo eléctronico" onChange={(e) => setEmail(e.target.value)} />
-         </div>
-         {/* input de empresa  */}
-         <div className="register_input --min">
-           <label className="bg-select">Contraseña</label>
-           {/* input password */}
+            {/* input de usuario  */}
+            <div className="register_input --min ">
+              <label className="bg-select">Usuario</label>
+              <input
+                type="text"
+                placeholder="Correo eléctronico"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            {/* input de empresa  */}
+            <div className="register_input --min">
+              <label className="bg-select">Contraseña</label>
+              {/* input password */}
 
-           <input
-              type="password"
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-         </div>
-      </div>
-
-
-
-        
+              <input
+                type="password"
+                placeholder="Contraseña"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
 
           <a className="recover_link_login" href="#">
             ¿Olvidó su contraseña?
