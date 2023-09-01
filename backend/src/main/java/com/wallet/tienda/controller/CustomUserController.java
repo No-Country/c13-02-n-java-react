@@ -4,7 +4,7 @@ import com.wallet.tienda.dto.request.UserDTOReq;
 import com.wallet.tienda.dto.response.UserDTORes;
 import com.wallet.tienda.exception.EmailExistsException;
 import com.wallet.tienda.exception.IdNotFoundException;
-import com.wallet.tienda.exception.PasswordException;
+import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.service.ICustomerUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CustomUserController {
     private ICustomerUserService userService;
 
     @PostMapping("/registro")
-    public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody UserDTOReq userDTO) throws PasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
+    public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody UserDTOReq userDTO) throws ConfirmPasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.saveUser(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -40,7 +40,7 @@ public class CustomUserController {
     }
 
     @PutMapping()
-    public ResponseEntity<UserDTOReq> updateUser(@Valid @RequestBody UserDTOReq userDTO) throws PasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
+    public ResponseEntity<UserDTOReq> updateUser(@Valid @RequestBody UserDTOReq userDTO) throws ConfirmPasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.updateUser(userDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
