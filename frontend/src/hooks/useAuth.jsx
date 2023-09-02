@@ -14,7 +14,7 @@ const useAuth = () => {
 
         if (username && password) {
             try {
-                const response = await request("POST", `usuer/${id}`,  JSON.stringify({username, password}), { headers: { "Content-Type": "application/json" } });
+                const response = await request("POST", `/login`,  JSON.stringify({username, password}), { headers: { "Content-Type": "application/json" } });
                 if (response.status === 200) {
                     localStorage.setItem("token", response.data.token);
                     localStorage.setItem("username", username);
