@@ -1,7 +1,6 @@
 package com.wallet.tienda.controller;
 
 import com.wallet.tienda.exception.*;
-import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +47,7 @@ public class ExceptionController {
     //devuelve excepciones de datos ya existentes y excepciones generales
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler({EmailExistsException.class, NameExistsException.class, ConfirmPasswordException.class,
-            MessagingException.class, ExpiredJwtException.class ,Exception.class})
+            MessagingException.class, Exception.class})
     public ResponseEntity<ErrorDetail> badRequestExceptions(Exception ex) {
 
         var errorDetails = new ErrorDetail();
@@ -61,7 +60,7 @@ public class ExceptionController {
     //devuelve excepciones de credenciales mal ingresadas en el login
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ErrorDetail> badCredentialsExceptions(BadCredentialsException ex) {
+    public ResponseEntity<ErrorDetail> badCredentialsExceptions() {
 
         var errorDetails = new ErrorDetail();
         errorDetails.setStatuscode(HttpStatus.BAD_REQUEST.value() + " BAD_REQUEST");

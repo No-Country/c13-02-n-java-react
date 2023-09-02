@@ -19,11 +19,11 @@ import java.util.ArrayList;
 @Service
 public class ProviderService implements IProviderService{
     @Autowired
-    private static IProviderRepository providerRepository;
+    private IProviderRepository providerRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private static ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREA UN PROOVEDOR
     @Override

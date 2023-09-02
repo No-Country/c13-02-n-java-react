@@ -27,6 +27,7 @@ public class CustomSecurityFilterChain {
 
     /**
      * Configurar la seguridad de la aplicacion web, autorizaciones, tipo de sesion, proveedor de autenticacion y filtros
+     *
      * @param httpSecurity
      * @param authenticationManager
      * @return http security configuration
@@ -39,12 +40,22 @@ public class CustomSecurityFilterChain {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers( "api/v1/password/**", "api/v1/login",
+                        auth.requestMatchers("/api/v1/password/**", "/api/v1/login",
                                         "/api/v1/users/register", "/swagger-ui/**", "/v3/api-docs/**")
-                                .permitAll()
-                                .anyRequest().authenticated()
+                                .permitAll())
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/api/v1/users",
+                                "/api/v1/products",
+                                "/api/v1/buys",
+                                "/api/v1/bought-products",
+                                "/api/v1/providers",
+                                "/api/v1/categories").hasRole("USER")
+
                 )
-                .sessionManagement(session->
+                .authorizeHttpRequests(
+                        auth -> auth.anyRequest().authenticated()
+                )
+                .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

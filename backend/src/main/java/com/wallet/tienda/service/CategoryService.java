@@ -19,11 +19,11 @@ import java.util.ArrayList;
 @Service
 public class CategoryService implements ICategoryService{
     @Autowired
-    private static ICategoryRepository categoryRepository;
+    private ICategoryRepository categoryRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private static ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREA UNA CATEGORIA
     @Override
