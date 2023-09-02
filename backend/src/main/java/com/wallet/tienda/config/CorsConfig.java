@@ -13,7 +13,7 @@ public class CorsConfig {
      * @return cors configuration
      */
     @Bean
-public WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
