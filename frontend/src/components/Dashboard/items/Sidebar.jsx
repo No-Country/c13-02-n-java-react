@@ -71,7 +71,7 @@ function Sidebar() {
 
         {/* <!-- Nav Item - Charts --> */}
         <li className="nav-item">
-          <Link className="nav-link" to={"/dashboard/profile"}>
+          <Link className="nav-link" to={"/dashboard/settings"}>
             <i className="fa-solid fa-user-pen"></i>
             <span>Ajustes</span>
           </Link>

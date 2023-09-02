@@ -1,10 +1,13 @@
 import "./Register.css";
 import { useState } from "react";
+import axios from "axios";
 
 
 
 function Register() {
   /* Usuario registrado */
+
+
 
   const user = {
     email: localStorage.getItem("email") || undefined,
@@ -123,11 +126,3 @@ function Register() {
 }
 
 export default Register;
-
-/*   if (email  && ) {
-      console.log("email válido");
-    } else {
-      console.log("error");
-    } */
-
-

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Form, Container, Col, Image, Button, Card, Nav } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
-import Settings from "./Settings";
-import LoginAndSecutiry from "./LoginAndSecutiry";
-import AdditionalSettings from "./AdditionalSettings";
-import About from "./About";
+import Settings from "./views/Settings.jsx";
+import LoginAndSecutiry from "./views/LoginAndSecutiry.jsx";
+import AdditionalSettings from "./views/AdditionalSettings.jsx";
+import About from "./views/About.jsx";
+import { menuItems } from "../../config/Data/ArraysItems.js";
 
-function Profile() {
+function Setting() {
 	const [activeTab, setActiveTab] = useState("#account");
 
 	const handleTabClick = eventKey => setActiveTab(eventKey);
@@ -20,26 +20,13 @@ function Profile() {
 					activeKey={activeTab}
 					onSelect={handleTabClick}
 				>
-					<Nav.Item>
-						<Nav.Link href='#account' className='nav-link'>
-							Account Settings
-						</Nav.Link>
-					</Nav.Item>
-					<Nav.Item>
-						<Nav.Link href='#security' className='nav-link'>
-							Login & Security
-						</Nav.Link>
-					</Nav.Item>
-					<Nav.Item>
-						<Nav.Link href='#additionalSettings' className='nav-link'>
-							Additional Settings
-						</Nav.Link>
-					</Nav.Item>
-					<Nav.Item>
-						<Nav.Link href='#about' className='nav-link'>
-							About
-						</Nav.Link>
-					</Nav.Item>
+					{menuItems.map((item) => (
+						<Nav.Item key={item.href}>
+							<Nav.Link href={`#${item.href}`} className='nav-link'>
+								{item.label}
+							</Nav.Link>
+						</Nav.Item>
+					))}
 				</Nav>
 			</Card.Header>
 			<Card.Body>
@@ -52,4 +39,4 @@ function Profile() {
 	);
 }
 
-export default Profile;
+export default Setting;

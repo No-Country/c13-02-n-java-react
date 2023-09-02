@@ -69,7 +69,7 @@ h1 {
     line-height: 24px;
     /* 150% */
     letter-spacing: -0.16px;
-    transition: all 300mx;
+    transition: all 300s ease-in-out;
 }
 
 .navigation_landing ul li:hover {
@@ -101,8 +101,8 @@ h1 {
 
 .img_hero_landing img {
     margin-top: 5rem;
-    width: 494.99px;
-    height: 462.6064px;
+    width: 495px;
+    height: 463px;
 }
 
 .action_hero_landing {
@@ -217,7 +217,7 @@ h1 {
     border-radius: 12px;
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    transition: ease-in 300ms all;
+    transition: all ease-in 300ms ;
 }
 
 .container_icon:hover {
@@ -226,7 +226,7 @@ h1 {
 }
 
 .container_icon img {
-    width: 215.884px;
+    width: 216px;
     height: 178px;
 }
 
@@ -278,7 +278,7 @@ h1 {
 .banner_landing p {
     width: 430px;
     margin-right: 231px;
-    color: var(--wf-base-800, #2d3648);
+    color: #2d3648;
     font-family: Helvetica;
     font-size: 40px;
     font-style: normal;
