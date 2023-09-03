@@ -1,12 +1,16 @@
 package com.wallet.tienda.service;
 
+import com.wallet.tienda.dto.request.BrandDTOReq;
 import com.wallet.tienda.dto.response.BrandDTORes;
 import com.wallet.tienda.model.Brand;
 import com.wallet.tienda.repository.RepositoryBrand;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ImpBrandService implements BrandService{
@@ -14,28 +18,33 @@ public class ImpBrandService implements BrandService{
  @Autowired
     RepositoryBrand repositoryBrand;
 
+ @Autowired
+    ModelMapper modelMapper;
+
     @Override
-    public List<BrandDTORes> listallbrands() {
-        return repositoryBrand.findAll();
+    public Page<BrandDTORes> listAllBrands(Pageable pageable) {
+        var brandRep = repositoryBrand.findAll(pageable);
+        var brandDTORes = brandRep.stream().map((user) -> modelMapper.map(user, BrandDTORes.class)).toList();
+        return new PageImpl<>(brandDTORes, pageable, brandDTORes.size());
     }
 
     @Override
-    public Brand savebrand(Brand brand) {
-        return repositoryBrand.save(brand);
+    public void save(BrandDTOReq brandDTOReq) {
+        repositoryBrand.save(modelMapper.map(brandDTOReq, Brand.class));
     }
 
     @Override
-    public Brand searchbrandbyid(Long id) {
-        return repositoryBrand.findById(id).get();
+    public BrandDTORes searchById(Long id) {
+        return modelMapper.map(repositoryBrand.findById(id).get(), BrandDTORes.class);
     }
 
     @Override
-    public Brand updatebrand(Brand brand) {
-        return repositoryBrand.save(brand);
+    public void update(BrandDTOReq brandDTOReq) {
+        repositoryBrand.save(modelMapper.map(brandDTOReq, Brand.class));
     }
 
     @Override
-    public void Deletebrand(Brand brand) {
-      repositoryBrand.delete(brand);
+    public void delete(Long id) {
+      repositoryBrand.deleteById(id);
     }
 }

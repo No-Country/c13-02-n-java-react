@@ -1,23 +1,20 @@
 package com.wallet.tienda.service;
 
+import com.wallet.tienda.dto.request.BrandDTOReq;
 import com.wallet.tienda.dto.response.BrandDTORes;
-import com.wallet.tienda.model.Brand;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BrandService {
 
 
-    public List<BrandDTORes> listallbrands();
+    public Page<BrandDTORes> listAllBrands(Pageable pageable);
 
-    public Brand savebrand(Brand brand);
+    public void save(BrandDTOReq brandDTOReq);
 
-    public Brand searchbrandbyid (Long id);
+    public BrandDTORes searchById(Long id);
 
-    public Brand updatebrand(Brand brand);
+    public void update(BrandDTOReq brandDTOReq);
 
-    public void Deletebrand(Brand brand);
-
-
-
+    public void delete(Long id);
 }
