@@ -13,17 +13,18 @@ import lombok.NoArgsConstructor;
 public class UserDTOReq {
 
     private Long id;
-    @Size(min = 3, max = 70, message = "debe contener un minimo de 3 y un maximo de 70 caracteres")
+    @Pattern(regexp = "[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]*", message = "Debe contener solo letras y espacios")
+    @Size(min = 3, max = 70, message = "debe contener un mínimo de 3 y un máximo de 70 caracteres")
     private String fullName;
-    @Size(min = 3, max = 70, message = "debe contener un minimo de 3 y un maximo de 70 caracteres")
+    @Size(min = 3, max = 70, message = "debe contener un mínimo de 3 y un máximo de 70 caracteres")
     @Email()
     private String username;
-    @Size(min = 8, max = 50, message = "debe contener un minimo de 8 y un maximo de 50 caracteres")
+    @Size(min = 8, max = 50, message = "debe contener un mínimo de 8 y un máximo de 50 caracteres")
     private String password;
-    @Size(min = 8, max = 50, message = "debe contener un minimo de 8 y un maximo de 50 caracteres")
+    @Size(min = 8, max = 50, message = "debe contener un mínimo de 8 y un máximo de 50 caracteres")
     private String confirmPassword;
     private String photoUrl;
-    @Pattern(regexp = "^[0-9]+$", message = "Debe contener solo numeros")
+    @Pattern(regexp = "^[0-9 ]+$", message = "Debe contener solo numeros o espacios")
     private String phone;
     private String businessName;
 

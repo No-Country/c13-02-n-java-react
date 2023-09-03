@@ -19,11 +19,11 @@ import java.util.ArrayList;
 @Service
 public class ProductService implements IProductService{
     @Autowired
-    private static IProductRepository productRepository;
+    private IProductRepository productRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private static ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREA UN PRODUCTO
     @Override

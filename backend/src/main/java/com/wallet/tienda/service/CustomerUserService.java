@@ -4,7 +4,7 @@ import com.wallet.tienda.dto.request.UserDTOReq;
 import com.wallet.tienda.dto.response.UserDTORes;
 import com.wallet.tienda.exception.EmailExistsException;
 import com.wallet.tienda.exception.IdNotFoundException;
-import com.wallet.tienda.exception.PasswordException;
+import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.IRoleRepository;
@@ -37,7 +37,7 @@ public class CustomerUserService implements ICustomerUserService {
 
     //CREAR USUARIO
     @Override
-    public void saveUser(UserDTOReq userDTO) throws EmailExistsException, PasswordException, RoleNotFoundException {
+    public void saveUser(UserDTOReq userDTO) throws EmailExistsException, ConfirmPasswordException, RoleNotFoundException {
         this.validateDataBeforeSavingUser(userDTO);
         var saveUser = modelMapper.map(userDTO, CustomerUser.class);
         saveUser.setEnable(true);
@@ -68,7 +68,7 @@ public class CustomerUserService implements ICustomerUserService {
 
     //MODIFICAR USUARIO
     @Override
-    public void updateUser(UserDTOReq userDTO) throws EmailExistsException, IdNotFoundException, PasswordException {
+    public void updateUser(UserDTOReq userDTO) throws EmailExistsException, IdNotFoundException, ConfirmPasswordException {
         var userBD = userRepository.findById(userDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + userDTO.getId() + " no se encuentra registrado"));
 
@@ -90,24 +90,24 @@ public class CustomerUserService implements ICustomerUserService {
 
 
     //VALIDA DATOS ANTES DE GUARDAR UN USUARIO
-    public void validateDataBeforeSavingUser(UserDTOReq userDTO) throws EmailExistsException, PasswordException {
+    public void validateDataBeforeSavingUser(UserDTOReq userDTO) throws EmailExistsException, ConfirmPasswordException {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
             throw new EmailExistsException("El Email " + userDTO.getUsername() + " ya se encuentra registrado." +
                     " Ingrese un nuevo Email");
         }
         if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
-            throw new PasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
+            throw new ConfirmPasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
         }
     }
 
     //VALIDA DATOS ANTES DE MODIFICAR UN USUARIO
-    public void validateDataBeforeUpdatingUser(UserDTOReq userDTO, String usernameDB) throws EmailExistsException, PasswordException {
+    public void validateDataBeforeUpdatingUser(UserDTOReq userDTO, String usernameDB) throws EmailExistsException, ConfirmPasswordException {
 
         if (!userDTO.getUsername().equals(usernameDB) && userRepository.existsByUsername(userDTO.getUsername())) {
             throw new EmailExistsException("El Email " + userDTO.getUsername() + " ya se encuentra registrado");
         }
         if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
-            throw new PasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
+            throw new ConfirmPasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
         }
 
     }

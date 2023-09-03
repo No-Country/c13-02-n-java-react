@@ -4,7 +4,7 @@ import com.wallet.tienda.dto.request.UserDTOReq;
 import com.wallet.tienda.dto.response.UserDTORes;
 import com.wallet.tienda.exception.EmailExistsException;
 import com.wallet.tienda.exception.IdNotFoundException;
-import com.wallet.tienda.exception.PasswordException;
+import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.service.ICustomerUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +12,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.RoleNotFoundException;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1/users")
 public class CustomUserController {
 
     @Autowired
     private ICustomerUserService userService;
 
-    @PostMapping("/registro")
-    public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody UserDTOReq userDTO) throws PasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
+    @PostMapping("/register")
+    public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody UserDTOReq userDTO) throws ConfirmPasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.saveUser(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -40,7 +41,7 @@ public class CustomUserController {
     }
 
     @PutMapping()
-    public ResponseEntity<UserDTOReq> updateUser(@Valid @RequestBody UserDTOReq userDTO) throws PasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
+    public ResponseEntity<UserDTOReq> updateUser(@Valid @RequestBody UserDTOReq userDTO) throws ConfirmPasswordException, RoleNotFoundException, EmailExistsException, IdNotFoundException {
         userService.updateUser(userDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }

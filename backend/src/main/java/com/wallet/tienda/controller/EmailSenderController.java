@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1/contrasena")
+@RequestMapping("api/v1/password")
 public class EmailSenderController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class EmailSenderController {
 
 //    @Operation(summary = "Enviar mail con token",
 //            description = "Genera un token para la recuperacion de contraseña y la envia por correo al usuario, devuelve un codigo de estado creado ")
-    @PostMapping("/recuperar")
+    @PostMapping("/recovery")
     public ResponseEntity<Map<String, Object>> sendEmail(@Valid @RequestBody RecoverPasswordDTOReq user)
             throws UsernameNotFoundException, MessagingException, MessagingException {
 
@@ -60,7 +60,7 @@ public class EmailSenderController {
 //            description = "Actualiza la contraseña del usuario en base de datos y devuelve un codigo de estado 200 ok"
 //    )
 
-    @PostMapping("/cambiar")
+    @PostMapping("/change")
     public ResponseEntity<HttpStatus> resetPassword(@Valid @RequestBody ResetPasswordDTOReq resetPassword) throws Exception {
         emailService.resetPassword(resetPassword);
         return new ResponseEntity<>(HttpStatus.OK);
