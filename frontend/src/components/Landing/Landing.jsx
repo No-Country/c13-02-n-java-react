@@ -12,6 +12,8 @@ function Landing() {
                     <img src="#" alt="logo" />
                 </picture> */}
           <h1>Logo/nombre app</h1>
+
+       
         </div>
 
         <nav className="navigation_landing">

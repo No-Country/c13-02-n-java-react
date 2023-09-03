@@ -3,15 +3,15 @@ import { productosPrueba } from '../../config/Data/ArraysItems';
 
 function TableP() {
   return (
-    <Table   hover size="sm" className='mt-5 text-center  ' >
-      <thead  >
+    <Table   hover size="sm" className='mt-5 text-center     ' >
+      <thead className='rounded-5'  >
         <tr >
-          <th className='bg-primary text-white py-2  rounded-1  '>ID</th>
-          <th className='bg-primary text-white py-2  rounded-1  '>Producto</th>
-          <th className='bg-primary text-white py-2  rounded-1  '>Fecha</th>
-          <th className='bg-primary text-white py-2  rounded-1  '>Cantidad</th>
-          <th className='bg-primary text-white py-2  rounded-1  '>Precio unitario</th>
-          <th className='bg-primary text-white py-2  rounded-1  '>Total</th>
+          <th className='bg-primary text-white py-2   '>ID</th>
+          <th className='bg-primary text-white py-2   '>Producto</th>
+          <th className='bg-primary text-white py-2   '>Fecha</th>
+          <th className='bg-primary text-white py-2   '>Cantidad</th>
+          <th className='bg-primary text-white py-2    '>Precio unitario</th>
+          <th className='bg-primary text-white py-2    '>Total</th>
         </tr>
       </thead>
       <tbody>
