@@ -24,11 +24,11 @@ import java.util.ArrayList;
 @Slf4j
 public class BuyService implements IBuyService{
     @Autowired
-    private final IBuyRepository buyRepository;
+    private IBuyRepository buyRepository;
     @Autowired
-    private final IBoughtProductRepository boughtProductRepository;
+    private IBoughtProductRepository boughtProductRepository;
     @Autowired
-    private final ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREAR UNA COMPRA
     @Override
