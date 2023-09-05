@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./Landing.css";
-import Footer from "../Footer/Footer";
-import Imagenes from "../../assets/imagenes";
+import "../css/Landing.css";
+import Footer from "../Footer/Footer.jsx";
+import Imagenes from "../../assets/imagenes.jsx";
 
 function Landing() {
   return (

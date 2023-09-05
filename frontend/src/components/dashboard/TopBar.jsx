@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-import Imagenes from "../../../assets/imagenes";
+import Imagenes from "../../assets/imagenes.jsx";
 
 function TopBar() {
   const nickName = localStorage.getItem("username");
@@ -14,7 +13,7 @@ function TopBar() {
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {nickName}
               </span>
-              <img className="img-profile rounded-circle" src={Imagenes.avatar} />
+              <img className="img-profile rounded-circle" src={Imagenes.avatar} alt="avatar"/>
             </Link>
           </li>
         </ul>

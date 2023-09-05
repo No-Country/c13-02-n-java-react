@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
-import Imagenes from "../../assets/imagenes";
+import "../css/Login.css";
 import useAuth from "../../hooks/useAuth.jsx";
-import SpinnerLoad from "../../hooks/spinner/SpinnerLoad";
+import SpinnerLoad from "../../components/spinner/SpinnerLoad.jsx";
+import Imagenes from "../../assets/imagenes.jsx";
 
 function Login() {
   const {username, setUsername, password, setPassword, errors, handleSubmit,isLoading} = useAuth();

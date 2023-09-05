@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Container, Col, Image, Button, Card, Nav } from "react-bootstrap";
-import "./Profile.css";
+import "../css/Profile.css";
 import Settings from "./views/Settings.jsx";
 import LoginAndSecutiry from "./views/LoginAndSecutiry.jsx";
 import AdditionalSettings from "./views/AdditionalSettings.jsx";
