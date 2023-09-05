@@ -89,7 +89,7 @@ public class JWTUtils {
      */
     public boolean isTokenExpired(String token) {
         Date expirationDate = getExpirationDate(token);
-        return expirationDate.before(new Date());
+        return expirationDate.after(new Date());
     }
 
     /**

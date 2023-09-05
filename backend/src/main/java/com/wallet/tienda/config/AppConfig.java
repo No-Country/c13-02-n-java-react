@@ -20,7 +20,7 @@ public class AppConfig {
     private final ICustomerUserRepository userRepository;
     /**
      * Configurar el encriptador de contraseña
-     * @return contraseña encriptada
+     * @return encriptador de contraseña
      */
     @Bean
     PasswordEncoder passwordEncoder() {

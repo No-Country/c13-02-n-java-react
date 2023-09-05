@@ -21,11 +21,11 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class OrderService implements IOrderService{
     @Autowired
-    private final IOrderRepository orderRepository;
+    private IOrderRepository orderRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private final ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREAR UNA ORDEN
     @Override
