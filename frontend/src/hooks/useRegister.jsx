@@ -24,17 +24,27 @@ function useRegister() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("submit");
+
     if (password !== confirmPassword) {
       console.log("Las contraseñas no coinciden ");
 
       return;
     }
-
-    if (![fullName, businessName, phone, username, password, confirmPassword].includes("")) {
+    if (
+      ![
+        fullName,
+        businessName,
+        phone,
+        username,
+        password,
+        confirmPassword,
+      ].includes("")
+    ) {
       if (
-        regex.test(email) &&
-        email !== user.email &&
-        password !== user.password
+        regex.test(username) &&
+        username !== this.email &&
+        password !== this.password
       ) {
         try {
           const response = await request("POST", "/users/register", {
@@ -43,11 +53,9 @@ function useRegister() {
             username,
             businessName,
             phone,
-            confirmPassword
-
-
+            confirmPassword,
           });
-console.log(response)
+          console.log(response);
           if (response.status === 200) {
             console.log(response.data);
           } else {
