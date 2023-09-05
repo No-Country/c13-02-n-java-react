@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import Imagenes from "../../assets/imagenes";
 import useAuth from "../../hooks/useAuth.jsx";
+import SpinnerLoad from "../../hooks/spinner/SpinnerLoad";
 
 function Login() {
-  const {username, setUsername, password, setPassword, errors, handleSubmit} = useAuth();
-
+  const {username, setUsername, password, setPassword, errors, handleSubmit,isLoading} = useAuth();
+  
   return (
     <section className="login">
       {/* cuadro de login */}
@@ -14,17 +15,20 @@ function Login() {
         <div className="login_image_logo">
           {/*  <img src="#" alt="Logo" /> */}
         </div>
-       <div className="text-center ">
-       <h1>FIMA</h1>
-        <p>Finance Manager</p>
-       </div>
+        <div className="text-center ">
+          <h1>FIMA</h1>
+          <p>Finance Manager</p>
+        </div>
+
+
 
         <h2>Iniciar sesión con correo electrónico</h2>
+
+        {isLoading ? <SpinnerLoad/> : ''}
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
           {errors?.length > 0 ? <p className="errores">{errors} </p> : "" }
-
 
           <div className="login_input">
          

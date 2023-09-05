@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 //@Tag(name = "Controlador de Compra")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/buy")
+@RequestMapping("/api/v1/buys")
 public class BuyController {
     
     private final IBuyService buyService;

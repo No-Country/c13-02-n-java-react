@@ -1,64 +1,22 @@
-
-import '../customcolors.css'
+import "../customcolors.css";
+import {
+  dataMeses,
+  dataCardsDashboard,
+  currentDate,
+} from "../../../../config/Data/ArraysItems";
 import CardValues from "../CardValues";
 import ChartBarMes from "../ChartBarMes";
 import ChartPie from "./ChartPie";
 
 function Dashboard() {
+  const year = currentDate.getFullYear();
 
-  const currentDate = new Date
+  const Balance = [
+    ["Ganancias Diarias", "Gastos Diarios"],
 
-  const year = currentDate.getFullYear()
-
-  /* data para las cards de prueba  */
-  const data = [
-    {
-      type: "Ganancias netas (Mes)",
-      mount: `$ ${12000}`,
-      icon: "fas fa-calendar",
-      color: "primary",
-    },
-    {
-      type: "Ganancias Diarias",
-      mount: `$ ${5000}`,
-      icon: "fas fa-calendar",
-      color: "warning",
-    },
-    {
-      type: "Pedidos Entregados",
-      mount: 75,
-      icon: "fa-solid fa-truck",
-      color: "success",
-    },
-    {
-      type: "Costos",
-      mount:  `$ ${5900}`,
-      icon: "fa-regular fa-clock",
-      color: "danger",
-    },
+    ["Ganancias", 5000],
+    ["Costos", 5900],
   ];
-
-  const dataMeses = [
-    ["Meses", "Ganancias"],
-    ["Enero", 1150],
-    ["Febrero", 12200],
-    ["Marzo", 7851],
-    ["Abril", 5230],
-    ["Mayo ", 7845],
-    ["Junio ", 9632],
-    ["Julio", 4123],
-    ["Agosto", 12008],
-    ["Setiembre", 7895],
-    ["Octubre", 7451],
-    ["Noviembre", 12365],
-    ["Diciembre", 4578],
-  ];
-
-  const Balance = [["Ganancias Diarias", "Gastos Diarios"],
-
-  ["Ganancias",5000],
-  ["Costos",5900],
-]
 
   return (
     <>
@@ -74,7 +32,7 @@ function Dashboard() {
       </div>
 
       <div className="row">
-        {data.map((card, key) => (
+        {dataCardsDashboard.map((card, key) => (
           <CardValues
             key={key}
             color={card.color}
@@ -85,22 +43,17 @@ function Dashboard() {
         ))}
       </div>
 
-      
-          <div   className= "  container-fluid   d-flex justify-content-center    ">
-<div   className=' col-lg-6  col-xs-12  col-md-12   '>
-<ChartBarMes data={dataMeses} titulo={`Ganancias Anuales (${year})`}/>
-</div>
-<div className=' col-lg-6  col-xs-12  col-md-12  '>
-<ChartBarMes data={Balance} titulo={'Balance Diario'}/>
-</div>
-         
-          </div>
-           
-        
-
-        
-
-
+      <div className="  container-fluid   d-flex flex-wrap   w-100  ">
+        <div className=" col-xs-12 col-sm-12 col-md-6    col-lg-6   ">
+          <ChartBarMes
+            data={dataMeses}
+            titulo={`Ganancias Anuales (${year})`}
+          />
+        </div>
+        <div className="col-xs-12 col-sm-12 col-md-6   col-lg-6 ">
+          <ChartBarMes data={Balance} titulo={"Balance Diario"} />
+        </div>
+      </div>
     </>
   );
 }

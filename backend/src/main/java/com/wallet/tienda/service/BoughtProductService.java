@@ -9,6 +9,7 @@ import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,10 +20,13 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 public class BoughtProductService implements IBoughtProductService {
-
+    @Autowired
     private final IBoughtProductRepository repository;
+    @Autowired
     private final IBuyRepository buyRepository;
+    @Autowired
     private final IProductRepository productRepository;
+    @Autowired
     private final ModelMapper modelMapper;
 
     @Override
