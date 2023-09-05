@@ -12,6 +12,7 @@
   margin: 0 auto;
  
   width: 30.5%;
+    height: 90%;
 
   background-color: white;
   display: flex;
@@ -65,8 +66,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  margin-top: 40px;
+  margin: 40px auto 0;
   gap: 34px;
 }
 
@@ -80,7 +80,6 @@
 
 
 .bg-select{
-
   background-color: white !important
 }
 
@@ -96,7 +95,7 @@
 
 .recover_link_login {
   color: #4a9dff;
-  font-family: Helvetica;
+  font-family: Helvetica, system-ui, Avenir, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -114,7 +113,7 @@
   align-items: center;
   color: white;
   font-feature-settings: "calt" off;
-  font-family: Helvetica;
+  font-family: Helvetica, system-ui, Avenir, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -150,11 +149,10 @@
   justify-content: center;
   align-items: center;
 
-  align-items: center;
   gap: 10px;
   border-radius: 6px;
   border: 1px solid #000;
-  font-family: Helvetica;
+  font-family: Helvetica, system-ui, Avenir, Arial, sans-serif;
   color: rgb(128, 128, 128);
   background-color: transparent;
 
@@ -168,8 +166,6 @@
   width: 30px;
   height: 36px;
 }
-
-
 
 .errores{
  

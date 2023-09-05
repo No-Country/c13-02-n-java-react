@@ -1,6 +1,6 @@
 import React from 'react'
 import CardValues from '../CardValues'
-import { currentDate,months } from '../../../../config/Data/ArraysItems'
+import {currentDate, months} from '../../../../config/models/ArraysItems'
 import ViewMonth from '../../../../hooks/ViewMonth'
 import TableI from '../../../Tables/TableI'
 
