@@ -46,7 +46,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String username;
         final String requestUri = request.getRequestURI();
-        if (authHeader == null || !authHeader.startsWith("Bearer ") && excludedPaths.contains(requestUri)) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }

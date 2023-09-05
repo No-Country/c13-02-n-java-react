@@ -20,5 +20,5 @@ public class Expense {
     private String name;
     private Double price;
     @CreationTimestamp
-    private LocalDateTime date;
+    private LocalDateTime purchaseDate;
 }
