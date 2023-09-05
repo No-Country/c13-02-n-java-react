@@ -4,6 +4,7 @@ import axios from "axios";
 import useRegister from "../../hooks/useRegister";
 import {request} from "../../config/helpers/axios_helper.jsx";
 import {useFormData} from "../../config/models/formData.js";
+import { Link } from "react-router-dom";
 
 function Register() {
   const {
@@ -70,7 +71,12 @@ function Register() {
             </p>
           </div>
           <input type="submit" className="--50" value={"Crear cuenta"} />
+          <div className=" mt-3 ">
+       <p className="text-center ">¿Ya tienes una cuenta? <Link to ={'/login'}>Iniciar sesión </Link></p>
+       </div>
         </form>
+
+       
       </div>
     </section>
   );
