@@ -4,6 +4,13 @@ html, body {
 }
 
 :root {
+    --color-primary: #646cff;
+    --color-primary-dark: #535bf2;
+    --color-primary-light: #747bff;
+    --color-primary-lighter: #a0a6ff;
+    --text-color: #213547;
+    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;

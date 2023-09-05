@@ -1,12 +1,12 @@
-import "../customcolors.css";
+import "../../../components/dashboard/customcolors.css";
 import {
   dataMeses,
   dataCardsDashboard,
   currentDate,
-} from "../../../../config/models/ArraysItems";
-import CardValues from "../CardValues";
-import ChartBarMes from "../ChartBarMes";
-import ChartPie from "./ChartPie";
+} from "../../../config/models/ArraysItems.js";
+import CardValues from "../../../components/dashboard/CardValues.jsx";
+import ChartBarMes from "../../../components/dashboard/ChartBarMes.jsx";
+import ChartPie from "./ChartPie.jsx";
 
 function Dashboard() {
   const year = currentDate.getFullYear();

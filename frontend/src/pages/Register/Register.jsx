@@ -1,7 +1,7 @@
 import "./Register.css";
 import { useState } from "react";
 import axios from "axios";
-import useRegister from "../../hooks/useRegister";
+import useRegister from "../../hooks/useRegister.jsx";
 import {request} from "../../config/helpers/axios_helper.jsx";
 import {useFormData} from "../../config/models/formData.js";
 
