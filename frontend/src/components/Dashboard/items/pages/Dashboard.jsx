@@ -2,15 +2,13 @@ import "../customcolors.css";
 import {
   dataMeses,
   dataCardsDashboard,
-  currentDate
+  currentDate,
 } from "../../../../config/Data/ArraysItems";
 import CardValues from "../CardValues";
 import ChartBarMes from "../ChartBarMes";
 import ChartPie from "./ChartPie";
 
 function Dashboard() {
-  
-
   const year = currentDate.getFullYear();
 
   const Balance = [
@@ -45,14 +43,14 @@ function Dashboard() {
         ))}
       </div>
 
-      <div className="  container-fluid   d-flex justify-content-center    ">
-        <div className=" col-lg-6  col-xs-12  col-md-12   ">
+      <div className="  container-fluid   d-flex flex-wrap   w-100  ">
+        <div className=" col-xs-12 col-sm-12 col-md-6    col-lg-6   ">
           <ChartBarMes
             data={dataMeses}
             titulo={`Ganancias Anuales (${year})`}
           />
         </div>
-        <div className=" col-lg-6  col-xs-12  col-md-12  ">
+        <div className="col-xs-12 col-sm-12 col-md-6   col-lg-6 ">
           <ChartBarMes data={Balance} titulo={"Balance Diario"} />
         </div>
       </div>

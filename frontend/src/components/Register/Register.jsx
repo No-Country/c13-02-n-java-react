@@ -1,126 +1,110 @@
 import "./Register.css";
 import { useState } from "react";
 import axios from "axios";
-
-
+import useRegister from "../../hooks/useRegister";
 
 function Register() {
-  /* Usuario registrado */
 
-
-
-  const user = {
-    email: localStorage.getItem("email") || undefined,
-    password: localStorage.getItem("password") || undefined,
-  };
-
-  const [usuario, setUsuario] = useState("");
-  const [empresa, setEmpresa] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordrepeat, setPasswordrepeat] = useState("");
-
-  /* array de errores */
-
-  const [errores, setErrores] = useState([]);
-  /* controla el submit */
-
-  /* test de validación de email  */
-
- let regex = new RegExp(
-    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
-  ); 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (![email,password,usuario,empresa,telefono].includes('') ) {
-      if (email != user.email && regex.test(email)  && password != user.password) {
-        
-        localStorage.setItem('email',JSON.stringify(email))
-        localStorage.setItem('password',JSON.stringify(password))
-
-
-      } else {
-        setErrores(["Este Usuario ya esta registrado"]);
-      }
-    } else {
-      setErrores(["Todos los campos son obligatorios"]);
-      console.log(errores);
-    }
-
-    setTimeout(() => {
-      setErrores("");
-    }, 1500);
-  };
+  const  {
+    setConfirmPassword,
+    confirmPassword,
+    setPhone,
+    setUserName,
+    setFullName,
+    setBusisnessName,
+    setPassword,
+    username,
+    password,
+    fullName,
+    businessName,
+    phone,
+    setErrores,
+    errores,
+    handleSubmit,
+  } = useRegister()
 
   return (
     <section className="register">
       {/* cuadro de registro */}
 
       <div className="register_panel">
-      <h1>Regístrate ahora</h1>
+        <h1>Regístrate ahora</h1>
 
-      
         {/* formulario de registro  */}
         <form onSubmit={(e) => handleSubmit(e)}>
-       <div className="div_container_input">
-         
-          {/* input de usuario  */}
-          <div className="register_input">
-            <label>Usuario</label>
-            <input type="text" onChange={(e) => setUsuario(e.target.value)} />
-          </div>
-          {/* input de empresa  */}
-          <div className="register_input">
-            <label>Empresa</label>
-            <input type="text" onChange={(e) => setEmpresa(e.target.value)} />
-          </div>
-       </div>
-         <div className="div_container_input">
-           {/* input de teléfono  */}
-           <div className="register_input">
-            <label>Teléfono</label>
-            <input type="tel"  autoComplete="false"  onChange={(e) => setTelefono(e.target.value)} />
-          </div>
-          {/* input de email  */}
-          <div className="register_input">
-            <label>Email</label>
+          <div className="div_container_input">
+            {/* input de usuario  */}
+            <div className="register_input">
+              <label>Usuario</label>
+              
+              <input type="text" onChange={(e) => setFullName(e.target.value)}
 
-            <input type="email"  autoComplete="false" onChange={(e) => setEmail(e.target.value)} />
+                value={fullName}
+              />
+            </div>
+            {/* input de empresa  */}
+            <div className="register_input">
+              <label>Empresa</label>
+              <input type="text" onChange={(e) => setBusisnessName(e.target.value)} 
+              value={businessName}/>
+            </div>
           </div>
-         </div>
-        <div className="div_container_input">
+          <div className="div_container_input">
+            {/* input de teléfono  */}
+            <div className="register_input">
+              <label>Teléfono</label>
+              <input
+                type="number"
+                autoComplete="false"
+                onChange={(e) => setPhone(e.target.value)
+                }
+                value={phone}
+              />
+            </div>
+            {/* input de email  */}
+            <div className="register_input">
+              <label>Email</label>
+
+              <input
+                type="email"
+                autoComplete="false"
+                onChange={(e) => setUserName(e.target.value)}
+                value={username}
+              />
+            </div>
+          </div>
+          <div className="div_container_input">
             {/* input password */}
             <div className="register_input">
-            <label>Contraseña</label>
-            <input
-            autoComplete="false"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+              <label>Contraseña</label>
+              <input
+                autoComplete="false"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+            {/* input password */}
+            <div className="register_input">
+              <label>Confirmar contraseña</label>
+              <input
+                type="password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
+              />
+            </div>
           </div>
-          {/* input password */}
-          <div className="register_input">
-            <label>Confirmar contraseña</label>
-            <input
-              type="password"
-              onChange={(e) => setPasswordrepeat(e.target.value)}
-            />
+
+          <div className="d-flex align-items-center ">
+            <input type="checkbox" />
+            <p className="w-50 ">
+              Acepto los Términos y condiciones y autorizo el uso de mis datos
+              de acuerdo a la Declaración de Privacidad.
+            </p>
           </div>
-        </div>
-
-        <div className="d-flex align-items-center ">
-        <input type="checkbox" />
-        <p className="w-50 ">Acepto los Términos y condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad.</p>
-
-        </div>
-          <input type="submit" className="--50"  value={"Crear cuenta"} />
+          <input type="submit" className="--50" value={"Crear cuenta"} />
         </form>
       </div>
-
-     
     </section>
   );
 }
