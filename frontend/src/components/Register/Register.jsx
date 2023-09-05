@@ -2,26 +2,24 @@ import "./Register.css";
 import { useState } from "react";
 import axios from "axios";
 import useRegister from "../../hooks/useRegister";
+import {request} from "../../config/helpers/axios_helper.jsx";
 
 function Register() {
-
-  const  {
-    setConfirmPassword,
-    confirmPassword,
-    setPhone,
-    setUserName,
-    setFullName,
-    setBusisnessName,
-    setPassword,
-    username,
-    password,
+  const {
     fullName,
-    businessName,
+    setFullName,
+    username,
+    setUserName,
+    password,
+    setPassword,
+    confirmPassword,
+    setConfirmPassword,
     phone,
-    setErrores,
-    errores,
+    setPhone,
+    businessName,
+    setBusinessName,
     handleSubmit,
-  } = useRegister()
+  } = useRegister();
 
   return (
     <section className="register">
@@ -45,7 +43,7 @@ function Register() {
             {/* input de empresa  */}
             <div className="register_input">
               <label>Empresa</label>
-              <input type="text" onChange={(e) => setBusisnessName(e.target.value)} 
+              <input type="text" onChange={(e) => setBusinessName(e.target.value)}
               value={businessName}/>
             </div>
           </div>
