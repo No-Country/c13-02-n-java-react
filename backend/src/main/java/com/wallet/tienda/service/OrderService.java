@@ -9,7 +9,6 @@ import com.wallet.tienda.repository.IOrderRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,11 +19,9 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 public class OrderService implements IOrderService{
-    @Autowired
+
     private IOrderRepository orderRepository;
-    @Autowired
     private IWordsConverter wordsConverter;
-    @Autowired
     private ModelMapper modelMapper;
 
     //CREAR UNA ORDEN

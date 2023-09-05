@@ -1,17 +1,14 @@
 package com.wallet.tienda.service;
 
 import com.wallet.tienda.dto.request.ExpenseDTOReq;
-import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.response.ExpenseDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Expense;
-import com.wallet.tienda.model.Product;
 import com.wallet.tienda.repository.IExpenseRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -23,11 +20,8 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class ExpenseService implements IExpenseService {
 
-    @Autowired
     private IExpenseRepository expenseRepository;
-    @Autowired
     private IWordsConverter wordsConverter;
-    @Autowired
     private ModelMapper modelMapper;
 
     //CREAR UN GASTO

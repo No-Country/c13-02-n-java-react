@@ -23,11 +23,9 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 @Slf4j
 public class BuyService implements IBuyService{
-    @Autowired
+
     private IBuyRepository buyRepository;
-    @Autowired
     private IBoughtProductRepository boughtProductRepository;
-    @Autowired
     private ModelMapper modelMapper;
 
     //CREAR UNA COMPRA

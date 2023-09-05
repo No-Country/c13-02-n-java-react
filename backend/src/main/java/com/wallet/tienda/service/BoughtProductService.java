@@ -20,13 +20,10 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 public class BoughtProductService implements IBoughtProductService {
-    @Autowired
+
     private IBoughtProductRepository repository;
-    @Autowired
     private IBuyRepository buyRepository;
-    @Autowired
     private IProductRepository productRepository;
-    @Autowired
     private ModelMapper modelMapper;
 
     @Override
