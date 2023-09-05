@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import { productosPrueba } from '../../config/Data/ArraysItems';
+import {productosPrueba} from '../../config/models/ArraysItems';
 
 function TableE() {
   return (

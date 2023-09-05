@@ -3,21 +3,12 @@ import { useState } from "react";
 import axios from "axios";
 import useRegister from "../../hooks/useRegister";
 import {request} from "../../config/helpers/axios_helper.jsx";
+import {useFormData} from "../../config/models/formData.js";
 
 function Register() {
   const {
-    fullName,
-    setFullName,
-    username,
-    setUserName,
-    password,
-    setPassword,
-    confirmPassword,
-    setConfirmPassword,
-    phone,
-    setPhone,
-    businessName,
-    setBusinessName,
+    formData,
+    handleChange,
     handleSubmit,
   } = useRegister();
 
@@ -34,17 +25,12 @@ function Register() {
             {/* input de usuario  */}
             <div className="register_input">
               <label>Usuario</label>
-              
-              <input type="text" onChange={(e) => setFullName(e.target.value)}
-
-                value={fullName}
-              />
+              <input type="text" name="fullName" onChange={handleChange} value={formData.fullName}/>
             </div>
             {/* input de empresa  */}
             <div className="register_input">
               <label>Empresa</label>
-              <input type="text" onChange={(e) => setBusinessName(e.target.value)}
-              value={businessName}/>
+              <input type="text" name="businessName" onChange={handleChange} value={formData.businessName}/>
             </div>
           </div>
           <div className="div_container_input">
@@ -52,44 +38,27 @@ function Register() {
             <div className="register_input">
               <label>Teléfono</label>
               <input
-                type="number"
-                autoComplete="false"
-                onChange={(e) => setPhone(e.target.value)
-                }
-                value={phone}
+                  type="tel" name="phone" autoComplete="false" onChange={handleChange} value={formData.phone}
               />
             </div>
             {/* input de email  */}
             <div className="register_input">
               <label>Email</label>
-
-              <input
-                type="email"
-                autoComplete="false"
-                onChange={(e) => setUserName(e.target.value)}
-                value={username}
-              />
+              <input type="email" name="username" autoComplete="false" onChange={handleChange}
+                     value={formData.username}/>
             </div>
           </div>
           <div className="div_container_input">
             {/* input password */}
             <div className="register_input">
               <label>Contraseña</label>
-              <input
-                autoComplete="false"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
+              <input autoComplete="false" name="password" type="password" onChange={handleChange}
+                     value={formData.password}/>
             </div>
             {/* input password */}
             <div className="register_input">
               <label>Confirmar contraseña</label>
-              <input
-                type="password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                value={confirmPassword}
-              />
+              <input type="password" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword}/>
             </div>
           </div>
 

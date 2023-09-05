@@ -3,7 +3,7 @@ import {
   dataMeses,
   dataCardsDashboard,
   currentDate,
-} from "../../../../config/Data/ArraysItems";
+} from "../../../../config/models/ArraysItems";
 import CardValues from "../CardValues";
 import ChartBarMes from "../ChartBarMes";
 import ChartPie from "./ChartPie";

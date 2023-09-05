@@ -5,7 +5,7 @@ import Settings from "./views/Settings.jsx";
 import LoginAndSecutiry from "./views/LoginAndSecutiry.jsx";
 import AdditionalSettings from "./views/AdditionalSettings.jsx";
 import About from "./views/About.jsx";
-import { menuItems } from "../../config/Data/ArraysItems.js";
+import {menuItems} from "../../config/models/ArraysItems.js";
 
 function Setting() {
 	const [activeTab, setActiveTab] = useState("#account");

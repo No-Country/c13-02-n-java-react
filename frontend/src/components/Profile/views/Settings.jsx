@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { BsEnvelopeFill } from "react-icons/bs";
 import Imagenes from "../../../assets/imagenes.jsx";
-import { formGroups } from "../../../config/Data/ArraysItems.js";
+import {formGroups} from "../../../config/models/ArraysItems.js";
 import axios from "axios";
 import {request} from "../../../config/helpers/axios_helper.jsx";
 

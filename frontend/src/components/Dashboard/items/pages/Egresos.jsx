@@ -1,6 +1,6 @@
 import React from 'react'
 import ViewMonth from '../../../../hooks/ViewMonth'
-import { currentDate,months } from '../../../../config/Data/ArraysItems'
+import {currentDate, months} from '../../../../config/models/ArraysItems'
 import TableE from '../../../Tables/TableE'
 
 
