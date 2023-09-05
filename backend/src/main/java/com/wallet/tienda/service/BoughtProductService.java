@@ -21,13 +21,13 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class BoughtProductService implements IBoughtProductService {
     @Autowired
-    private final IBoughtProductRepository repository;
+    private IBoughtProductRepository repository;
     @Autowired
-    private final IBuyRepository buyRepository;
+    private IBuyRepository buyRepository;
     @Autowired
-    private final IProductRepository productRepository;
+    private IProductRepository productRepository;
     @Autowired
-    private final ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     @Override
     public void saveBoughtProduct(BoughtProductDTOReq boughtProductDTO) throws IdNotFoundException {

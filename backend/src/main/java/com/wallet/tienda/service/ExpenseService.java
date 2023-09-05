@@ -24,11 +24,11 @@ import java.util.ArrayList;
 public class ExpenseService implements IExpenseService {
 
     @Autowired
-    private final IExpenseRepository expenseRepository;
+    private IExpenseRepository expenseRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private final ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREAR UN GASTO
     @Override
