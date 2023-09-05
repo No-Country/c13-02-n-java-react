@@ -1,4 +1,4 @@
-import "./Register.css";
+import "../css/Register.css";
 import { useState } from "react";
 import axios from "axios";
 import useRegister from "../../hooks/useRegister.jsx";

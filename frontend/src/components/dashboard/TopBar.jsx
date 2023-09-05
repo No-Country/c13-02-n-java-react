@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import Imagenes from "../../assets/imagenes.jsx";
 
 function TopBar() {

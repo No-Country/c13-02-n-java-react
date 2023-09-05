@@ -1,6 +1,6 @@
 import Sidebar from '../../components/dashboard/Sidebar.jsx'
 import TopBar from '../../components/dashboard/TopBar.jsx'
-import './dashboardmin.css'
+import '../css/dashboardmin.css'
 import {Outlet} from 'react-router-dom'
 
 function Layout() {

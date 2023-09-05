@@ -1,4 +1,4 @@
-import "../../../components/dashboard/customcolors.css";
+import "../../../components/css/customcolors.css";
 import {
   dataMeses,
   dataCardsDashboard,

@@ -1,7 +1,7 @@
 import React from 'react'
 import CardValues from '../../../components/dashboard/CardValues.jsx'
 import {currentDate, months} from '../../../config/models/ArraysItems.js'
-import ViewMonth from '../../../hooks/ViewMonth.jsx'
+import ViewMonth from '../../../components/dashboard/ViewMonth.jsx'
 import TableI from '../../../components/Tables/TableI.jsx'
 
 function Ingresos() {

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
+import "../css/Login.css";
 import useAuth from "../../hooks/useAuth.jsx";
 import SpinnerLoad from "../../components/spinner/SpinnerLoad.jsx";
 import Imagenes from "../../assets/imagenes.jsx";

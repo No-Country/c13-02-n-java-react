@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Landing.css";
+import "../css/Landing.css";
 import Footer from "../Footer/Footer.jsx";
 import Imagenes from "../../assets/imagenes.jsx";
 

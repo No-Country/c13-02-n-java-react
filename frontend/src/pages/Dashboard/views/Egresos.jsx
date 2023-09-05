@@ -1,5 +1,5 @@
 import React from 'react'
-import ViewMonth from '../../../hooks/ViewMonth.jsx'
+import ViewMonth from '../../../components/dashboard/ViewMonth.jsx'
 import {currentDate, months} from '../../../config/models/ArraysItems.js'
 import TableE from '../../../components/Tables/TableE.jsx'
 
