@@ -3,43 +3,43 @@ export const validateRegisterUtils = (formData) => {
     const errors = [];
 
     if (!fullName.trim()) {
-        errors.push('Full Name is required');
+        errors.push('Full Name  es requerido');
     }
 
     if (!username.trim()) {
-        errors.push('Email is required');
+        errors.push('Email es requerido');
     } else {
         const regexEmail = /^\S+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!regexEmail.test(username)) {
-            errors.push('Email is invalid');
+            errors.push('Email inválido');
         }
     }
 
     if (!password.trim()) {
-        errors.push('Password is required');
+        errors.push('Password  es requerido');
     } else if (password.length < 6) {
-        errors.push('Password must be at least 6 characters');
+        errors.push('La contraseña debe tener al menos 6 caracteres');
     } else {
         const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
         if (!regexPassword.test(password)) {
-            errors.push('Password must contain at least one uppercase, one lowercase and one number');
+            errors.push('La contraseña debe contener al menos una mayúscula, una minúscula y un número');
         }
     }
 
     if (password !== confirmPassword) {
-        errors.push('Passwords do not match');
+        errors.push('Contraseñas no coinciden');
     }
 
     if (!businessName.trim() || businessName.length < 3) {
-        errors.push('Business Name is required');
+        errors.push('Empresa es requerido');
     }
 
     if (!phone.trim()) {
-        errors.push('Phone is required');
+        errors.push('Teléfono es requerido');
     } else {
         const regexPhone = /^\d{10}$/;
         if (!regexPhone.test(phone)) {
-            errors.push('Phone is invalid');
+            errors.push('Teléfono inválido');
         }
     }
 

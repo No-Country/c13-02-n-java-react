@@ -10,7 +10,27 @@ import Ingresos from "./Dashboard/views/Ingresos.jsx";
 import Inventario from "./Dashboard/views/Inventario.jsx";
 import Pedidos from "./Dashboard/views/Pedidos.jsx";
 import Productos from "./Dashboard/views/Productos.jsx";
+import RecoverPassword from "./RecoverPassword/RecoverPassword.jsx";
+import MessageEmail from "./MessageEmail/MessageEmail.jsx";
+import ChangePassword from "./RecoverPassword/ChangePassword.jsx";
+import ErrorPage from "./404/ErrorPage.jsx";
 
-
-export {Layout, Footer, Landing, Login, Setting, Register, Dashboard, Pedidos, Productos, Ingresos, Egresos, Inventario}
-
+export {
+  Layout,
+  Footer,
+  Landing,
+  Login,
+  Setting,
+  Register,
+  Dashboard,
+  Pedidos,
+  Productos,
+  Ingresos,
+  Egresos,
+  Inventario,
+  RecoverPassword,
+  MessageEmail,
+  ChangePassword,
+  ErrorPage
+  
+};
