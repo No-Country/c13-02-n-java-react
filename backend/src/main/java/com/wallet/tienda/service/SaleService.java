@@ -1,11 +1,16 @@
 package com.wallet.tienda.service;
 
-
+import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.request.SaleDTOReq;
+import com.wallet.tienda.dto.request.SoldProductDTOReq;
+import com.wallet.tienda.model.Product;
+import com.wallet.tienda.model.SoldProduct;
 import com.wallet.tienda.dto.response.SaleDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.model.Sale;
+import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.repository.ISaleRepository;
+import com.wallet.tienda.repository.ISoldProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -13,20 +18,19 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 @Service
 @RequiredArgsConstructor
 public class SaleService implements ISaleService{
 
     private final ISaleRepository saleRepository;
+    private ISoldProductRepository soldProductRepository;
+    private IProductRepository productRepository;
     private final ModelMapper modelMapper;
 
     @Override
-    public void save(SaleDTOReq saleDTOReq) throws Exception {
+    public void save(SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws Exception {
         Sale sale = modelMapper.map(saleDTOReq, Sale.class);
-        //Double price = saleDTOReq.getSoldProducts().stream().mapToDouble(soldProduct -> soldProduct.getPrice() * soldProduct.getQuantity()).sum();
-        //sale.setPrice(price);
+        sale.setPrice(this.calculatePriceAndStock(saleDTOReq,productDTOReq));
         saleRepository.save(sale);
     }
 
@@ -53,5 +57,30 @@ public class SaleService implements ISaleService{
     @Override
     public void deleteById(Long id) {
         saleRepository.deleteById(id);
+    }
+
+    //CALCULA EL PRECIO TOTAL DE LA VENTA REALIZADA y AJUSTA EL STOCK
+    public Double calculatePriceAndStock(SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
+        if (saleDTOReq.getSoldProducts() == null) {
+            return 0.0;
+        }
+        double price = 0.0;
+        for (SoldProductDTOReq soldProductDTOReq : saleDTOReq.getSoldProducts()) {
+            SoldProduct soldProduct = soldProductRepository.findById(soldProductDTOReq.getId()).orElseThrow(
+                    () -> new IdNotFoundException("No se encontro el producto comprado")
+            );
+            Product product = productRepository.findById(productDTOReq.getId()).orElseThrow(
+                    () -> new IdNotFoundException("No se encontro el producto")
+            );
+            if (soldProduct != null && product.getStock() >= soldProduct.getQuantity()) {
+                price += soldProduct.getPrice()*soldProduct.getQuantity();
+                if (product != null){
+                    product.setStock(product.getStock()-soldProduct.getQuantity());
+                }
+            }else{
+                new IdNotFoundException("No hay suficiente stock del producto seleccionado");
+            }
+        }
+        return price;
     }
 }

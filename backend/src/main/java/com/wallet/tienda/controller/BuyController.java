@@ -1,6 +1,7 @@
 package com.wallet.tienda.controller;
 
 import com.wallet.tienda.dto.request.BuyDTOReq;
+import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.response.BuyDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.service.IBuyService;
@@ -26,8 +27,8 @@ public class BuyController {
             //description = "Guarda la compra y devuelve un Codigo de estado 201 creado"
     //)
     @PostMapping()
-    public ResponseEntity<HttpStatus> saveBuy(@Valid @RequestBody BuyDTOReq buyDTOReq) throws Exception {
-        buyService.saveBuy(buyDTOReq);
+    public ResponseEntity<HttpStatus> saveBuy(@Valid @RequestBody BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
+        buyService.saveBuy(buyDTOReq, productDTOReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -55,8 +56,8 @@ public class BuyController {
             //description = "Busca una compra por id y la actualiza, devuelve un Codigo de estado 204"
     //)
     @PutMapping()
-    public ResponseEntity<HttpStatus> updateBuy(@Valid @RequestBody BuyDTOReq buyDTOReq) throws Exception {
-        buyService.updateBuy(buyDTOReq);
+    public ResponseEntity<HttpStatus> updateBuy(@Valid @RequestBody BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
+        buyService.updateBuy(buyDTOReq, productDTOReq);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
