@@ -1,17 +1,19 @@
 package com.wallet.tienda.service;
 
 import com.wallet.tienda.dto.request.BoughtProductDTOReq;
+import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.model.BoughtProduct;
 import com.wallet.tienda.model.Buy;
 import com.wallet.tienda.dto.request.BuyDTOReq;
 import com.wallet.tienda.dto.response.BuyDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
+import com.wallet.tienda.model.Product;
 import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IBoughtProductRepository;
+import com.wallet.tienda.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -26,13 +28,14 @@ public class BuyService implements IBuyService{
 
     private IBuyRepository buyRepository;
     private IBoughtProductRepository boughtProductRepository;
+    private IProductRepository productRepository;
     private ModelMapper modelMapper;
 
     //CREAR UNA COMPRA
     @Override
-    public void saveBuy(BuyDTOReq buyDTOReq) throws Exception {
+    public void saveBuy(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
         Buy buy = modelMapper.map(buyDTOReq, Buy.class);
-        buy.setTotalPrice(this.calculateTotalPrice(buyDTOReq));
+        buy.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq, productDTOReq));
         buyRepository.save(buy);
     }
 
@@ -57,12 +60,12 @@ public class BuyService implements IBuyService{
 
     //MODIFICA UNA COMPRA POR ID
     @Override
-    public void updateBuy(BuyDTOReq buyDTOReq) throws IdNotFoundException {
+    public void updateBuy(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
         if (!buyRepository.existsById(buyDTOReq.getId())) {
             throw new IdNotFoundException("El id " + buyDTOReq.getId() + " no existe");
         }
         var buyUpdate = modelMapper.map(buyDTOReq, Buy.class);
-        buyUpdate.setTotalPrice(this.calculateTotalPrice(buyDTOReq));
+        buyUpdate.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq, productDTOReq));
         buyRepository.save(buyUpdate);
     }
 
@@ -72,8 +75,8 @@ public class BuyService implements IBuyService{
         buyRepository.deleteById(id);
     }
 
-    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
-    public Double calculateTotalPrice(BuyDTOReq buyDTOReq) throws IdNotFoundException {
+    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA y AJUSTA EL STOCK
+    public Double calculateTotalPriceAndStock(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
         if (buyDTOReq.getPurchasedProducts() == null) {
             return 0.0;
         }
@@ -84,6 +87,12 @@ public class BuyService implements IBuyService{
             );
             if (boughtProduct != null) {
                 totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
+                Product product = productRepository.findById(productDTOReq.getId()).orElseThrow(
+                        () -> new IdNotFoundException("No se encontro el producto")
+                );
+                if (product != null){
+                    product.setStock(product.getStock()+boughtProduct.getQuantity());
+                }
             }
         }
         return totalPrice;
