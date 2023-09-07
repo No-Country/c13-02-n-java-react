@@ -25,4 +25,6 @@ public class Sale {
     @ManyToOne
     @JoinColumn(name = "fk_user")
     private CustomerUser user;
+    @OneToMany
+    private List<SoldProduct> soldProducts;
 }

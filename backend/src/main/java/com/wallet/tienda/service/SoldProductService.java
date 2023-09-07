@@ -25,9 +25,6 @@ public class SoldProductService implements ISoldProductService {
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
-        if (!saleRepository.existsById(soldProductDTOReq.getSale().getId())) {
-            throw new IdNotFoundException("La venta ingresada no se encuentra registrada");
-        }
         if (!productRepository.existsById(soldProductDTOReq.getProduct().getId())) {
            throw new IdNotFoundException("El producto con id " + soldProductDTOReq.getProduct().getId() + " no se encuentra registrado");
         }
