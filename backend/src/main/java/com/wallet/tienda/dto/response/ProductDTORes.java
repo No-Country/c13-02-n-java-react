@@ -18,6 +18,5 @@ public class ProductDTORes {
     private CustomerUser user;
     private Brand brand;
     private Category category;
-    private Provider provider;
-    private Order order;
+
 }

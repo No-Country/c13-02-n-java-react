@@ -1,7 +1,5 @@
-package com.wallet.tienda.dto.response;
+package com.wallet.tienda.dto.request;
 
-import com.wallet.tienda.model.Buy;
-import com.wallet.tienda.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoughtProductDTORes {
+public class SoldProductDTOReq {
     private Long id;
     private Double price;
     private int quantity;
-    private Product product;
+    private ProductDTOReq product;
 }
