@@ -16,8 +16,6 @@ public class SoldProduct {
     private Long id;
     private Double price;
     private int quantity;
-//    @ManyToOne
-//    private Sale sale;
     @ManyToOne
     @JoinColumn(name = "fk_product")
     private Product product;

@@ -15,4 +15,6 @@ public class SaleDTORes {
     private Double price;
     private LocalDateTime saleDate;
     private List<SoldProductDTORes> soldProducts;
+
+
 }
