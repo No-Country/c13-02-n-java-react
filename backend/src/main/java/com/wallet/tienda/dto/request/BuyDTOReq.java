@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -20,4 +19,6 @@ public class BuyDTOReq {
     private Double totalPrice;
     @NotNull(message = "Debe asignar un proovedor")
     private Provider provider;
+    private List<BoughtProductDTOReq> purchasedProducts;
+
 }

@@ -41,7 +41,7 @@ public class CategoryService implements ICategoryService{
     @Override
     public CategoryDTORes getCategoryById(Long categoryId) throws IdNotFoundException {
         return modelMapper.map(categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no exite. Ingrese un nuevo id")), CategoryDTORes.class);
+                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no existe. Ingrese un nuevo id")), CategoryDTORes.class);
     }
 
     //LISTA CATEGORIAS PAGINADAS

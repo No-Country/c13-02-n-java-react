@@ -21,14 +21,10 @@ public class ProductDTOReq {
     @Pattern(regexp = "^[0-9 ]+$", message = "Debe contener solo numeros o espacios")
     @NotNull(message = "No puede estar vacio")
     private int stock;
+    private String imageUrl;
     @NotNull(message = "No puede estar vacio")
     private BrandDTOReq brand;
     @NotNull(message = "No puede estar vacio")
     private CategoryDTOReq category;
-    @NotNull(message = "No puede estar vacio")
-    private OrderDTOReq order;
-    @NotNull(message = "No puede estar vacio")
-    private ProviderDTOReq provider;
-
 
 }

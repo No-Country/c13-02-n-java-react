@@ -21,7 +21,7 @@ public class Buy {
     private Double totalPrice;
     @CreationTimestamp
     private LocalDateTime purchaseDate;
-    @OneToMany(mappedBy = "buy")
+    @OneToMany
     private List<BoughtProduct> purchasedProducts;
     @ManyToOne
     @JoinColumn(name = "fk_provider")

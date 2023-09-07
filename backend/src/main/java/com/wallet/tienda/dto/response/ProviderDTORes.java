@@ -14,5 +14,9 @@ public class ProviderDTORes {
 
     private Long id;
     private String name;
+    private int phone;
+    private String email;
+    private String web;
     private List<CustomerUser> users;
+
 }

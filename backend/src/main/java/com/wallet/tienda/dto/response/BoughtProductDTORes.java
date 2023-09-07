@@ -14,5 +14,4 @@ public class BoughtProductDTORes {
     private Double price;
     private int quantity;
     private Product product;
-    private Buy buy;
 }
