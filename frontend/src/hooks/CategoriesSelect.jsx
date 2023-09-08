@@ -12,10 +12,7 @@ function CategoriesSelect() {
         "/categories",
         setCategories(),
 
-        {
-          headers: { "Content-Type": "application/json" },
-          Authorization: `Bearer ${token}`,
-        }
+        
       );
 
       setCategories(response.data.content);

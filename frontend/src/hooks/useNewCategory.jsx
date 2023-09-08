@@ -8,7 +8,7 @@ function useNewCategory() {
     const [token, setToken] = useState("");
 
     useEffect(() => {
-        const tokenRecovery = JSON.stringify(sessionStorage.getItem("token"));
+        const tokenRecovery = sessionStorage.getItem("token")
 
         setToken(tokenRecovery);
     }, []);
@@ -23,7 +23,9 @@ function useNewCategory() {
                     name: `${category}`,
 
 
-                });
+                }, { headers: {
+                    'Authorization': `Bearer ${token}` // Utiliza Bearer Token
+                  }});
 
                 useAlert({
                     type: "success",
