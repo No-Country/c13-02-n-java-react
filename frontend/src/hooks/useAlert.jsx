@@ -8,8 +8,8 @@ function useAlert({type,title,text,info}) {
         /* icon: `${type}`, */
         imageUrl : Imagenes.avatar,
         imageWidth :'100px',
-        title: `${title}`,
-        text: `${text}`,
+        title: `${title }`,
+        text: `${text ? text :''}`,
       
         confirmButtonColor : '#594fff',
         position :'top'

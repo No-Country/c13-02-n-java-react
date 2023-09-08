@@ -9,6 +9,7 @@ import group9 from "./icons/Group9.svg";
 import negocio from "./icons/negocio.svg";
 import perfil from "./icons/perfil.svg";
 import vector from "./icons/Vector.svg";
+import logo from './icons/logo.svg'
 
 
 import alcancia from "./img/alcancia.svg";
@@ -39,7 +40,9 @@ const Imagenes = {
 	avatar,
 	background,
 	cover1,
-	cover2
+	cover2,
+	logo
+	
 };
 
 export default Imagenes;

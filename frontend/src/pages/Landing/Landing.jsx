@@ -8,10 +8,10 @@ function Landing() {
     <section className="landing">
       <header className="header_landing">
         <div className="logo_landing">
-          {/*  <picture>
-                    <img src="#" alt="logo" />
-                </picture> */}
-          <h1>Logo/nombre app</h1>
+         <picture>
+                    <img src={Imagenes.logo} alt="logo" />
+                </picture> 
+         
 
        
         </div>

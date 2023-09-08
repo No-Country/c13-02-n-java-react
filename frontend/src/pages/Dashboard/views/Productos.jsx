@@ -79,6 +79,8 @@ function Productos() {
       <TableP />
     </div>
   );
+
+  
 }
 
 export default Productos;

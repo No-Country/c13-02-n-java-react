@@ -66,11 +66,7 @@ function App() {
                   path={"/dashboard/productos"}
                   element={<Pages.Productos />}
                 />,
-                <Route
-                  key="pedidos"
-                  path={"/dashboard/pedidos"}
-                  element={<Pages.Pedidos />}
-                />,
+               
                 <Route
                   key="settings"
                   path={"/dashboard/settings"}

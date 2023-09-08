@@ -37,7 +37,13 @@ const {handleSubmit,category,setCategory,categories, setCategories} = useNewCate
         </Modal.Footer>
       </Modal>
     </>
+
+    
   );
+
+  return {
+    
+  }
 }
 
 export default ModalCategory;

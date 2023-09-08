@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import CategoriesSelect from "../../hooks/CategoriesSelect";
 
 function ModalProduct({ setShow, show, handleClose, handleShow }) {
   return (
@@ -14,12 +15,8 @@ function ModalProduct({ setShow, show, handleClose, handleShow }) {
           <Form className="d-flex flex-column  gap-3 ">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className= "mt-2">Categoria</Form.Label>
-              <Form.Select aria-label="Default select example">
-                <option>--Seleccione categoria--</option>
-                <option value="1">Bebidas</option>
-                <option value="2">Snacks</option>
-                <option value="3">Cereales</option>
-              </Form.Select>
+             
+             <CategoriesSelect/>
               <Form.Label className= "mt-2">Marca</Form.Label>
               <Form.Select aria-label="Default select example">
                 <option>--Seleccione marca--</option>

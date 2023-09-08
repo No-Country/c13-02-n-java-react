@@ -3,42 +3,52 @@ import { request } from "../config/helpers/axios_helper";
 import useAlert from "./useAlert";
 
 function useNewCategory() {
-  const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const [token, setToken] = useState("");
 
-    if (category != "") {
-      try {
-        const response = await request("POST", "/categories", {
-          name: `${category}`,
-        });
+    useEffect(() => {
+        const tokenRecovery = JSON.stringify(sessionStorage.getItem("token"));
 
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-        useAlert({
-            type :'error',
-            title:'Error de carga',
-            text :error.message
-        })
-      }
-    }else{
-        
-        useAlert({
-            type :'error',
-            title:'Error de carga',
-            text : 'Debe completar el campo'
-        })
-    }
-  }
+        setToken(tokenRecovery);
+    }, []);
 
-return {handleSubmit,category,setCategory,categories, setCategories}
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
+        console.log("este es el token ", token);
+        if (category != "") {
+            try {
+                const response = await request("POST", "/categories", {
+                    name: `${category}`,
+
+
+                });
+
+                useAlert({
+                    type: "success",
+                    title: "Cargado con éxito",
+
+                });
+
+            } catch (error) {
+                console.log(error);
+                useAlert({
+                    type: "error",
+                    title: "Error de carga",
+                    text: error.message,
+                });
+            }
+        } else {
+            useAlert({
+                type: "error",
+                title: "Error de carga",
+                text: "Debe completar el campo",
+            });
+        }
+    };
+
+    return { handleSubmit, category, setCategory };
 }
 
 export default useNewCategory;
-
-
-
