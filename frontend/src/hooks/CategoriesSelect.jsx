@@ -5,17 +5,20 @@ import { Form } from "react-bootstrap";
 function CategoriesSelect() {
   const [categories, setCategories] = useState([]);
 
-
-
-
-
   const getCategories = async () => {
     try {
-      const response = await request("GET", "/categories", setCategories());
+      const response = await request(
+        "GET",
+        "/categories",
+        setCategories(),
+
+        {
+          headers: { "Content-Type": "application/json" },
+          Authorization: `Bearer ${token}`,
+        }
+      );
 
       setCategories(response.data.content);
-     
-     
     } catch (error) {
       console.log(error);
     }
@@ -31,9 +34,11 @@ function CategoriesSelect() {
 
       {categories
         ? categories.map((cat, key) => {
-            
-         return <option key={key} value={cat.name}>{cat.name} </option>
-
+            return (
+              <option key={key} value={cat.name}>
+                {cat.name}{" "}
+              </option>
+            );
           })
         : ""}
     </Form.Select>

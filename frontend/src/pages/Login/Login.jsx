@@ -23,7 +23,7 @@ function Login() {
       <div className="login_panel">
        
         <div className="login_image_logo">
-          <img src={Imagenes.avatar} alt="Logo" /> 
+          <img src={Imagenes.logo} alt="Logo" /> 
      
         </div>
         <div className="text-center ">
