@@ -1,6 +1,5 @@
 package com.wallet.tienda.service;
 
-import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.request.SaleDTOReq;
 import com.wallet.tienda.dto.request.SoldProductDTOReq;
 import com.wallet.tienda.model.Product;
@@ -28,9 +27,9 @@ public class SaleService implements ISaleService{
     private final ModelMapper modelMapper;
 
     @Override
-    public void save(SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws Exception {
+    public void save(SaleDTOReq saleDTOReq) throws Exception {
         Sale sale = modelMapper.map(saleDTOReq, Sale.class);
-        sale.setPrice(this.calculatePriceAndStock(saleDTOReq,productDTOReq));
+        sale.setPrice(this.calculatePriceAndStock(saleDTOReq));
         saleRepository.save(sale);
     }
 
@@ -60,7 +59,7 @@ public class SaleService implements ISaleService{
     }
 
     //CALCULA EL PRECIO TOTAL DE LA VENTA REALIZADA y AJUSTA EL STOCK
-    public Double calculatePriceAndStock(SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
+    public Double calculatePriceAndStock(SaleDTOReq saleDTOReq) throws IdNotFoundException {
         if (saleDTOReq.getSoldProducts() == null) {
             return 0.0;
         }
@@ -69,7 +68,7 @@ public class SaleService implements ISaleService{
             SoldProduct soldProduct = soldProductRepository.findById(soldProductDTOReq.getId()).orElseThrow(
                     () -> new IdNotFoundException("No se encontro el producto comprado")
             );
-            Product product = productRepository.findById(productDTOReq.getId()).orElseThrow(
+            Product product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(
                     () -> new IdNotFoundException("No se encontro el producto")
             );
             if (soldProduct != null && product.getStock() >= soldProduct.getQuantity()) {
@@ -82,5 +81,6 @@ public class SaleService implements ISaleService{
             }
         }
         return price;
+
     }
 }

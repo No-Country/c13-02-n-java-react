@@ -27,8 +27,8 @@ public class BuyController {
             //description = "Guarda la compra y devuelve un Codigo de estado 201 creado"
     //)
     @PostMapping()
-    public ResponseEntity<HttpStatus> saveBuy(@Valid @RequestBody BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
-        buyService.saveBuy(buyDTOReq, productDTOReq);
+    public ResponseEntity<HttpStatus> saveBuy(@Valid @RequestBody BuyDTOReq buyDTOReq) throws Exception {
+        buyService.saveBuy(buyDTOReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -57,7 +57,7 @@ public class BuyController {
     //)
     @PutMapping()
     public ResponseEntity<HttpStatus> updateBuy(@Valid @RequestBody BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
-        buyService.updateBuy(buyDTOReq, productDTOReq);
+        buyService.updateBuy(buyDTOReq);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
