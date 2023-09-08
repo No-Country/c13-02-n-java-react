@@ -27,5 +27,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "fk_category")
     private Category category;
-
+    @OneToOne
+    @JoinColumn(name = "fk_product_price")
+    private ProductPrice productPrice;
 }
