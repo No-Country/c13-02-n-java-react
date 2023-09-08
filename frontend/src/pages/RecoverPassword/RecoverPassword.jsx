@@ -20,7 +20,8 @@ function RecoverPassword() {
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
-          <p>Finance Manager</p>
+          <p style={{width:'150px'}}>finance & inventory
+ manager</p>
         </div>
 
         <h2>Recuperar contraseña </h2>

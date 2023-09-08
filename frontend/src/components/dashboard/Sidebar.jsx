@@ -5,7 +5,7 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const tokenDestroy = () => {
-    sessionStorage.clear("token");
+    sessionStorage.setItem("token", '');
 
     navigate("/");
   };

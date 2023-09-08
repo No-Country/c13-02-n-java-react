@@ -28,7 +28,8 @@ function Login() {
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
-          <p>Finance Manager</p>
+          <p style={{width:'150px'}}>finance & inventory
+ manager</p>
           {isLoading ? <SpinnerLoad /> : ""}
             
         </div>

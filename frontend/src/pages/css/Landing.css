@@ -25,12 +25,25 @@ h1 {
 .logo_landing {
   display: flex;
 
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
 
-  color: white;
+  color: black;
   border-radius: 6px;
   margin-left: 2rem;
+}
+
+.logo_landing p{
+
+  margin-top: 20px;
+  color: #000;
+  font-family: 'Nunito', sans-serif;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 75% */
+letter-spacing: -0.32px;
 }
 
 .logo_landing img{
