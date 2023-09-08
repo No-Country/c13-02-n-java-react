@@ -16,16 +16,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private final JWTUtils jwtUtils;
     private final UserDetailsService userDetailsService;
-    private final List<String> excludedPaths = Arrays.asList("/api/v1/login","api/v1/password/**" , "/api/v1/users/register","/swagger-ui/**", "/v3/api-docs/**");
-
 
     /**
      * Metodo para validar expiracion del token, autenticar al usuario por jwt y cargar datos del usuario autenticado en el contexto de seguridad,
