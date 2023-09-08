@@ -1,5 +1,6 @@
 package com.wallet.tienda.controller;
 
+import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.dto.request.SaleDTOReq;
 import com.wallet.tienda.dto.response.SaleDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
@@ -20,8 +21,8 @@ public class SaleController {
     private final ISaleService saleService;
 
     @PostMapping()
-    public ResponseEntity<HttpStatus> create(@RequestBody @Valid SaleDTOReq saleDTOReq) throws Exception {
-        saleService.save(saleDTOReq);
+    public ResponseEntity<HttpStatus> create(@RequestBody @Valid SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws Exception {
+        saleService.save(saleDTOReq, productDTOReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping()

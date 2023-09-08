@@ -6,7 +6,7 @@ import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.ITokenRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -17,17 +17,12 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class EmailService implements IEmailService{
-    @Autowired
+
     private ITokenRepository tokenRepository;
-
-    @Autowired
     private ICustomerUserRepository userRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private JavaMailSender javaMailSender;
 
     @Value("${client.url}")

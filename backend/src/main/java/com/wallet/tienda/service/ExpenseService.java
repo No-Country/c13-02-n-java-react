@@ -20,12 +20,9 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class ExpenseService implements IExpenseService {
 
-
-    private final IExpenseRepository expenseRepository;
-
+    private IExpenseRepository expenseRepository;
     private IWordsConverter wordsConverter;
-
-    private final ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREAR UN GASTO
     @Override
