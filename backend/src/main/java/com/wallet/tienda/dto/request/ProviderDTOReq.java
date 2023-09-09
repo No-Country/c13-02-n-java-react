@@ -1,12 +1,12 @@
 package com.wallet.tienda.dto.request;
 
-import com.wallet.tienda.model.CustomerUser;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +15,12 @@ public class ProviderDTOReq {
     private Long id;
     @NotNull(message = "No puede estar vacio")
     private String name;
-    @NotNull(message = "No puede estar vacio")
-    private List<CustomerUser> users;
+    @Pattern(regexp = "^[0-9 ]+$", message = "Debe contener solo numeros o espacios")
+    private int phone;
+    @Email(message = "Debe contener un formato de email. Ej: example@example.com")
+    private String email;
+    private String web;
+    @Size(min = 10, max = 500, message = "Debe contener un mínimo de 10 y un máximo de 500 caracteres")
+    private String description;
+
 }

@@ -1,5 +1,6 @@
 package com.wallet.tienda.dto.response;
 
+import com.wallet.tienda.dto.request.SoldProductDTOReq;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,10 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class BrandDTORes {
+@AllArgsConstructor
+public class SoldProductDTORes {
     private Long id;
-    private String name;
-    private List<ProductDTORes> products;
+    private Double price;
+    private int quantity;
+    private ProductDTORes product;
 }

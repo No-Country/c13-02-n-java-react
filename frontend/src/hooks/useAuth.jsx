@@ -26,7 +26,7 @@ const useAuth = () => {
           `/login`,
           JSON.stringify({ username, password }),
           { headers: { "Content-Type": "application/json" } ,
-          'Authorization': `Bearer ${token}`
+          
         }
         );
         console.log(response.status);

@@ -45,6 +45,8 @@ public class CustomSecurityFilterChain {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/v1/users",
                                 "/api/v1/products",
+                                "/api/v1/sales",
+                                "/api/v1/sold-products",
                                 "/api/v1/brands",
                                 "/api/v1/buys",
                                 "/api/v1/bought-products",

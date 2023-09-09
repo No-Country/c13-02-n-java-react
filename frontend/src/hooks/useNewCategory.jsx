@@ -13,6 +13,13 @@ function useNewCategory() {
         setToken(tokenRecovery);
     }, []);
 
+
+    const tokenFijo = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGVsdTE0OTVAZ21haWwuY29tIiwiaWF0IjoxNjk0MzAxODI5LCJleHAiOjE2OTQzMDU0Mjl9.mmTPjU1R_3MToMe_OM6gMWGZiq-m6d_hFUJfTnSJi4g'
+
+
+    console.log(token);
+    console.log(tokenFijo);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -24,7 +31,7 @@ function useNewCategory() {
 
 
                 }, { headers: {
-                    'Authorization': `Bearer ${token}` // Utiliza Bearer Token
+                    'Authorization': `Bearer ${tokenFijo}` // Utiliza Bearer Token
                   }});
 
                 useAlert({
