@@ -60,7 +60,7 @@ const useAuth = () => {
       useAlert({
         type: "warning",
         title: "Campos obligatorios",
-        text: "Parece que faltan datos, ¡complétalos para continuar!",
+        text: "Complete los campos ",
       });
     }
   };

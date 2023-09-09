@@ -34,8 +34,7 @@ function ChangePassword() {
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
-          <p style={{width:'150px'}}>finance & inventory
- manager</p>
+          <p>Finance Manager</p>
         </div>
 
         <h2>Recuperar contraseña </h2>

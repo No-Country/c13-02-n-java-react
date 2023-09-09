@@ -16,7 +16,6 @@ function Productos() {
 
   const handleShowBrand = () => setShowBrand(true);
   const handleCloseBrand = () => setShowBrand(false);
-  
 
   return (
     <div>
@@ -60,9 +59,6 @@ function Productos() {
               setShow={setShowProduct}
               handleClose={handleCloseProduct}
               handleShow={handleShowProduct}
-
-              handleShowCategory={handleShowCategory}
-              handleShowBrand={handleShowBrand}
             />
           ) : (
             ""

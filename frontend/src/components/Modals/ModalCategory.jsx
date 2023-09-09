@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useNewCategory from "../../hooks/useNewCategory";
 
-function ModalCategory({ setShow, show, handleClose, handleShow, showControl}) {
+function ModalCategory({ setShow, show, handleClose, handleShow }) {
 
 
 const {handleSubmit,category,setCategory,categories, setCategories} = useNewCategory()
@@ -31,7 +31,7 @@ const {handleSubmit,category,setCategory,categories, setCategories} = useNewCate
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleSubmit}  onAuxClick={handleClose}>
+          <Button variant="success" onClick={handleSubmit}>
             Agregar categoria
           </Button>
         </Modal.Footer>

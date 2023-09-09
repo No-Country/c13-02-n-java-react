@@ -13,7 +13,7 @@ function Landing() {
                 </picture> 
          
 
-                <p>Fima</p>
+       
         </div>
 
         <nav className="navigation_landing">

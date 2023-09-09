@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { request } from "../../config/helpers/axios_helper";
+import { request } from "../config/helpers/axios_helper";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 

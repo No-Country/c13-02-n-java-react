@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(220, 220, 220, 0.459);
-  font-family: 'Nunito', sans-serif !important;
 }
 
 .login_panel {
@@ -134,7 +133,7 @@
 
 
 .--mt {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .option_login {
