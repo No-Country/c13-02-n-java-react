@@ -15,12 +15,11 @@ public class ProviderDTOReq {
     private Long id;
     @NotNull(message = "No puede estar vacio")
     private String name;
-    @Pattern(regexp = "^[0-9 ]+$", message = "Debe contener solo numeros o espacios")
     private int phone;
     @Email(message = "Debe contener un formato de email. Ej: example@example.com")
     private String email;
     private String web;
-    @Size(min = 10, max = 500, message = "Debe contener un mínimo de 10 y un máximo de 500 caracteres")
+    @Size(max = 500, message = "Debe contener un mínimo de 10 y un máximo de 500 caracteres")
     private String description;
 
 }

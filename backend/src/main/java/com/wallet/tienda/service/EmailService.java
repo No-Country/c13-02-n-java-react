@@ -6,7 +6,7 @@ import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.ITokenRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -17,12 +17,15 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-@RequiredArgsConstructor
 public class EmailService implements IEmailService{
 
+    @Autowired
     private ITokenRepository tokenRepository;
+    @Autowired
     private ICustomerUserRepository userRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private JavaMailSender javaMailSender;
 
     @Value("${client.url}")
@@ -96,14 +99,14 @@ public class EmailService implements IEmailService{
                         "        style=\"@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;\">\n" +
                         "        <tr>\n" +
                         "            <td>\n" +
-                        "                <table style=\"background-color: #f2f3f8; max-width:670px;  margin:0 auto;\" width=\"100%\" border=\"0\"\n" +
+                        "                <table style=\"background-color: #97ace8; max-width:670px;  margin:0 auto;\" width=\"100%\" border=\"0\"\n" +
                         "                    align=\"center\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                         "                    <tr>\n" +
                         "                        <td style=\"height:80px;\">&nbsp;</td>\n" +
                         "                    </tr>\n" +
                         "                    <tr>\n" +
                         "                        <td style=\"text-align:center;\">\n" +
-                        "                          <a href=\"https://ibb.co/3fpKR9C\"><img src=\"https://i.ibb.co/B4ykn5C/logo2.png\" alt=\"logo2\" border=\"0\"></a>\n" +
+                        "                          <a href=\"https://imgbb.com/\"><img src=\"https://i.ibb.co/S6wnnRf/michi.png\" border=\"0\" width=\"250\" height=\"120\" /></a>\n" +
                         "                        </td>\n" +
                         "                    </tr>\n" +
                         "                    <tr>\n" +
@@ -121,11 +124,11 @@ public class EmailService implements IEmailService{
                         "                                        <h1 style=\"color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;\"> Recuperar Contraseña</h1>\n" +
                         "                                        <span\n" +
                         "                                            style=\"display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;\"></span>\n" +
-                        "                                        <p style=\"color:#455056; font-size:15px;line-height:24px; margin:0;\">\n" +
-                        "                                          Hola " +username+ " Para cambiar la contraseña haz click en el boton cambiar contraseña\n" +
+                        "                                        <p style=\"color:#142b6e; font-size:15px;line-height:24px; margin:0;\">\n" +
+                        "                                          Hola " +username+ ", para cambiar la contraseña haz click en el botón\n" +
                         "                                        </p>\n" +
                         "                                        <a href=\""+link+"\"\n" +
-                        "                                            style=\"background:#4c5b66;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">cambiar contraseña</a>\n" +
+                        "                                            style=\"background:#4E73DF;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">cambiar contraseña</a>\n" +
                         "                                    </td>\n" +
                         "                                </tr>\n" +
                         "                                <tr>\n" +

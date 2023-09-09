@@ -7,6 +7,7 @@ import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.service.ISaleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/sales")
-@RequiredArgsConstructor
 public class SaleController {
 
-    private final ISaleService saleService;
+    @Autowired
+    private ISaleService saleService;
 
     @PostMapping()
     public ResponseEntity<HttpStatus> create(@RequestBody @Valid SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws Exception {

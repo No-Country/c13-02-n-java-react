@@ -14,9 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 public class BuyDTOReq {
     private Long id;
-    @DecimalMin(value = "0.0", message = "El valor mínimo ingresado debe ser 0.0")
-    @NotNull(message = "No puede estar vacio")
-    private Double totalPrice;
     @NotNull(message = "Debe asignar un proovedor")
     private Provider provider;
     private List<BoughtProductDTOReq> purchasedProducts;

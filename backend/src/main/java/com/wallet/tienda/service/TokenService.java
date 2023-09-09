@@ -3,7 +3,7 @@ package com.wallet.tienda.service;
 import com.wallet.tienda.model.Token;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.ITokenRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class TokenService implements ITokenService{
 
+    @Autowired
     private ITokenRepository tokenRepository;
+    @Autowired
     private ICustomerUserRepository userRepository;
 
 

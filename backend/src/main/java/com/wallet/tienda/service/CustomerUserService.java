@@ -8,8 +8,8 @@ import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.IRoleRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +20,15 @@ import javax.management.relation.RoleNotFoundException;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerUserService implements ICustomerUserService {
 
+    @Autowired
     private ICustomerUserRepository userRepository;
+    @Autowired
     private ModelMapper modelMapper;
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private IRoleRepository roleRepository;
 
 

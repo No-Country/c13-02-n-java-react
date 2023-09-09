@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReportDTORes {
 
-    private Double totalAmountSaleDay;
-    private Double totalAmountSaleMonthAndYear;
-    private Double totalAmountSaleYear;
-    private Double totalCost;
-    private Double totalSale;
+    private Double totalSaleDay;
+    private Double totalSaleYear;
+    private Double totalCostYear;
+    private Double totalProfitMonth;
 
 }

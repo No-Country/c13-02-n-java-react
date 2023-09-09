@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/brands")
 public class BrandController {
+
     @Autowired
     private IBrandService brandService;
+
     @GetMapping()
     public ResponseEntity<Page<BrandDTORes>> listAllBrands(Pageable pageable) {
         return ResponseEntity.status(HttpStatus.CREATED).body(brandService.listAllBrands(pageable));

@@ -7,7 +7,6 @@ import com.wallet.tienda.model.BoughtProduct;
 import com.wallet.tienda.repository.IBoughtProductRepository;
 import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,21 +17,22 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class BoughtProductService implements IBoughtProductService {
 
+    @Autowired
     private IBoughtProductRepository repository;
+    @Autowired
     private IBuyRepository buyRepository;
+    @Autowired
     private IProductRepository productRepository;
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
     public void saveBoughtProduct(BoughtProductDTOReq boughtProductDTO) throws IdNotFoundException {
-        if (!buyRepository.existsById(boughtProductDTO.getBuy().getId())) {
-            throw new IdNotFoundException("La compra ingresada no se encuentra registrada");
+        if (!productRepository.existsById(boughtProductDTO.getProduct().getId())) {
+            throw new IdNotFoundException("El producto ingresado no se encuentra registrado");
         }
-        var productDB = productRepository.findById(boughtProductDTO.getProduct().getId())
-                .orElseThrow(() -> new IdNotFoundException("El id " + boughtProductDTO.getProduct().getId() + " no existe"));
         repository.save(modelMapper.map(boughtProductDTO, BoughtProduct.class));
     }
 

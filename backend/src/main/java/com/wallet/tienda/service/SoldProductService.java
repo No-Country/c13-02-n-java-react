@@ -9,19 +9,23 @@ import com.wallet.tienda.repository.ISaleRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class SoldProductService implements ISoldProductService {
 
-    private final ISoldProductRepository soldProductRepository;
-    private final ISaleRepository saleRepository;
-    private final IProductRepository productRepository;
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ISoldProductRepository soldProductRepository;
+    @Autowired
+    private ISaleRepository saleRepository;
+    @Autowired
+    private IProductRepository productRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {

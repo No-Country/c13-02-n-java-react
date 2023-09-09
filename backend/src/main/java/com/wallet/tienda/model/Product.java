@@ -19,9 +19,6 @@ public class Product {
     private int stock;
     private String imageUrl;
     @ManyToOne
-    @JoinColumn(name = "fk_user")
-    private CustomerUser user;
-    @ManyToOne
     @JoinColumn(name = "fk_brand")
     private Brand brand;
     @ManyToOne

@@ -8,6 +8,7 @@ import com.wallet.tienda.service.IBuyService;
 
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de Compra")
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1/buys")
 public class BuyController {
-    
-    private final IBuyService buyService;
+
+    @Autowired
+    private IBuyService buyService;
 
     //@Operation(
             //summary = "Guarda una compra",

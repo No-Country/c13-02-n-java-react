@@ -14,6 +14,7 @@ import com.wallet.tienda.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -22,13 +23,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class BuyService implements IBuyService{
 
+    @Autowired
     private IBuyRepository buyRepository;
+    @Autowired
     private IBoughtProductRepository boughtProductRepository;
+    @Autowired
     private IProductRepository productRepository;
+    @Autowired
     private ModelMapper modelMapper;
 
     //CREAR UNA COMPRA
