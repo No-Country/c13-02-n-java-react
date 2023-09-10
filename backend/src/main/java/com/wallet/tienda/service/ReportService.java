@@ -5,9 +5,12 @@ import com.wallet.tienda.model.Buy;
 import com.wallet.tienda.model.Sale;
 import com.wallet.tienda.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Service
 public class ReportService implements IReportService{
@@ -26,8 +29,9 @@ public class ReportService implements IReportService{
     public ReportDTORes balance(){
 
         var total = 0.0;
+        var monthProfit = 0.0;
+        var monthCost = 0.0;
         var report = new ReportDTORes();
-        var buys = buyRepository.findAll();
 
         //ganancias brutas del dia
         for (Sale sale: saleRepository.findAll()) {
@@ -55,11 +59,45 @@ public class ReportService implements IReportService{
         //ganancias netas mensuales
         for (Sale sale: saleRepository.findAll()) {
             if (sale.getSaleDate().getMonth().equals(LocalDate.now().getMonth())){
-                total += sale.getPrice();
+               monthProfit += sale.getPrice();
             }
         }
-        report.setTotalProfitMonth(total);
-
+        for (Buy buy: buyRepository.findAll()) {
+            if (buy.getPurchaseDate().getMonth().equals(LocalDate.now().getMonth())){
+                monthCost += buy.getTotalPrice();
+            }
+        }
+        report.setTotalProfitMonth(monthProfit - monthCost);
         return report;
     }
+
+
+    @Override
+    public Map<String, Double> balanceOfMonths(){
+        var year = LocalDate.now().getYear();
+        var month = "";
+        var totalProfit = 0.0;
+        Map<String, Double> report = new LinkedHashMap<>();
+
+        var sort = Sort.by(Sort.Direction.ASC, "saleDate");
+        var sales = saleRepository.findAll(sort);
+
+        for (Sale sale: sales) {
+            if (month.equals("") || sale.getSaleDate().getYear() == year
+            && sale.getSaleDate().getMonth().toString().equals(month)) {
+                month = sale.getSaleDate().getMonth().toString();
+                totalProfit += sale.getPrice();
+            }else{
+                report.put(month, totalProfit);
+                month = sale.getSaleDate().getMonth().toString();
+                totalProfit = sale.getPrice();
+            }
+        }
+        if (!sales.isEmpty()){
+            report.put(month, totalProfit);
+        }
+        return report;
+    }
+
+
 }

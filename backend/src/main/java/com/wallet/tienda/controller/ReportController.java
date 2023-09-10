@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/reports")
 public class ReportController {
@@ -20,7 +22,10 @@ public class ReportController {
         return ResponseEntity.ok(reportService.balance());
     }
 
-
+    @GetMapping("/months")
+    public ResponseEntity<Map<String, Double>> getMonthBalance(){
+        return ResponseEntity.ok(reportService.balanceOfMonths());
+    }
 
 
 }
