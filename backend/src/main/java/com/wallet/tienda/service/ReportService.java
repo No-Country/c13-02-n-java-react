@@ -46,7 +46,7 @@ public class ReportService implements IReportService{
         for (Sale sale: saleRepository.findAll()) {
                 total += sale.getPrice();
         }
-        report.setTotalSaleDay(total);
+        report.setTotalSaleYear(total);
         total = 0.0;
 
         //costos anuales

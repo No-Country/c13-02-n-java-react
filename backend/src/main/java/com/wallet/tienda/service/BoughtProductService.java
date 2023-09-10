@@ -30,10 +30,11 @@ public class BoughtProductService implements IBoughtProductService {
 
     @Override
     public void saveBoughtProduct(BoughtProductDTOReq boughtProductDTO) throws IdNotFoundException {
-        if (!productRepository.existsById(boughtProductDTO.getProduct().getId())) {
-            throw new IdNotFoundException("El producto ingresado no se encuentra registrado");
-        }
-        repository.save(modelMapper.map(boughtProductDTO, BoughtProduct.class));
+        var product = productRepository.findById(boughtProductDTO.getProduct().getId())
+                .orElseThrow(() -> new IdNotFoundException("El producto ingresado no se encuentra registrado"));
+        var boughtProduct = modelMapper.map(boughtProductDTO, BoughtProduct.class);
+        boughtProduct.setPrice(product.getPrice());
+        repository.save(boughtProduct);
     }
 
     @Override
