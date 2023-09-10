@@ -22,7 +22,7 @@ public class SaleController {
 
     @PostMapping()
     public ResponseEntity<HttpStatus> create(@RequestBody @Valid SaleDTOReq saleDTOReq, ProductDTOReq productDTOReq) throws Exception {
-        saleService.save(saleDTOReq, productDTOReq);
+        saleService.save(saleDTOReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping()

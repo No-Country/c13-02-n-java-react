@@ -1,7 +1,6 @@
 package com.wallet.tienda.service;
 
 import com.wallet.tienda.dto.request.BoughtProductDTOReq;
-import com.wallet.tienda.dto.request.ProductDTOReq;
 import com.wallet.tienda.model.BoughtProduct;
 import com.wallet.tienda.model.Buy;
 import com.wallet.tienda.dto.request.BuyDTOReq;
@@ -33,9 +32,9 @@ public class BuyService implements IBuyService{
 
     //CREAR UNA COMPRA
     @Override
-    public void saveBuy(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws Exception {
+    public void saveBuy(BuyDTOReq buyDTOReq) throws Exception {
         Buy buy = modelMapper.map(buyDTOReq, Buy.class);
-        buy.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq, productDTOReq));
+        buy.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq));
         buyRepository.save(buy);
     }
 
@@ -60,12 +59,12 @@ public class BuyService implements IBuyService{
 
     //MODIFICA UNA COMPRA POR ID
     @Override
-    public void updateBuy(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
+    public void updateBuy(BuyDTOReq buyDTOReq) throws IdNotFoundException {
         if (!buyRepository.existsById(buyDTOReq.getId())) {
             throw new IdNotFoundException("El id " + buyDTOReq.getId() + " no existe");
         }
         var buyUpdate = modelMapper.map(buyDTOReq, Buy.class);
-        buyUpdate.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq, productDTOReq));
+        buyUpdate.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq));
         buyRepository.save(buyUpdate);
     }
 
@@ -76,7 +75,7 @@ public class BuyService implements IBuyService{
     }
 
     //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA y AJUSTA EL STOCK
-    public Double calculateTotalPriceAndStock(BuyDTOReq buyDTOReq, ProductDTOReq productDTOReq) throws IdNotFoundException {
+    public Double calculateTotalPriceAndStock(BuyDTOReq buyDTOReq) throws IdNotFoundException {
         if (buyDTOReq.getPurchasedProducts() == null) {
             return 0.0;
         }
@@ -87,7 +86,7 @@ public class BuyService implements IBuyService{
             );
             if (boughtProduct != null) {
                 totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
-                Product product = productRepository.findById(productDTOReq.getId()).orElseThrow(
+                Product product = productRepository.findById(boughtProduct.getProduct().getId()).orElseThrow(
                         () -> new IdNotFoundException("No se encontro el producto")
                 );
                 if (product != null){
