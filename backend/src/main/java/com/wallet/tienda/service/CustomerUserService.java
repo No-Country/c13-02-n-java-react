@@ -54,13 +54,13 @@ public class CustomerUserService implements ICustomerUserService {
     //LISTAR USUARIOS
     @Override
     public Page<UserDTORes> getAllUsers(Pageable pageable) {
-        var usersBD = userRepository.findAll(pageable);
+        var usersDB = userRepository.findAll(pageable);
         var usersDTO = new ArrayList<UserDTORes>();
 
-        for (CustomerUser user : usersBD) {
+        for (CustomerUser user : usersDB) {
             if(user.isEnable()) usersDTO.add(modelMapper.map(user, UserDTORes.class));
         }
-        return new PageImpl<>(usersDTO, pageable, usersDTO.size());
+        return new PageImpl<>(usersDTO, pageable, usersDB.getTotalElements());
     }
 
     //MODIFICAR USUARIO

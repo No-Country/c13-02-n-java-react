@@ -57,7 +57,7 @@ public class BuyService implements IBuyService{
         for (Buy buy : buys) {
             buysDTO.add(modelMapper.map(buy, BuyDTORes.class));
         }
-        return new PageImpl<>(buysDTO, pageable, buysDTO.size());
+        return new PageImpl<>(buysDTO, pageable, buys.getTotalElements());
     }
 
     //MODIFICA UNA COMPRA POR ID

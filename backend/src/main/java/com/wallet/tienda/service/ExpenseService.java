@@ -55,7 +55,7 @@ public class ExpenseService implements IExpenseService {
         for (Expense expense : expenses) {
             expensesDTO.add(modelMapper.map(expense, ExpenseDTORes.class));
         }
-        return new PageImpl<>(expensesDTO, pageable, expensesDTO.size());
+        return new PageImpl<>(expensesDTO, pageable, expenses.getTotalElements());
     }
 
     //MODIFICA UN GASTO POR ID

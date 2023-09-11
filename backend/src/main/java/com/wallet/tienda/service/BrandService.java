@@ -25,7 +25,7 @@ public class BrandService implements IBrandService{
     public Page<BrandDTORes> listAllBrands(Pageable pageable) {
         var brandRep = brandRepository.findAll(pageable);
         var brandDTORes = brandRep.stream().map((user) -> modelMapper.map(user, BrandDTORes.class)).toList();
-        return new PageImpl<>(brandDTORes, pageable, brandDTORes.size());
+        return new PageImpl<>(brandDTORes, pageable, brandRep.getTotalElements());
     }
 
     @Override

@@ -51,7 +51,7 @@ public class SoldProductService implements ISoldProductService {
                 .stream()
                 .map(sp -> modelMapper.map(sp, SoldProductDTORes.class))
                 .toList();
-        return new PageImpl<>(soldProductDTORes, pageable , soldProductDTORes.size());
+        return new PageImpl<>(soldProductDTORes, pageable , soldProducts.getTotalElements());
     }
 
     @Override

@@ -56,7 +56,7 @@ public class CategoryService implements ICategoryService{
         for (Category category : categoriesDB) {
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
-        return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
+        return new PageImpl<>(categoriesDTO, pageable, categoriesDB.getTotalElements());
     }
 
     //ACTUALIZA UNA CATEGORIA
