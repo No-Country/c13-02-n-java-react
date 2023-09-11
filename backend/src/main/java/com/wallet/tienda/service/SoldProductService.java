@@ -29,9 +29,12 @@ public class SoldProductService implements ISoldProductService {
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
+        if (!productRepository.existsById(soldProductDTOReq.getProduct().getId())) {
+           throw new IdNotFoundException("El producto con id " + soldProductDTOReq.getProduct().getId() + " no se encuentra registrado");
+        }
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
-        soldProduct.setPrice(product.getPrice());
+        System.out.println(soldProduct.getProduct().toString());
+        soldProduct.setPrice(soldProduct.getProduct().getPrice());
         soldProductRepository.save(soldProduct);
     }
 
