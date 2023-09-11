@@ -13,5 +13,6 @@ public class ReportDTORes {
     private Double totalSaleYear;
     private Double totalCostYear;
     private Double totalProfitMonth;
+    private Double totalProfitYear;
 
 }

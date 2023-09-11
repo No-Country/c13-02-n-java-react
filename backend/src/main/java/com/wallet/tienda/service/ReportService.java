@@ -29,6 +29,8 @@ public class ReportService implements IReportService{
     public ReportDTORes balance(){
 
         var total = 0.0;
+        var totalCostYear = 0.0;
+        var totalProfitYear = 0.0;
         var monthProfit = 0.0;
         var monthCost = 0.0;
         var report = new ReportDTORes();
@@ -40,21 +42,18 @@ public class ReportService implements IReportService{
             }
         }
         report.setTotalSaleDay(total);
-        total = 0.0;
 
         //ganancias brutas anuales
         for (Sale sale: saleRepository.findAll()) {
-                total += sale.getPrice();
+                totalProfitYear += sale.getPrice();
         }
-        report.setTotalSaleYear(total);
-        total = 0.0;
+        report.setTotalSaleYear(totalProfitYear);
 
         //costos anuales
         for (Buy buy:buyRepository.findAll()) {
-            total += buy.getTotalPrice();
+            totalCostYear += buy.getTotalPrice();
         }
-        report.setTotalCostYear(total);
-        total = 0.0;
+        report.setTotalCostYear(totalCostYear);
 
         //ganancias netas mensuales
         for (Sale sale: saleRepository.findAll()) {
@@ -67,6 +66,7 @@ public class ReportService implements IReportService{
                 monthCost += buy.getTotalPrice();
             }
         }
+        report.setTotalProfitYear(totalProfitYear - totalCostYear);
         report.setTotalProfitMonth(monthProfit - monthCost);
         return report;
     }
