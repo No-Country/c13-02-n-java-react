@@ -42,7 +42,7 @@ public class SaleService implements ISaleService{
     public Page<SaleDTORes> getAll(Pageable pageable) {
         var sales =  saleRepository.findAll(pageable);
         var salesDtoRes = sales.stream().map(sale -> modelMapper.map(sale, SaleDTORes.class)).toList();
-        return new PageImpl<>(salesDtoRes, pageable , salesDtoRes.size());
+        return new PageImpl<>(salesDtoRes, pageable , sales.getTotalElements());
     }
 
     @Override

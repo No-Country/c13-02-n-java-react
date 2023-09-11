@@ -44,7 +44,7 @@ public class BoughtProductService implements IBoughtProductService {
             var productDTO = modelMapper.map(boughtProduct, BoughtProductDTORes.class);
             productsDTO.add(productDTO);
         }
-        return new PageImpl<>(productsDTO, pageable, productsDTO.size());
+        return new PageImpl<>(productsDTO, pageable, boughtProducts.getTotalElements());
     }
 
     @Override
