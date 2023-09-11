@@ -18,12 +18,41 @@
 
 .logo {
   width: 346px;
-  margin-right: 35px;
+  margin-right: 45px;
   color: white;
+  display: flex;
+  gap: 20px;
+
+  
 }
 
+.logo_data {
+  width: 346px;
+  margin-right: 45px;
+  color: white;
+  display: flex;
+  gap: 20px;
+ 
+
+}
+
+.text-logo{
+padding-left: 10px;
+  border-left: 1px solid white;
+}
+
+
+
+.logo_data img {
+
+  width: 150px;
+}
+
+
+
 .logo p {
-  width: 300px;
+  width: 195px;
+  font-size: 16px;
 }
 
 .icon_red_footer {

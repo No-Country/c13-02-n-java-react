@@ -23,12 +23,13 @@ function Login() {
       <div className="login_panel">
        
         <div className="login_image_logo">
-          <img src={Imagenes.avatar} alt="Logo" /> 
+          <img src={Imagenes.logo} alt="Logo" /> 
      
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
-          <p>Finance Manager</p>
+          <p style={{width:'150px'}}>finance & inventory
+ manager</p>
           {isLoading ? <SpinnerLoad /> : ""}
             
         </div>

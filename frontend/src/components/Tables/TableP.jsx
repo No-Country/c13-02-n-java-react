@@ -16,9 +16,9 @@ function TableP() {
       </thead>
       <tbody>
        
-       {productosPrueba.map((pr)=> {
+       {productosPrueba.map((pr,key)=> {
 
-        return  <tr>
+        return  <tr key={key}>
         <td>{pr.id} </td>
         <td>{pr.producto}  </td>
         <td>{pr.fecha} </td>

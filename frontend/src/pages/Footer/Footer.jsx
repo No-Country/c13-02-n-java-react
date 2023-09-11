@@ -1,3 +1,4 @@
+import Imagenes from "../../assets/imagenes";
 import "../css/Footer.css";
 
 function Footer() {
@@ -5,9 +6,16 @@ function Footer() {
     <div className="footer">
       <div className="logo  d-flex flex-column mt-5  gap-4 ">
 
-        <h3 className="fs-4 mt-5 text-white ">FIMA</h3>
+       <div className="logo_data">
+        <img src={Imagenes.logo} alt="" />
+      
+      <div className="d-flex flex-column text-logo ">
+      <h3 className="fs-4 mt-5 text-white ">FIMA</h3>
+      <p className="fs-6 ">finance & inventory manager</p>
+      </div>
+       </div>
 
-        <p>Simplificamos la gestión de tu negocio desde un solo lugar, fácil e intuitivo, conocenos!</p>
+        <p className="w-100 ">Simplificamos la gestión de tu negocio desde un solo lugar, fácil e intuitivo, conocenos!</p>
 
 
       <div  className="d-flex gap-4 ">

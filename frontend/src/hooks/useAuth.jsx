@@ -25,7 +25,9 @@ const useAuth = () => {
           "POST",
           `/login`,
           JSON.stringify({ username, password }),
-          { headers: { "Content-Type": "application/json" } }
+          { headers: { "Content-Type": "application/json" } ,
+          'Authorization': `Bearer ${token}`
+        }
         );
         console.log(response.status);
         if (response.status === 200) {
@@ -58,7 +60,7 @@ const useAuth = () => {
       useAlert({
         type: "warning",
         title: "Campos obligatorios",
-        text: "Complete los campos ",
+        text: "Parece que faltan datos, ¡complétalos para continuar!",
       });
     }
   };

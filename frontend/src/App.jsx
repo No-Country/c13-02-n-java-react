@@ -29,15 +29,38 @@ function App() {
                         <Route
                             path="/dashboard"
                             element={<Pages.Layout/>}
-
                             children={[
-                                <Route key="dashboard" index={true} element={<Pages.Dashboard/>}/>,
-                                <Route key="ingresos" path={"/dashboard/ingresos"} element={<Pages.Ingresos/>}/>,
-                                <Route key="egresos" path={"/dashboard/egresos"} element={<Pages.Egresos/>}/>,
-                                <Route key="inventario" path={"/dashboard/inventario"} element={<Pages.Inventario/>}/>,
-                                <Route key="productos" path={"/dashboard/productos"} element={<Pages.Productos/>}/>,
-                                <Route key="pedidos" path={"/dashboard/pedidos"} element={<Pages.Pedidos/>}/>,
-                                <Route key="settings" path={"/dashboard/settings"} element={<Pages.Setting/>}/>,
+                                <Route
+                                    key="dashboard"
+                                    index={true}
+                                    element={<Pages.Dashboard/>}
+                                />,
+                                <Route
+                                    key="ingresos"
+                                    path={"/dashboard/ingresos"}
+                                    element={<Pages.Ingresos/>}
+                                />,
+                                <Route
+                                    key="egresos"
+                                    path={"/dashboard/egresos"}
+                                    element={<Pages.Egresos/>}
+                                />,
+                                <Route
+                                    key="inventario"
+                                    path={"/dashboard/inventario"}
+                                    element={<Pages.Inventario/>}
+                                />,
+                                <Route
+                                    key="productos"
+                                    path={"/dashboard/productos"}
+                                    element={<Pages.Productos/>}
+                                />,
+
+                                <Route
+                                    key="settings"
+                                    path={"/dashboard/settings"}
+                                    element={<Pages.Setting/>}
+                                />,
                             ]}
                         />
                     </Route>

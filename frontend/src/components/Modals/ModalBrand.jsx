@@ -2,8 +2,13 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import useNewBrand from "../../hooks/useNewBrand";
 
 function ModalBrand({ setShow, show, handleClose, handleShow }) {
+
+
+const {handleSubmit,setBrand,brand ,brands, setBrands}=  useNewBrand()
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -18,12 +23,14 @@ function ModalBrand({ setShow, show, handleClose, handleShow }) {
                 type="text"
                 placeholder="Coca Cola, Pepsi, Arcor..."
                 autoFocus
+                value={brand}
+                onChange={(e)=>setBrand(e.target.value)}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
+          <Button variant="success" onClick={handleSubmit}>
             Agregar Marca
           </Button>
         </Modal.Footer>
