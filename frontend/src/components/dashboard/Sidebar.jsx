@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserProvider";
+import Imagenes from "../../assets/imagenes";
 
 function Sidebar() {
+
+  const {setToken} = useContext(UserContext)
+
   const navigate = useNavigate();
 
   const tokenDestroy = () => {
-    sessionStorage.setItem("token", '');
+    sessionStorage.clear();
+    localStorage.clear();
+    setToken(null)
 
     navigate("/");
   };
@@ -23,11 +31,11 @@ function Sidebar() {
       icon: `fa-solid fa-money-bill-transfer`,
       route: "/dashboard/egresos",
     },
-    {
+   /*  {
       label: "Inventario",
       icon: `fa-solid fa-box`,
       route: "/dashboard/inventario",
-    },
+    }, */
     {
       label: "Productos",
       icon: `fa-solid fa-list-check`,
@@ -46,12 +54,12 @@ function Sidebar() {
         {/*    <!-- Sidebar - Brand --> */}
         <Link
           to={"/dashboard"}
-          className="sidebar-brand d-flex align-items-center justify-content-center"
+          className="sidebar-brand d-flex align-items-center bg-white  justify-content-center"
         >
-          <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fas fa-laugh-wink"></i>
+          <div className="sidebar-brand-icon bg-white  ">
+         <img src={Imagenes.logo} alt="" className="w-25 " />
           </div>
-          <div className="sidebar-brand-text mx-3">FIMA</div>
+
         </Link>
 
         {/*  <!-- Divider --> */}

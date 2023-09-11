@@ -1,37 +1,115 @@
-import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
-import useAuth from "../../hooks/useAuth.jsx";
+import { Link, useNavigate } from "react-router-dom";
+
 import SpinnerLoad from "../../components/spinner/SpinnerLoad.jsx";
 import Imagenes from "../../assets/imagenes.jsx";
+//pruebaassss
+import { useState, useEffect } from "react";
 
-function Login() {
-  const {
+import Swal from "sweetalert2";
+
+import axios from "axios";
+import useAlert from "../../hooks/useAlert";
+import { request } from "../../config/helpers/axios_helper";
+
+//fin
+
+function Login({ auth, setAuth }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+ /*  const useAuth = () => { */
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      if (username && password) {
+        setIsLoading(true);
+        try {
+          const response = await request(
+            "POST",
+            `/login`,
+            JSON.stringify({ username, password }),
+            { headers: { "Content-Type": "application/json" } }
+          );
+          console.log(response.status);
+          if (response.status === 200) {
+            sessionStorage.setItem("token", response.data.token);
+            sessionStorage.setItem("username", username);
+            setAuth(true)
+            setIsLoading(false);
+            navigate("/dashboard");
+          } else {
+            setIsLoading(false);
+            //use alert
+            useAlert({
+              type: "error",
+              title: errors,
+              text: "Verifique sus datos",
+            });
+          }
+        } catch (error) {
+          setIsLoading(false);
+
+          //use alert
+          useAlert({
+            type: "error",
+            title: "Error de ingreso",
+            text: "Usuario o Contraseña inválidos ",
+          });
+        }
+      } else {
+        setErrors(["Complete los campos"]);
+        //use alert
+        useAlert({
+          type: "warning",
+          title: "Campos obligatorios",
+          text: "Complete los campos ",
+        });
+      }
+    };
+
+    /*     return{
+  
+        username,
+        setUsername,
+        password,
+        setPassword,
+        errors,
+        token,
+        handleSubmit,
+        isLoading,
+  
+  
+      } */
+ /*  }; */
+
+  /*   const {handleSubmit,
+    
     username,
     setUsername,
     password,
     setPassword,
-
-    handleSubmit,
-    isLoading,
-  } = useAuth();
-
+   
+    token,
   
+    isLoading,
+    navigate} = useAuth() */
 
   return (
     <section className="login">
       {/* cuadro de login */}
       <div className="login_panel">
-       
         <div className="login_image_logo">
-          <img src={Imagenes.logo} alt="Logo" /> 
-     
+          <img src={Imagenes.logo} alt="Logo" />
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
-          <p style={{width:'150px'}}>finance & inventory
- manager</p>
+          <p style={{ width: "150px" }}>finance & inventory manager</p>
           {isLoading ? <SpinnerLoad /> : ""}
-            
         </div>
 
         <h2>Iniciar sesión con correo electrónico</h2>
@@ -40,7 +118,6 @@ function Login() {
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
-         
 
           <div className="login_input">
             {/* input de usuario  */}

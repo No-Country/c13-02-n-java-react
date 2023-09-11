@@ -6,12 +6,12 @@ import * as Pages from "./pages";
 import ErrorPage from "./pages/404/ErrorPage.jsx";
 
 function App() {
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(localStorage.getItem('auth') || false );
 
   useEffect(() => {
     auth
       ? localStorage.setItem("auth", "true")
-      : localStorage.removeItem("auth");
+      :''
   }, [auth]);
 
   return (
@@ -20,10 +20,7 @@ function App() {
         <Routes>
           {/* Rutas sin proteger  */}
           <Route path="/" element={<Pages.Landing />} />
-          <Route
-            path="/login"
-            element={<Pages.Login auth={auth} setAuth={setAuth} />}
-          />
+          <Route path="/login" element={<Pages.Login auth={auth} setAuth={setAuth} />} />
           <Route path="/register" element={<Pages.Register />} />
           <Route path="/recoverPassword" element={<Pages.RecoverPassword />} />
           <Route
@@ -56,17 +53,17 @@ function App() {
                   path={"/dashboard/egresos"}
                   element={<Pages.Egresos />}
                 />,
-                <Route
+                /*     <Route
                   key="inventario"
                   path={"/dashboard/inventario"}
                   element={<Pages.Inventario />}
-                />,
+                  />, */
                 <Route
                   key="productos"
                   path={"/dashboard/productos"}
                   element={<Pages.Productos />}
                 />,
-               
+
                 <Route
                   key="settings"
                   path={"/dashboard/settings"}
