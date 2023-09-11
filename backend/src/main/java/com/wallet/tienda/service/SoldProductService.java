@@ -55,14 +55,6 @@ public class SoldProductService implements ISoldProductService {
     }
 
     @Override
-    public void update(SoldProductDTOReq soldProductDTOReq) throws IdNotFoundException {
-        if (!soldProductRepository.existsById(soldProductDTOReq.getId())) {
-            throw new IdNotFoundException("El producto vendido con id " + soldProductDTOReq.getId() + " no se encuentra registrado en base de datos");
-        }
-        soldProductRepository.save(modelMapper.map(soldProductDTOReq, SoldProduct.class));
-    }
-
-    @Override
     public void deleteById(Long id) throws IdNotFoundException {
         if (!soldProductRepository.existsById(id)) {
             throw new IdNotFoundException("El producto vendido con id " + id + " no se encuentra registrado en base de datos");
