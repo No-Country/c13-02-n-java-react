@@ -7,25 +7,25 @@ function useNewCategory() {
 
     const [token, setToken] = useState("");
 
-    useEffect(() => {
+ /*    useEffect(() => {
         const tokenRecovery = sessionStorage.getItem("token")
 
         setToken(tokenRecovery);
-    }, []);
+    }, []); */
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("este es el token ", token);
+     
         if (category != "") {
             try {
                 const response = await request("POST", "/categories", {
                     name: `${category}`,
 
 
-                }, { headers: {
+                }, /* { headers: {
                     'Authorization': `Bearer ${token}` // Utiliza Bearer Token
-                  }});
+                  }} */);
 
                 useAlert({
                     type: "success",
