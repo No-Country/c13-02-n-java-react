@@ -10,6 +10,5 @@ public interface ISoldProductService {
     void save(SoldProductDTOReq soldProductDTOReq) throws Exception;
     SoldProductDTORes getById(Long id) throws IdNotFoundException;
     Page<SoldProductDTORes> getAll(Pageable pageable);
-    void update(SoldProductDTOReq soldProductDTOReq) throws IdNotFoundException;
     void deleteById(Long id) throws IdNotFoundException;
 }

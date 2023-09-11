@@ -25,12 +25,9 @@ public class SoldProductService implements ISoldProductService {
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
-        if (!productRepository.existsById(soldProductDTOReq.getProduct().getId())) {
-           throw new IdNotFoundException("El producto con id " + soldProductDTOReq.getProduct().getId() + " no se encuentra registrado");
-        }
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        System.out.println(soldProduct.getProduct().toString());
-        soldProduct.setPrice(soldProduct.getProduct().getPrice());
+        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
+        soldProduct.setPrice(product.getPrice());
         soldProductRepository.save(soldProduct);
     }
 
@@ -48,14 +45,6 @@ public class SoldProductService implements ISoldProductService {
                 .map(sp -> modelMapper.map(sp, SoldProductDTORes.class))
                 .toList();
         return new PageImpl<>(soldProductDTORes, pageable , soldProductDTORes.size());
-    }
-
-    @Override
-    public void update(SoldProductDTOReq soldProductDTOReq) throws IdNotFoundException {
-        if (!soldProductRepository.existsById(soldProductDTOReq.getId())) {
-            throw new IdNotFoundException("El producto vendido con id " + soldProductDTOReq.getId() + " no se encuentra registrado en base de datos");
-        }
-        soldProductRepository.save(modelMapper.map(soldProductDTOReq, SoldProduct.class));
     }
 
     @Override
