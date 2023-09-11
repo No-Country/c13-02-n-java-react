@@ -26,12 +26,11 @@
   padding-right: 62px;
 }
 
-.login_image_logo {
-  width: 125px;
-  height: 125px;
+.login_image_logo img {
+  width: 100px;
+  height: 100px;
   margin-top: 20px;
-  border-radius: 50%;
-  background-color: black;
+  
 }
 
 .login_panel h1 {
@@ -134,7 +133,7 @@
 
 
 .--mt {
-  margin-top: 55px;
+  margin-top: 30px;
 }
 
 .option_login {
@@ -164,7 +163,7 @@
 
 .google_login img {
   width: 30px;
-  height: 36px;
+  height: 30px;
 }
 
 .errores{

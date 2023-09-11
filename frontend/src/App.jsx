@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import ProtectedRoute from "./hooks/ProtectedRoute.jsx";
 // Pages
 import * as Pages from "./pages";
+import ErrorPage from "./pages/404/ErrorPage.jsx";
 
 function App() {
     const [auth, setAuth] = useState(true);

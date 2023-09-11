@@ -17,6 +17,8 @@ import rectangle from "./img/Rectangle.svg";
 import perfil2 from "./img/perfil.png";
 import avatar from "./img/person.png";
 import background from "./img/bg.svg"
+import cover1 from'./img/cover1.png'
+import cover2 from'./img/cover2.png'
 
 const Imagenes = {
 	barras,
@@ -35,7 +37,9 @@ const Imagenes = {
 	rectangle,
 	perfil2,
 	avatar,
-	background
+	background,
+	cover1,
+	cover2
 };
 
 export default Imagenes;

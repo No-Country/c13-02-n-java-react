@@ -5,56 +5,70 @@ import SpinnerLoad from "../../components/spinner/SpinnerLoad.jsx";
 import Imagenes from "../../assets/imagenes.jsx";
 
 function Login() {
-  const {username, setUsername, password, setPassword, errors, handleSubmit,isLoading} = useAuth();
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+
+    handleSubmit,
+    isLoading,
+  } = useAuth();
+
   
+
   return (
     <section className="login">
       {/* cuadro de login */}
       <div className="login_panel">
-        {/* formulario de login  */}
+       
         <div className="login_image_logo">
-          {/*  <img src="#" alt="Logo" /> */}
+          <img src={Imagenes.avatar} alt="Logo" /> 
+     
         </div>
         <div className="text-center ">
           <h1>FIMA</h1>
           <p>Finance Manager</p>
+          {isLoading ? <SpinnerLoad /> : ""}
+            
         </div>
-
-
 
         <h2>Iniciar sesión con correo electrónico</h2>
 
-        {isLoading ? <SpinnerLoad/> : ''}
+        {/* formulario de login  */}
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* div del logo  */}
           {/* input de usuario  */}
-          {errors?.length > 0 ? <p className="errores">{errors} </p> : "" }
+         
 
           <div className="login_input">
-         
-         {/* input de usuario  */}
-         <div className="register_input --min ">
-           <label className="bg-select">Usuario</label>
-           <input type="text" value={username}
-           placeholder="Correo eléctronico" onChange={(e) => setUsername(e.target.value)} />
-         </div>
-         {/* input de empresa  */}
-         <div className="register_input --min">
-           <label className="bg-select">Contraseña</label>
-           {/* input password */}
+            {/* input de usuario  */}
+            <div className="register_input --min ">
+              <label className="bg-select">Usuario</label>
+              <input
+                type="text"
+                value={username}
+                placeholder="Correo eléctronico"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            {/* input de empresa  */}
+            <div className="register_input --min">
+              <label className="bg-select">Contraseña</label>
+              {/* input password */}
 
-           <input
-              type="password"
-              placeholder="Contraseña"
+              <input
+                type="password"
+                placeholder="Contraseña"
                 value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-         </div>
-      </div>
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
 
-          <a className="recover_link_login" href="#">
+          <Link className="recover_link_login" to={"/recoverPassword"}>
             ¿Olvidó su contraseña?
-          </a>
+          </Link>
 
           <div className="option_login">
             <input type="submit" value={"Login"} />
