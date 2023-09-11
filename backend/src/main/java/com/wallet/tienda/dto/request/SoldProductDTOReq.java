@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SoldProductDTOReq {
     private Long id;
-    private Double price;
     private int quantity;
     private ProductDTOReq product;
 }

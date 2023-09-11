@@ -32,12 +32,6 @@ public class SoldProductController {
     public ResponseEntity<SoldProductDTORes> getById(@PathVariable Long id) throws IdNotFoundException {
         return ResponseEntity.ok(soldProductService.getById(id));
     }
-
-    @PatchMapping()
-    public ResponseEntity<HttpStatus> update(@Valid @RequestBody SoldProductDTOReq soldProductDTOReq) throws IdNotFoundException {
-        soldProductService.update(soldProductDTOReq);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable Long id) throws IdNotFoundException {
         soldProductService.deleteById(id);
