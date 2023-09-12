@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import Imagenes from "../../assets/imagenes.jsx";
+import {getLocalStorageIdUtil} from "../../config/utils/getLocalStorageIdUtil.js";
+import userProfile from "../../services/products.js";
+import {useEffect, useState} from "react";
 
 function TopBar() {
-  const nickName = sessionStorage.getItem("username");
+  const [userData, setUserData] = useState({});
+  const AxiosUserDataDos = async () => {
+    try {
+      // Todo: consumir la API para obtener los datos del usuario
+      const id = getLocalStorageIdUtil("id")
+      const userData = await userProfile.getUser(`users/${id}`);
+      setUserData(userData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    AxiosUserDataDos().then(r => console.log(r));
+  }, []);
 
   return (
     <>
@@ -10,7 +26,7 @@ function TopBar() {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item  d-flex justify-content-center  align-items-center ">
 
-          {nickName}
+            {userData.fullName}
             <Link className="nav-link " to={"/dashboard/settings"}>
               
               <img className="img-profile rounded-circle" src={Imagenes.avatar} alt="avatar"/>

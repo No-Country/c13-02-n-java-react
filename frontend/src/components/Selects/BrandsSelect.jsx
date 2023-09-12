@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
 
 import { Form } from "react-bootstrap";
+import createCategory from "../../services/products.js";
 
 function BrandsSelect() {
   const [brands, setBrands] = useState([]);
 
   const getBrands = async () => {
     try {
-      const response = await axios.get(
-
-        "/brands",
-        setBrands(),
-
-        
-      );
-
-      setBrands(response.data.content);
+      const bransData = await createCategory.getAll('brands');
+      setBrands(bransData.content);
+      console.log(bransData);
     } catch (error) {
       console.log(error);
     }

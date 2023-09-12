@@ -2,28 +2,24 @@ import React, {useEffect, useRef, useState} from "react";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { BsEnvelopeFill } from "react-icons/bs";
 import Imagenes from "../../../assets/imagenes.jsx";
-import {formGroups} from "../../../config/models/ArraysItems.js";
+// import {formGroups} from "../../../config/models/ArraysItems.js";
 import axios from "axios";
-import {request} from "../../../config/helpers/axios_helper.jsx";
+import userProfile from "../../../services/products.js";
+import {getLocalStorageIdUtil} from "../../../config/utils/getLocalStorageIdUtil.js";
 
 const Settings = () => {
 	const [selectFile, setSelectFile] = useState(null);
 	const [userData, setUserData] = useState({}); // Para almacena los datos del usuario
 	const fileInputRef = useRef(null);
-
 	const handleFileChange = event => setSelectFile(event.target.files[0]);
 	const handleUploadButtonClick = () => fileInputRef.current.click();
-
-	// Funcion para cargar los datos del usuario
-	const fetchUserData = async () => {
+	const AxiosUserData = async () => {
 		try {
-			const response = await request("GET", "/users/1");
-			if(response.ok) {
-				const data = await response .json();
-				setUserData(data);
-			} else {
-				console.log("Error al cargar los datos del usuario");
-			}
+			// Todo: consumir la API para obtener los datos del usuario
+			const id = getLocalStorageIdUtil("id")
+			const userData = await userProfile.getUser(`users/${id}`);
+			setUserData(userData);
+			console.log(userData);
 		} catch (error) {
 			console.log(error);
 		}
@@ -31,17 +27,18 @@ const Settings = () => {
 
 	// Cargar los datos del usuario
 	useEffect(() => {
-		fetchUserData();
+		AxiosUserData().then(r => console.log(r));
 	}, []);
 
 	return (
 		<Container>
 			{/* Imagen */}
-			<Col xs={1} sm={2} md={12}>
+			<Col xs={1} sm={2} md={12} className='image__profile'>
 				<Image
 					src={selectFile ? URL.createObjectURL(selectFile) : Imagenes.perfil2}
 					alt='Perfil'
 					roundedCircle
+					style={{width: "100px", height: "100px"}}
 				/>
 				<input
 					type='file'
@@ -58,17 +55,35 @@ const Settings = () => {
 			<hr />
 			<Col>
 				<Form xs={1} md={12} className='g-4'>
-					{formGroups.map((group, index) => (
-						<Row md={2} key={index}>
-							{group.map((field, fieldIndex) => (
-								<Form.Group className='mb-3' controlId={`formGroup${index}-${fieldIndex}`} key={fieldIndex}>
-									<Form.Label>{field.label}</Form.Label>
-									<Form.Control type={field.type} placeholder={field.placeholder} value={userData[field.label]} />
-								</Form.Group>
-							))}
-						</Row>
-						))}
-					{/* Boton */}
+					<Row md={2}>
+						<Form.Group className='mb-3' controlId='formGroupUsername'>
+							<Form.Label>FullName</Form.Label>
+							<Form.Control type='text' placeholder={userData.fullName || 'FullName'} disabled={true}/>
+						</Form.Group>
+						<Form.Group className='mb-3' controlId='formGroupUsername'>
+							<Form.Label>Email</Form.Label>
+							<Form.Control type='text' placeholder={userData.username || 'Username'} disabled={true}/>
+						</Form.Group>
+					</Row>
+					<Row md={2}>
+						<Form.Group className='mb-3' controlId='formGroupUsername'>
+							<Form.Label>Business Name</Form.Label>
+							<Form.Control type='text' placeholder={userData.businessName || 'Business Name'}
+										  disabled={true}/>
+						</Form.Group>
+						<Form.Group className='mb-3' controlId='formGroupUsername'>
+							<Form.Label>Password</Form.Label>
+							<Form.Control type='password' placeholder={'**********'}
+										  disabled={true}/>
+						</Form.Group>
+					</Row>
+					<Row md={2}>
+						<Form.Group className='mb-3' controlId='formGroupUsername'>
+							<Form.Label>Phone</Form.Label>
+							<Form.Control type='text' placeholder={userData.phone || 'Phone'}
+										  disabled={true}/>
+						</Form.Group>
+					</Row>
 					<div className="d-flex justify-content-end">
 						<Button variant='primary' type='submit'>
 							Update Profile
@@ -79,5 +94,6 @@ const Settings = () => {
 		</Container>
 	);
 };
+
 
 export default Settings;

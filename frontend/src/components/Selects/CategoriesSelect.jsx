@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
-import { request } from "../../config/helpers/axios_helper";
 import { Form } from "react-bootstrap";
+import createCategory from "../../services/products.js";
 
 function CategoriesSelect() {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
     try {
-      const response = await request(
-        "GET",
-        "/categories",
-        setCategories(),
+        const categoryData = await createCategory.getAll('categories');
+        setCategories(categoryData.content);
+        console.log(categoryData);
 
-        
-      );
-
-      setCategories(response.data.content);
     } catch (error) {
       console.log(error);
     }

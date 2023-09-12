@@ -17,17 +17,6 @@ const menuItems = [
   },
 ];
 
-const formGroups = [
-  [
-    { label: "Username", type: "text", placeholder: "Username" },
-    { label: "Email", type: "email", placeholder: "Enter email" },
-  ],
-  [
-    { label: "Business Name", type: "text", placeholder: "Business Name" },
-    { label: "Password", type: "password", placeholder: "Password" },
-  ],
-  [{ label: "Phone", type: "number", placeholder: "Phone" }],
-];
 
 /* data para las cards de prueba  */
 const dataCardsDashboard = [
@@ -281,7 +270,7 @@ const currentDate = new Date();
 
 export {
   menuItems,
-  formGroups,
+  // formGroups,
   dataCardsDashboard,
   dataMeses,
   currentDate,

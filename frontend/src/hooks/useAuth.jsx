@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 
 import axios from "axios";
 import useAlert from "../hooks/useAlert";
-import { request } from "../config/helpers/axios_helper";
 
 
 const useAuth = () =>{
@@ -23,28 +22,15 @@ const useAuth = () =>{
         if (username && password) {
           setIsLoading(true);
           try {
-            const response = await request(
-              "POST",
-              `/login`,
-              JSON.stringify({ username, password }),
-              { headers: { "Content-Type": "application/json" } }
-              );
-            console.log(response.status);
-            if (response.status === 200) {
-              sessionStorage.setItem("token", response.data.token);
-              sessionStorage.setItem("username", username);
-             
-              setIsLoading(false);
-              navigate("/dashboard");
-            } else {
-              setIsLoading(false);
-              //use alert
+
+
+            //use alert
               useAlert({
                 type: "error",
                 title: errors,
                 text: "Verifique sus datos",
               });
-            }
+
           } catch (error) {
             setIsLoading(false);
             

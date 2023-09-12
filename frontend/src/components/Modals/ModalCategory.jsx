@@ -4,11 +4,11 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useNewCategory from "../../hooks/useNewCategory";
 
+
 function ModalCategory({ setShow, show, handleClose, handleShow, showControl}) {
 
 
 const {handleSubmit,category,setCategory,categories, setCategories} = useNewCategory()
-
 
   return (
     <>

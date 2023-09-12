@@ -7,6 +7,7 @@ import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Category;
 import com.wallet.tienda.repository.ICategoryRepository;
 import com.wallet.tienda.util.IWordsConverter;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,12 +19,14 @@ import java.util.ArrayList;
 
 @Service
 public class CategoryService implements ICategoryService{
+
     @Autowired
     private ICategoryRepository categoryRepository;
     @Autowired
     private IWordsConverter wordsConverter;
     @Autowired
     private ModelMapper modelMapper;
+
 
     //CREA UNA CATEGORIA
     @Override
@@ -41,7 +44,7 @@ public class CategoryService implements ICategoryService{
     @Override
     public CategoryDTORes getCategoryById(Long categoryId) throws IdNotFoundException {
         return modelMapper.map(categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no exite. Ingrese un nuevo id")), CategoryDTORes.class);
+                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no existe. Ingrese un nuevo id")), CategoryDTORes.class);
     }
 
     //LISTA CATEGORIAS PAGINADAS
@@ -53,7 +56,7 @@ public class CategoryService implements ICategoryService{
         for (Category category : categoriesDB) {
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
-        return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
+        return new PageImpl<>(categoriesDTO, pageable, categoriesDB.getTotalElements());
     }
 
     //ACTUALIZA UNA CATEGORIA

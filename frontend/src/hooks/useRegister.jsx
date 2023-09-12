@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { request } from "../config/helpers/axios_helper.jsx";
 import { useFormData } from "../config/models/formData.js";
 import { validateRegisterUtils } from "../config/utils/validationUtils.js";
 import useAlert from "./useAlert.jsx";
+import createUser from "../services/products.js";
 
 const useRegister = () => {
   const { formData, handleChange } = useFormData();
@@ -49,9 +49,12 @@ const useRegister = () => {
     try {
       setIsLoading(true);
       // Realiza la solicitud POST a tu endpoint
-      const response = await request("POST", "/users/register", {
+      createUser.create("users/register", {
         ...userData,
-      });
+      })
+      //const response = await request("POST", "/users/register", {
+      //  ...userData,
+      //});
 
       // Maneja la respuesta aquí, por ejemplo, puedes mostrar un mensaje de éxito o redireccionar al usuario.
       console.log("Usuario registrado con éxito:", response.data);

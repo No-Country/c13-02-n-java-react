@@ -2,6 +2,8 @@ export const validateRegisterUtils = (formData) => {
     const {fullName, username, password, confirmPassword, businessName, phone} = formData;
     const errors = [];
 
+    if (!fullName || !username || !password || !confirmPassword || !phone || !businessName) return alert('Por favor, completa todos los campos');
+
     if (!fullName.trim()) {
         errors.push('Full Name  es requerido');
     }
@@ -46,7 +48,6 @@ export const validateRegisterUtils = (formData) => {
     return errors;
 }
 
-// if (!fullName || !email || !password || !confirmPassword || !phone || !businessName) return alert('Por favor, completa todos los campos');
 // if(password.length < 8) return alert('La contraseña debe tener al menos 8 caracteres');
 // if(phone.length < 10) return alert('El teléfono debe tener al menos 10 caracteres');
 // if(businessName.length < 3) return alert('El nombre de la empresa debe tener al menos 3 caracteres');

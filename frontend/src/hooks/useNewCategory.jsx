@@ -1,36 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { request } from "../config/helpers/axios_helper";
 import useAlert from "./useAlert";
+import createCategory from "../services/products.js";
 
 function useNewCategory() {
     const [category, setCategory] = useState("");
 
-    const [token, setToken] = useState("");
-
- /*    useEffect(() => {
-        const tokenRecovery = sessionStorage.getItem("token")
-
-        setToken(tokenRecovery);
-    }, []); */
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-     
-        if (category != "") {
+        if (category !== "") {
             try {
-                const response = await request("POST", "/categories", {
-                    name: `${category}`,
-
-
-                }, /* { headers: {
-                    'Authorization': `Bearer ${token}` // Utiliza Bearer Token
-                  }} */);
+                if (category) {
+                    const categoryData = await createCategory.create('categories', {name: category});
+                    setCategory("");
+                }
 
                 useAlert({
                     type: "success",
                     title: "Cargado con éxito",
-
                 });
 
             } catch (error) {

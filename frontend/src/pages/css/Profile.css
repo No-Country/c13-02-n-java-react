@@ -10,3 +10,9 @@
     color: black;
     border: 1px solid black;    
 }
+
+.image__profile {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}

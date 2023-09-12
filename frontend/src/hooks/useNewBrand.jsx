@@ -3,38 +3,25 @@ import axios from "axios";
 import useAlert from "./useAlert";
 import { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
+import createCategory from "../services/products.js";
 function useNewBrand() {
-  const { token,Url_API } = useContext(UserContext);
-
-  console.log(token, "desde brand");
-
   const [brand, setBrand] = useState("");
- 
+  const [brands, setBrands] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (brand != "") {
+    if (brand !== "") {
       try {
-        const response = await axios.post(
-          
-          "/brands",
-          {
-            name: `${brand}`,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Utiliza Bearer Token
-            },
-          }
-        );
+        if (brand) {
+          const categoryData = await createCategory.create('brands', {name: brand});
+          setBrand("");
+        }
 
         useAlert({
           type: "success",
           title: "Cargado con éxito",
         });
-
-        console.log(response);
       } catch (error) {
         console.log(error);
         useAlert({
@@ -52,7 +39,7 @@ function useNewBrand() {
     }
   };
 
-  return { handleSubmit, setBrand, brand, brands, setBrands };
+  return {handleSubmit, setBrand, brand};
 }
 
 export default useNewBrand;

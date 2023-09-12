@@ -9,6 +9,7 @@ import com.wallet.tienda.repository.IExpenseRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -17,15 +18,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class ExpenseService implements IExpenseService {
 
-
-    private final IExpenseRepository expenseRepository;
-
+    @Autowired
+    private IExpenseRepository expenseRepository;
+    @Autowired
     private IWordsConverter wordsConverter;
-
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
     //CREAR UN GASTO
     @Override
@@ -55,7 +55,7 @@ public class ExpenseService implements IExpenseService {
         for (Expense expense : expenses) {
             expensesDTO.add(modelMapper.map(expense, ExpenseDTORes.class));
         }
-        return new PageImpl<>(expensesDTO, pageable, expensesDTO.size());
+        return new PageImpl<>(expensesDTO, pageable, expenses.getTotalElements());
     }
 
     //MODIFICA UN GASTO POR ID

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "sold_products")
 @Data
@@ -16,9 +18,7 @@ public class SoldProduct {
     private Long id;
     private Double price;
     private int quantity;
-    @ManyToOne
-    @JoinColumn(name = "fk_sale")
-    private Sale sale;
+    private LocalDate localDate;
     @ManyToOne
     @JoinColumn(name = "fk_product")
     private Product product;
