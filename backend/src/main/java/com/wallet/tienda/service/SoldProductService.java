@@ -9,7 +9,6 @@ import com.wallet.tienda.repository.ISaleRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -29,9 +28,12 @@ public class SoldProductService implements ISoldProductService {
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
+        Product product = productRepository.findById(soldProductDTOReq.getProduct().getId()).orElseThrow(
+                () -> new IdNotFoundException("No se encontro el producto")
+        );
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
-        soldProduct.setPrice(product.getPrice());
+        soldProduct.setPrice(soldProduct.getProduct().getPrice());
+        calculateStock(soldProduct, product);
         soldProductRepository.save(soldProduct);
     }
 
@@ -57,5 +59,15 @@ public class SoldProductService implements ISoldProductService {
             throw new IdNotFoundException("El producto vendido con id " + id + " no se encuentra registrado en base de datos");
         }
         soldProductRepository.deleteById(id);
+    }
+
+    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    public void calculateStock(SoldProduct soldProduct, Product product) throws StockNotFoundException {
+        if (product != null && product.getStock() >= soldProduct.getQuantity()){
+            product.setStock(product.getStock()-soldProduct.getQuantity());
+            productRepository.save(product);
+        }else{
+            throw new StockNotFoundException("No hay suficiente stock del producto " + product.getName());
+        }
     }
 }
