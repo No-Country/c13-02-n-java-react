@@ -9,7 +9,7 @@ function useNewBrand() {
   console.log(token, "desde brand");
 
   const [brand, setBrand] = useState("");
-  const [brands, setBrands] = useState([]);
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
