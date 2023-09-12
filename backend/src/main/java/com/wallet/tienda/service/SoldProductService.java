@@ -3,12 +3,14 @@ package com.wallet.tienda.service;
 import com.wallet.tienda.dto.request.SoldProductDTOReq;
 import com.wallet.tienda.dto.response.SoldProductDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
+import com.wallet.tienda.exception.StockNotFoundException;
+import com.wallet.tienda.model.Product;
 import com.wallet.tienda.model.SoldProduct;
 import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.repository.ISaleRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +34,7 @@ public class SoldProductService implements ISoldProductService {
                 () -> new IdNotFoundException("No se encontro el producto")
         );
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        soldProduct.setPrice(soldProduct.getProduct().getPrice());
+        soldProduct.setPrice(product.getPrice());
         calculateStock(soldProduct, product);
         soldProductRepository.save(soldProduct);
     }
