@@ -37,7 +37,17 @@ public class BuyService implements IBuyService{
     @Override
     public void saveBuy(BuyDTOReq buyDTOReq) throws Exception {
         Buy buy = modelMapper.map(buyDTOReq, Buy.class);
-        buy.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq));
+        if (buyDTOReq.getPurchasedProducts() == null) {
+            buy.setTotalPrice(0.0);
+        }
+        double totalPrice = 0.0;
+        for (BoughtProductDTOReq boughtProductDTOReq : buyDTOReq.getPurchasedProducts()) {
+            BoughtProduct boughtProduct = boughtProductRepository.findById(boughtProductDTOReq.getId()).orElseThrow(
+                    () -> new IdNotFoundException("No se encontro el producto comprado")
+            );
+            buy.setTotalPrice(calculateTotalPrice(boughtProduct, totalPrice));
+            calculateStock(boughtProduct);
+        }
         buyRepository.save(buy);
     }
 
@@ -67,7 +77,6 @@ public class BuyService implements IBuyService{
             throw new IdNotFoundException("El id " + buyDTOReq.getId() + " no existe");
         }
         var buyUpdate = modelMapper.map(buyDTOReq, Buy.class);
-        buyUpdate.setTotalPrice(this.calculateTotalPriceAndStock(buyDTOReq));
         buyRepository.save(buyUpdate);
     }
 
@@ -77,26 +86,23 @@ public class BuyService implements IBuyService{
         buyRepository.deleteById(id);
     }
 
-    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA y AJUSTA EL STOCK
-    public Double calculateTotalPriceAndStock(BuyDTOReq buyDTOReq) throws IdNotFoundException {
-        if (buyDTOReq.getPurchasedProducts() == null) {
-            return 0.0;
-        }
-        double totalPrice = 0.0;
-        for (BoughtProductDTOReq boughtProductDTOReq : buyDTOReq.getPurchasedProducts()) {
-            BoughtProduct boughtProduct = boughtProductRepository.findById(boughtProductDTOReq.getId()).orElseThrow(
-                    () -> new IdNotFoundException("No se encontro el producto comprado")
-            );
-            if (boughtProduct != null) {
-                totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
-                Product product = productRepository.findById(boughtProduct.getProduct().getId()).orElseThrow(
-                        () -> new IdNotFoundException("No se encontro el producto")
-                );
-                if (product != null){
-                    product.setStock(product.getStock()+boughtProduct.getQuantity());
-                }
-            }
+    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
+    public Double calculateTotalPrice(BoughtProduct boughtProduct,double totalPrice) {
+        if (boughtProduct != null) {
+            totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
         }
         return totalPrice;
     }
+
+    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    public void calculateStock(BoughtProduct boughtProduct) throws IdNotFoundException {
+        Product product = productRepository.findById(boughtProduct.getProduct().getId()).orElseThrow(
+                () -> new IdNotFoundException("No se encontro el producto")
+        );
+        if (product != null){
+            product.setStock(product.getStock()+boughtProduct.getQuantity());
+            productRepository.save(product);
+        }
+    }
+
 }
