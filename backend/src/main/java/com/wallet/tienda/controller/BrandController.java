@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * Clase controladora de marcas
  * @Autor Maria Paez, David Ramon Thomen
  */
-@Tag(name = "Controlador de marca")
+@Tag(name = "Controlador de marcas")
 @RestController
 @RequestMapping("/api/v1/brands")
 public class BrandController {

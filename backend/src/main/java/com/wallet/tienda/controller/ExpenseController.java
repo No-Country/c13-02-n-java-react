@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * Clase de controlador de gastos
  * @Autor Damian Della Corte
  */
-@Tag(name = "Controlador de Gasto")
+@Tag(name = "Controlador de gastos")
 @RestController
 @RequestMapping("/api/v1/expenses")
 public class ExpenseController {

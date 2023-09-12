@@ -6,6 +6,7 @@ import com.wallet.tienda.service.ICustomerUserService;
 import com.wallet.tienda.service.IEmailService;
 import com.wallet.tienda.service.ITokenService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Tag(name = "Controlador de envio de correos")
 @RestController
 @RequestMapping("api/v1/password")
 public class EmailSenderController {

@@ -7,6 +7,7 @@ import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.service.ICustomerUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.RoleNotFoundException;
 
+@Tag(name = "Controlador de usuarios")
 @RestController
 @RequestMapping("/api/v1/users")
 public class CustomUserController {
