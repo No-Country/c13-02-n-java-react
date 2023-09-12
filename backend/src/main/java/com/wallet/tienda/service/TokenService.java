@@ -1,6 +1,5 @@
 package com.wallet.tienda.service;
 
-import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.model.Token;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.ITokenRepository;
@@ -16,7 +15,6 @@ public class TokenService implements ITokenService{
 
     @Autowired
     private ITokenRepository tokenRepository;
-
     @Autowired
     private ICustomerUserRepository userRepository;
 

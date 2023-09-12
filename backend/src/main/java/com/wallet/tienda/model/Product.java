@@ -19,19 +19,10 @@ public class Product {
     private int stock;
     private String imageUrl;
     @ManyToOne
-    @JoinColumn(name = "fk_user")
-    private CustomerUser user;
-    @ManyToOne
     @JoinColumn(name = "fk_brand")
     private Brand brand;
     @ManyToOne
     @JoinColumn(name = "fk_category")
     private Category category;
-    @ManyToOne
-    @JoinColumn(name = "fk_provider")
-    private Provider provider;
-    @ManyToOne
-    @JoinColumn(name = "fk_order")
-    private Order order;
 
 }

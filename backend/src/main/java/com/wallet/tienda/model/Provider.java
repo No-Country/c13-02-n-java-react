@@ -1,11 +1,10 @@
 package com.wallet.tienda.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Table(name = "providers")
@@ -17,10 +16,9 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany
-    @JoinTable( name = "provider_user",
-    joinColumns = @JoinColumn (name = "id_provider"),
-    inverseJoinColumns = @JoinColumn (name = "id_user"))
-    private List<CustomerUser> users;
-
+    private int phone;
+    private String email;
+    private String web;
+    @Lob
+    private String description;
 }

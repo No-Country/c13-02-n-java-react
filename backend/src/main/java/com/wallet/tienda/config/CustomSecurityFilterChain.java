@@ -39,17 +39,22 @@ public class CustomSecurityFilterChain {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/password/**", "/api/v1/login",
-                                        "/api/v1/users/register", "/swagger-ui/**", "/v3/api-docs/**")
+                        auth.requestMatchers("/api/v1/password/**", "/api/v1/login", "/swagger-ui/**", "/v3/api-docs/**")
                                 .permitAll())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/users",
+                        auth.requestMatchers(
                                 "/api/v1/products",
+                                "/api/v1/sales",
+                                "/api/v1/sold-products",
                                 "/api/v1/brands",
                                 "/api/v1/buys",
                                 "/api/v1/bought-products",
                                 "/api/v1/providers",
-                                "/api/v1/categories").hasRole("USER")
+                                "/api/v1/categories").hasAnyRole("USER", "ADMIN")
+
+                )
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/api/v1/users", "/api/v1/reports").hasRole("ADMIN")
 
                 )
                 .authorizeHttpRequests(

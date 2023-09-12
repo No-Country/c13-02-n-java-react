@@ -4,10 +4,12 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useNewBrand from "../../hooks/useNewBrand";
 
+
 function ModalBrand({ setShow, show, handleClose, handleShow }) {
 
 
 const {handleSubmit,setBrand,brand ,brands, setBrands}=  useNewBrand()
+
 
   return (
     <>

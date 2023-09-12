@@ -7,7 +7,6 @@ import com.wallet.tienda.model.BoughtProduct;
 import com.wallet.tienda.repository.IBoughtProductRepository;
 import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,8 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class BoughtProductService implements IBoughtProductService {
+
     @Autowired
     private IBoughtProductRepository repository;
     @Autowired
@@ -31,12 +30,11 @@ public class BoughtProductService implements IBoughtProductService {
 
     @Override
     public void saveBoughtProduct(BoughtProductDTOReq boughtProductDTO) throws IdNotFoundException {
-        if (!buyRepository.existsById(boughtProductDTO.getBuy().getId())) {
-            throw new IdNotFoundException("La compra ingresada no se encuentra registrada");
-        }
-        var productDB = productRepository.findById(boughtProductDTO.getProduct().getId())
-                .orElseThrow(() -> new IdNotFoundException("El id " + boughtProductDTO.getProduct().getId() + " no existe"));
-        repository.save(modelMapper.map(boughtProductDTO, BoughtProduct.class));
+        var product = productRepository.findById(boughtProductDTO.getProduct().getId())
+                .orElseThrow(() -> new IdNotFoundException("El producto ingresado no se encuentra registrado"));
+        var boughtProduct = modelMapper.map(boughtProductDTO, BoughtProduct.class);
+        boughtProduct.setPrice(product.getPrice());
+        repository.save(boughtProduct);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class BoughtProductService implements IBoughtProductService {
             var productDTO = modelMapper.map(boughtProduct, BoughtProductDTORes.class);
             productsDTO.add(productDTO);
         }
-        return new PageImpl<>(productsDTO, pageable, productsDTO.size());
+        return new PageImpl<>(productsDTO, pageable, boughtProducts.getTotalElements());
     }
 
     @Override

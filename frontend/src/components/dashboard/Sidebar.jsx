@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import {useContext, useEffect} from "react";
 import { UserContext } from "../../context/UserProvider";
 import Imagenes from "../../assets/imagenes";
 
 function Sidebar() {
-
   const {setToken} = useContext(UserContext)
-
   const navigate = useNavigate();
 
-  const tokenDestroy = () => {
-    sessionStorage.clear();
-    localStorage.clear();
+  const handleLogout = () => {
+    window.sessionStorage.clear();
+    window.localStorage.clear();
     setToken(null)
 
     navigate("/");
@@ -106,7 +104,7 @@ function Sidebar() {
 
         {/*    <!-- Nav Item - Tables --> */}
         <li className="nav-item">
-          <button className="nav-link" onClick={() => tokenDestroy()}>
+          <button className="nav-link" onClick={() => handleLogout()}>
             <i className="fa-solid fa-arrow-right-from-bracket"></i>
             <span>Salir</span>
           </button>

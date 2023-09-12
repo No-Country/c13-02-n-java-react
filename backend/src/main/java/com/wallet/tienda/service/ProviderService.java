@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 @Service
 public class ProviderService implements IProviderService{
+
     @Autowired
     private IProviderRepository providerRepository;
     @Autowired
@@ -53,7 +54,7 @@ public class ProviderService implements IProviderService{
         for (Provider provider : providersDB) {
             providersDTO.add(modelMapper.map(provider, ProviderDTORes.class));
         }
-        return new PageImpl<>(providersDTO, pageable, providersDTO.size());
+        return new PageImpl<>(providersDTO, pageable, providersDB.getTotalElements());
     }
 
     //ACTUALIZA UN PROOVEDOR

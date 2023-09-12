@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { request } from "../config/helpers/axios_helper.jsx";
 
 const useRecovery = () => {
   const [username, setUsername] = useState("");
@@ -15,9 +14,7 @@ const useRecovery = () => {
 
     try {
       // Realiza la solicitud POST a tu endpoint
-      const response = await request("POST", "/password/recovery", {
-      email:  `${username}`
-      });
+      // Todo: Recovert password
 
       // Maneja la respuesta aquí, por ejemplo, puedes mostrar un mensaje de éxito o redireccionar al usuario.
       console.log("Recupero de contraseña ", response.data.token);

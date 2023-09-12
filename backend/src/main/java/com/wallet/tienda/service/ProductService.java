@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 @Service
 public class ProductService implements IProductService{
+
     @Autowired
     private IProductRepository productRepository;
     @Autowired
@@ -53,7 +54,7 @@ public class ProductService implements IProductService{
         for (Product product : productsDB) {
             productsDTO.add(modelMapper.map(product, ProductDTORes.class));
         }
-        return new PageImpl<>(productsDTO, pageable, productsDTO.size());
+        return new PageImpl<>(productsDTO, pageable, productsDB.getTotalElements());
     }
 
     //ACTUALIZA UN PRODUCTO
