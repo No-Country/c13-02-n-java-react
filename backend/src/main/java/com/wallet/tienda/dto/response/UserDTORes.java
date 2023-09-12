@@ -13,6 +13,6 @@ public class UserDTORes {
     private String fullName;
     private String username;
     private String photoUrl;
-    private int phone;
+    private String phone;
     private String businessName;
 }

@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -21,11 +22,11 @@ import org.springframework.web.bind.annotation.*;
  */
 @Tag(name = "Controlador de Gasto")
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1/expenses")
 public class ExpenseController {
-    
-    private final IExpenseService expenseService;
+
+    @Autowired
+    private IExpenseService expenseService;
 
     @Operation(
             summary = "Guarda un gasto",

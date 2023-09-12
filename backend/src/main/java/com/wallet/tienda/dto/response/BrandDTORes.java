@@ -12,5 +12,4 @@ import java.util.List;
 public class BrandDTORes {
     private Long id;
     private String name;
-    private List<ProductDTORes> products;
 }

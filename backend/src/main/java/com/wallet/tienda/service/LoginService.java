@@ -5,16 +5,19 @@ import com.wallet.tienda.dto.response.AuthResponseDTORes;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.util.JWTUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class LoginService implements ILoginService{
 
+    @Autowired
     private JWTUtils jwtUtils;
+    @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
     private ICustomerUserRepository userRepository;
 
     @Override

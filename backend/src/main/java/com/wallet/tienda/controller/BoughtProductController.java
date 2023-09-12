@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -21,10 +22,10 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Controlador de productos comprados")
 @RestController
 @RequestMapping("api/v1/bought-products")
-@RequiredArgsConstructor
 public class BoughtProductController {
 
-    private final IBoughtProductService boughtProductService;
+    @Autowired
+    private IBoughtProductService boughtProductService;
 
     /**
      * Metodo para guardar un producto comprado y sus detalles, que devuelve un codigo de estado 200 ok

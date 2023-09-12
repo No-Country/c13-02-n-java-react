@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 public class BrandService implements IBrandService{
 
     @Autowired
-    IBrandRepository brandRepository;
+    private IBrandRepository brandRepository;
 
     @Autowired
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     @Override
     public Page<BrandDTORes> listAllBrands(Pageable pageable) {

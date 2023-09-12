@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/brands")
 public class BrandController {
+
     @Autowired
     private IBrandService brandService;
+
 
     /**
      * Metodo para traer de base de datos todos las marcas paginadas

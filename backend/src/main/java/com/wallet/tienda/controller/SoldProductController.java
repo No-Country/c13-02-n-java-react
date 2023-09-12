@@ -5,7 +5,7 @@ import com.wallet.tienda.dto.response.SoldProductDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.service.ISoldProductService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/sold-products")
-@RequiredArgsConstructor
 public class SoldProductController {
-    private final ISoldProductService soldProductService;
+
+    @Autowired
+    private ISoldProductService soldProductService;
 
     @PostMapping()
     public ResponseEntity<HttpStatus> create(@RequestBody @Valid SoldProductDTOReq soldProductDTOReq) throws Exception {

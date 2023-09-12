@@ -41,7 +41,7 @@ public class EmailSenderController {
             description = "Genera un token para la recuperacion de contraseña y la envia por correo al usuario, devuelve un codigo de estado creado ")
     @PostMapping("/recovery")
     public ResponseEntity<Map<String, Object>> sendEmail(@Valid @RequestBody RecoverPasswordDTOReq user)
-            throws UsernameNotFoundException, MessagingException, MessagingException {
+            throws UsernameNotFoundException, MessagingException {
 
         //guardar token en BD
         var token = tokenService.saveToken(user.getEmail());
