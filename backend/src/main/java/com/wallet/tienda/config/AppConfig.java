@@ -14,13 +14,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Clase de configuracion de beans necesarios para la app
+ * @Autor David Ramon Thomen
+ */
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {
     private final ICustomerUserRepository userRepository;
     /**
-     * Configurar el encriptador de contraseña
-     * @return encriptador de contraseña
+     * Metodo que configura el bean encriptador de contraseña
+     * @return encriptador de contraseña BCrypt
      */
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -28,7 +32,7 @@ public class AppConfig {
     }
 
     /**
-     * Configura el bean de busqueda de informacion de usuario necesario para spring security
+     * Metodo que configura el bean de busqueda de informacion de usuario necesario para spring security
      * @return UserDetails
      */
     @Bean
@@ -37,7 +41,7 @@ public class AppConfig {
     }
 
     /**
-     * Configurar el proveedor de autenticacion
+     * Metodo que devuelve el proveedor de autenticacion configurado
      * @return AuthenticationProvider
      */
     @Bean
@@ -49,10 +53,10 @@ public class AppConfig {
     }
 
     /**
-     * configurar el administrador de autenticacion
-     * @param config
-     * @return AuthenticationManager
-     * @throws Exception
+     * Metodo para inyectar el administrador de autenticacion
+     * @param config configuracion de autenticacion de spring security
+     * @return AuthenticationManager administrador de autenticacion
+     * @throws Exception excepcion arrojada si falla en traer el authentication manager
      */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
@@ -61,7 +65,7 @@ public class AppConfig {
 
     /**
      * Bean para mapear del modelo al DTO o del DTO al modelo
-     * @return modelMapper
+     * @return modelMapper mapeador de informacion de una clase a otra
      */
     @Bean
     ModelMapper modelMapper() {
