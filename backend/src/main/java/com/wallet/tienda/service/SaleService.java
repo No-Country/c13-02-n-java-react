@@ -29,7 +29,20 @@ public class SaleService implements ISaleService{
     @Override
     public void save(SaleDTOReq saleDTOReq) throws Exception {
         Sale sale = modelMapper.map(saleDTOReq, Sale.class);
-        sale.setPrice(this.calculatePriceAndStock(saleDTOReq));
+        if (saleDTOReq.getSoldProducts() == null) {
+            sale.setPrice(0.0);
+        }
+        double price = 0.0;
+        for (SoldProductDTOReq soldProductDTOReq : saleDTOReq.getSoldProducts()) {
+            SoldProduct soldProduct = soldProductRepository.findById(soldProductDTOReq.getId()).orElseThrow(
+                    () -> new IdNotFoundException("No se encontro el producto comprado")
+            );
+            Product product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(
+                    () -> new IdNotFoundException("No se encontro el producto")
+            );
+            sale.setPrice(calculatePrice(soldProduct, price, product));
+            calculateStock(soldProduct, product);
+        }
         saleRepository.save(sale);
     }
 
@@ -58,29 +71,21 @@ public class SaleService implements ISaleService{
         saleRepository.deleteById(id);
     }
 
-    //CALCULA EL PRECIO TOTAL DE LA VENTA REALIZADA y AJUSTA EL STOCK
-    public Double calculatePriceAndStock(SaleDTOReq saleDTOReq) throws IdNotFoundException {
-        if (saleDTOReq.getSoldProducts() == null) {
-            return 0.0;
-        }
-        double price = 0.0;
-        for (SoldProductDTOReq soldProductDTOReq : saleDTOReq.getSoldProducts()) {
-            SoldProduct soldProduct = soldProductRepository.findById(soldProductDTOReq.getId()).orElseThrow(
-                    () -> new IdNotFoundException("No se encontro el producto comprado")
-            );
-            Product product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(
-                    () -> new IdNotFoundException("No se encontro el producto")
-            );
-            if (soldProduct != null && product.getStock() >= soldProduct.getQuantity()) {
-                price += soldProduct.getPrice()*soldProduct.getQuantity();
-                if (product != null){
-                    product.setStock(product.getStock()-soldProduct.getQuantity());
-                }
-            }else{
-                new IdNotFoundException("No hay suficiente stock del producto seleccionado");
-            }
+    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
+    public Double calculatePrice(SoldProduct soldProduct, double price, Product product) throws IdNotFoundException {
+        if (soldProduct != null && product.getStock() >= soldProduct.getQuantity()) {
+            price += soldProduct.getPrice()*soldProduct.getQuantity();
+        }else{
+            throw new IdNotFoundException("No hay suficiente stock del producto " + product.getName());
         }
         return price;
+    }
 
+    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    public void calculateStock(SoldProduct soldProduct, Product product) {
+        if (product != null){
+            product.setStock(product.getStock()-soldProduct.getQuantity());
+            productRepository.save(product);
+        }
     }
 }
