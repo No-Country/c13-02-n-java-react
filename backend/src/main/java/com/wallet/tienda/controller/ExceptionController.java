@@ -17,11 +17,19 @@ import javax.management.relation.RoleNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clase de Controlador de excepciones
+ * @Autor Ivan Mieres
+ */
 @RestControllerAdvice
 public class ExceptionController {
 
 
-    //devuelve excepciones de spring validation
+    /**
+     *
+     * @param ex excepcion de argumento de metodo no valido
+     * @return respuesta http con mensaje de excepcion
+     */
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> validException(MethodArgumentNotValidException ex) {
