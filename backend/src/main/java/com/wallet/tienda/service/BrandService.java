@@ -2,6 +2,7 @@ package com.wallet.tienda.service;
 
 import com.wallet.tienda.dto.request.BrandDTOReq;
 import com.wallet.tienda.dto.response.BrandDTORes;
+import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.model.Brand;
 import com.wallet.tienda.repository.IBrandRepository;
 import org.modelmapper.ModelMapper;
@@ -39,8 +40,13 @@ public class BrandService implements IBrandService{
     }
 
     @Override
-    public void update(BrandDTOReq brandDTOReq) {
-        brandRepository.save(modelMapper.map(brandDTOReq, Brand.class));
+    public void update(BrandDTOReq brandDTOReq) throws IdNotFoundException {
+        if (!brandRepository.existsById(brandDTOReq.getId())){
+            throw new IdNotFoundException("La marca no se encuentra registrada");
+        }
+        var brand = modelMapper.map(brandDTOReq, Brand.class);
+        brand.setId(brandDTOReq.getId());
+        brandRepository.save(brand);
     }
 
     @Override

@@ -9,7 +9,6 @@ import com.wallet.tienda.model.SoldProduct;
 import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.repository.ISaleRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,9 +30,12 @@ public class SoldProductService implements ISoldProductService {
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
+        Product product = productRepository.findById(soldProductDTOReq.getProduct().getId()).orElseThrow(
+                () -> new IdNotFoundException("No se encontro el producto")
+        );
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
         soldProduct.setPrice(product.getPrice());
+        calculateStock(soldProduct, product);
         soldProductRepository.save(soldProduct);
     }
 
