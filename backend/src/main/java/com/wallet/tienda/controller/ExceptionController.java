@@ -26,7 +26,7 @@ public class ExceptionController {
 
 
     /**
-     * Metodo que devuleve el mensaje de excepcion argumneto de metodo no valido en una respuesta http
+     * Captura y devuleve el mensaje de excepcion argumento de metodo no valido en una respuesta http
      * @param ex excepcion de argumento de metodo no valido
      * @return respuesta http con mensaje de excepcion
      */
@@ -41,7 +41,7 @@ public class ExceptionController {
     }
 
     /**
-     * Metodo que devuelve mensaje de excepcion de id, rol o correo no encontrado en una respuesta http
+     * Captura y devuelve mensaje de excepcion de id, rol o correo no encontrado en una respuesta http
      * @param ex excepcion
      * @return respuesta http con mensaeje de excepcion
      */
@@ -59,9 +59,9 @@ public class ExceptionController {
     //devuelve excepciones de datos ya existentes y excepciones generales
 
     /**
-     *
-     * @param ex
-     * @return
+     * Captura los mensajes de excepcion de solicitud incorrecta y los devuelve en una respuesta http
+     * @param ex mensaje de excecion
+     * @return respuesta http con mensaje
      */
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler({EmailExistsException.class, NameExistsException.class, ConfirmPasswordException.class,
@@ -75,7 +75,11 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
     }
 
-    //devuelve excepciones de credenciales mal ingresadas en el login
+    /**
+     * Captura y devuelve excepciones de credenciales mal ingresadas en el login
+     * @return respuesta http con mensaje de excepcion de credenciales incorrectas
+     */
+    //
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorDetail> badCredentialsExceptions() {
@@ -87,7 +91,10 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
     }
 
-    //devuelve excepciones de formatos mal ingresados
+    /**
+     * Captura y devuelve excepciones de formatos mal ingresados
+     * @return respuesta http con mensaje de formato de solicitud incorrecto
+     */
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler({HttpMessageNotReadableException.class})
     public ResponseEntity<ErrorDetail> badRequestFormatExceptions() {
@@ -99,7 +106,10 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
     }
 
-    //devuelve excepciones de tipeo
+    /**
+     * Captura y devuelve excepciones de tipeo
+     * @return respuesta http con mensaje de error de tipeo
+     */
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorDetail> typingErrorExceptions() {

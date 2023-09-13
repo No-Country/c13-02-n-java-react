@@ -21,6 +21,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * Clase de servicio de compras
+ * @Autor Damian Della Corte
+ */
 @Service
 public class BuyService implements IBuyService{
 
@@ -33,7 +37,11 @@ public class BuyService implements IBuyService{
     @Autowired
     private ModelMapper modelMapper;
 
-    //CREAR UNA COMPRA
+    /**
+     * Guarda una compra
+     * @param buyDTOReq dto de compra
+     * @throws Exception mensaje de excepcion de id de producto no encontrado
+     */
     @Override
     public void saveBuy(BuyDTOReq buyDTOReq) throws Exception {
         Buy buy = modelMapper.map(buyDTOReq, Buy.class);
@@ -51,14 +59,23 @@ public class BuyService implements IBuyService{
         buyRepository.save(buy);
     }
 
-    //MUESTRA UNA COMPRA POR ID
+    /**
+     * Devuelve una compra por id
+     * @param id numero de id de compra
+     * @return dto de compra
+     * @throws IdNotFoundException mensaje de excepcion de id de compra no encontrado
+     */
     @Override
     public BuyDTORes getBuyById(Long id) throws IdNotFoundException {
         return modelMapper.map(buyRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("El id " + id + " no existe")), BuyDTORes.class);
     }
 
-    //LISTA COMPRAS PAGINADAS
+    /**
+     * Devuelve lista de compras paginadas
+     * @param pageable configuracion de paginacion
+     * @return lista de compras pagindas
+     */
     @Override
     public Page<BuyDTORes> getBuys(Pageable pageable) {
         var buys = buyRepository.findAll(pageable);
@@ -70,7 +87,11 @@ public class BuyService implements IBuyService{
         return new PageImpl<>(buysDTO, pageable, buys.getTotalElements());
     }
 
-    //MODIFICA UNA COMPRA POR ID
+    /**
+     * Actualiza una compra por id
+     * @param buyDTOReq dto de compra
+     * @throws IdNotFoundException mensaje de excepcion de id de compra no encontrado
+     */
     @Override
     public void updateBuy(BuyDTOReq buyDTOReq) throws IdNotFoundException {
         if (!buyRepository.existsById(buyDTOReq.getId())) {
@@ -80,13 +101,21 @@ public class BuyService implements IBuyService{
         buyRepository.save(buyUpdate);
     }
 
-    //ELIMINA UNA COMPRA POR ID
+    /**
+     * Elimina una compra por id
+     * @param id numero de id de la compra
+     */
     @Override
     public void deleteBuy(Long id){
         buyRepository.deleteById(id);
     }
 
-    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
+    /**
+     * Devuelve el precio total de la compra
+     * @param boughtProduct producto comprado
+     * @param totalPrice precio total
+     * @return precio total de la compra
+     */
     public Double calculateTotalPrice(BoughtProduct boughtProduct,double totalPrice) {
         if (boughtProduct != null) {
             totalPrice += boughtProduct.getPrice()*boughtProduct.getQuantity();
@@ -94,7 +123,11 @@ public class BuyService implements IBuyService{
         return totalPrice;
     }
 
-    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    /**
+     * Suma el stock de la compra al stock del producto
+     * @param boughtProduct producto comprado
+     * @throws IdNotFoundException mensaje de excepcion de id de producto comprado no encontrado
+     */
     public void calculateStock(BoughtProduct boughtProduct) throws IdNotFoundException {
         Product product = productRepository.findById(boughtProduct.getProduct().getId()).orElseThrow(
                 () -> new IdNotFoundException("No se encontro el producto")

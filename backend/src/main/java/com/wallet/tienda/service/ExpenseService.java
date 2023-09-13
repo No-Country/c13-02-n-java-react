@@ -27,7 +27,11 @@ public class ExpenseService implements IExpenseService {
     @Autowired
     private ModelMapper modelMapper;
 
-    //CREAR UN GASTO
+    /**
+     * Guardar un gasto en base de datos
+     * @param expenseDTO dto de gasto
+     * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
+     */
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
         if (expenseRepository.existsByName(expenseDTO.getName())) {
@@ -39,14 +43,23 @@ public class ExpenseService implements IExpenseService {
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
 
-    //MUESTRA UN GASTO POR ID
+    /**
+     * Devuelve un gasto por id
+     * @param id numero de id de gasto
+     * @return dto de gasto
+     * @throws IdNotFoundException mensaje de excepcion de id de gasto no encontrado
+     */
     @Override
     public ExpenseDTORes getExpenseById(Long id) throws IdNotFoundException {
         return modelMapper.map(expenseRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("El id " + id + " no existe")), ExpenseDTORes.class);
     }
 
-    //LISTA GASTOS PAGINADOS
+    /**
+     * Devuelve todos los gastos
+     * @param pageable configuracion de paginacion
+     * @return lista de gastos paginados
+     */
     @Override
     public Page<ExpenseDTORes> getExpenses(Pageable pageable) {
         var expenses = expenseRepository.findAll(pageable);
@@ -58,7 +71,12 @@ public class ExpenseService implements IExpenseService {
         return new PageImpl<>(expensesDTO, pageable, expenses.getTotalElements());
     }
 
-    //MODIFICA UN GASTO POR ID
+    /**
+     * Actualiza un gasto por id
+     * @param expenseDTO dto de gasto
+     * @throws IdNotFoundException mensaje de excepcion de id de gasto no encontrado en BD
+     * @throws NameExistsException mensaje de excepcion de nombre ya existe en base de datos
+     */
     @Override
     public void updateExpense(ExpenseDTOReq expenseDTO) throws IdNotFoundException, NameExistsException {
         var productDB = expenseRepository.findById(expenseDTO.getId())
@@ -72,7 +90,10 @@ public class ExpenseService implements IExpenseService {
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
 
-    //ELIMINA UN GASTO POR ID
+    /**
+     * Elimina un gasto de base de datos
+     * @param id numero de id de gasto
+     */
     @Override
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+/**
+ * Clase controladora de reportes
+ * @Autor Ivan Mieres
+ */
 @Tag(name = "Controlador de reportes")
 @RestController
 @RequestMapping("/api/v1/reports")
@@ -21,8 +25,8 @@ public class ReportController {
     private IReportService reportService;
 
     /**
-     *
-     * @return
+     * Trae el balance de compra venta
+     * @return erspuesta http con datos de reporte
      */
     @Operation(
             summary = "Trae el balance de compra-ventas",
@@ -33,6 +37,10 @@ public class ReportController {
         return ResponseEntity.ok(reportService.balance());
     }
 
+    /**
+     * Trae el balance de compra venta mensual
+     * @return respuesta http con datos de reporte mensual
+     */
     @Operation(
             summary = "Trae el balance de compra-ventas mensual",
             description = "Trae el balance de compra venta mensual y devuelve una respuesta http con el dto de reporte"

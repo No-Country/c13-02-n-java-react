@@ -15,6 +15,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Clase controladora de ventas
+ * @Autor David Ramon Thomen
+ */
 @Tag(name = "Controlador de ventas")
 @RestController
 @RequestMapping("/api/v1/sales")
@@ -23,6 +27,13 @@ public class SaleController {
     @Autowired
     private ISaleService saleService;
 
+    /**
+     * Crea una venta en base de datos
+     * @param saleDTOReq dto de venta
+     * @param productDTOReq dto de producto
+     * @return respuesta http con estado creado
+     * @throws Exception
+     */
     @Operation(
             summary = "Crear venta en base de datos",
             description = "Crea una venta en base de datos y devuelve una respuesta http 201 creado"
@@ -33,6 +44,11 @@ public class SaleController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * Trae las ventas de base de datos
+     * @param pageable configuracion de paginacion
+     * @return respuesta http con lista de ventas paginadas
+     */
     @Operation(
             summary = "Traer ventas",
             description = "Trae las ventas de base de datos y devuelve una respuesta http con las ventas paginadas"
@@ -42,6 +58,12 @@ public class SaleController {
         return ResponseEntity.ok(saleService.getAll(pageable));
     }
 
+    /**
+     * Trae una venta por id de base de datos
+     * @param id numero de id de venta
+     * @return respuesta http con dto de venta
+     * @throws IdNotFoundException mensaje de excepcion de id de venta no encontrado
+     */
     @Operation(
             summary = "Traer una venta",
             description = "Trae una venta por id de base de datos y devuelve una respuesta http con la venta"
@@ -51,6 +73,12 @@ public class SaleController {
         return ResponseEntity.ok(saleService.getById(id));
     }
 
+    /**
+     * Actualiza una venta de base de datos
+     * @param saleDTOReq dto de venta
+     * @return respuesta http con estado ok
+     * @throws IdNotFoundException mensaje de excepcion de id de venta no encontrado
+     */
     @Operation(
             summary = "Actualizar una venta",
             description = "Actualiza una venta de base de datos y devuelve una respuesta http 200 ok si la actualiza"
@@ -61,6 +89,11 @@ public class SaleController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Elimina una venta por id de base de datos
+     * @param id numero de id
+     * @return respuesta http con estado ok
+     */
     @Operation(
             summary = "Eliminar una venta",
             description = "Elimina una venta por id de base de datos y devuelve una respuesta http 200 ok"
