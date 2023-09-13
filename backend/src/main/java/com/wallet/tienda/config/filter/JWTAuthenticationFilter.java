@@ -16,25 +16,25 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
+/**
+ * Clase de configuracion de filtro de autenticacion por token JWT
+ * @Autor David Ramon Thomen
+ */
 @Component
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private final JWTUtils jwtUtils;
     private final UserDetailsService userDetailsService;
-    private final List<String> excludedPaths = Arrays.asList("/api/v1/login","api/v1/password/**" , "/api/v1/users/register","/swagger-ui/**", "/v3/api-docs/**");
-
 
     /**
      * Metodo para validar expiracion del token, autenticar al usuario por jwt y cargar datos del usuario autenticado en el contexto de seguridad,
      * y/o continuar el flujo de filtrado
-     * @param request
-     * @param response
-     * @param filterChain
-     * @throws ServletException
-     * @throws IOException
+     * @param request solicitud de cliente
+     * @param response respuesta de la aplicacion
+     * @param filterChain cadena de filtros de seguridad
+     * @throws ServletException excepcion de servlet
+     * @throws IOException excepcion de entrada salida
      */
     @Override
     protected void doFilterInternal(

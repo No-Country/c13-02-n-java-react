@@ -7,8 +7,8 @@ import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Product;
 import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.util.IWordsConverter;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +17,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService implements IProductService{
 
+    @Autowired
     private IProductRepository productRepository;
+    @Autowired
     private IWordsConverter wordsConverter;
+    @Autowired
     private ModelMapper modelMapper;
 
     //CREA UN PRODUCTO
@@ -52,7 +54,7 @@ public class ProductService implements IProductService{
         for (Product product : productsDB) {
             productsDTO.add(modelMapper.map(product, ProductDTORes.class));
         }
-        return new PageImpl<>(productsDTO, pageable, productsDTO.size());
+        return new PageImpl<>(productsDTO, pageable, productsDB.getTotalElements());
     }
 
     //ACTUALIZA UN PRODUCTO

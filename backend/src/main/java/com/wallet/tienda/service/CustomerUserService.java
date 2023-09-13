@@ -8,8 +8,8 @@ import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.IRoleRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +20,15 @@ import javax.management.relation.RoleNotFoundException;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerUserService implements ICustomerUserService {
 
+    @Autowired
     private ICustomerUserRepository userRepository;
+    @Autowired
     private ModelMapper modelMapper;
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private IRoleRepository roleRepository;
 
 
@@ -51,13 +54,13 @@ public class CustomerUserService implements ICustomerUserService {
     //LISTAR USUARIOS
     @Override
     public Page<UserDTORes> getAllUsers(Pageable pageable) {
-        var usersBD = userRepository.findAll(pageable);
+        var usersDB = userRepository.findAll(pageable);
         var usersDTO = new ArrayList<UserDTORes>();
 
-        for (CustomerUser user : usersBD) {
+        for (CustomerUser user : usersDB) {
             if(user.isEnable()) usersDTO.add(modelMapper.map(user, UserDTORes.class));
         }
-        return new PageImpl<>(usersDTO, pageable, usersDTO.size());
+        return new PageImpl<>(usersDTO, pageable, usersDB.getTotalElements());
     }
 
     //MODIFICAR USUARIO

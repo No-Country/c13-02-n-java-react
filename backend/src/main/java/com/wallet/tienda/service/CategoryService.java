@@ -9,6 +9,7 @@ import com.wallet.tienda.repository.ICategoryRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -17,12 +18,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class CategoryService implements ICategoryService{
 
-    private  ICategoryRepository categoryRepository;
-    private  IWordsConverter wordsConverter;
-    private  ModelMapper modelMapper;
+    @Autowired
+    private ICategoryRepository categoryRepository;
+    @Autowired
+    private IWordsConverter wordsConverter;
+    @Autowired
+    private ModelMapper modelMapper;
 
 
     //CREA UNA CATEGORIA
@@ -53,7 +56,7 @@ public class CategoryService implements ICategoryService{
         for (Category category : categoriesDB) {
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
-        return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
+        return new PageImpl<>(categoriesDTO, pageable, categoriesDB.getTotalElements());
     }
 
     //ACTUALIZA UNA CATEGORIA

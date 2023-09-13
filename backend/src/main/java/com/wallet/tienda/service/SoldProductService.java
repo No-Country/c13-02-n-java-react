@@ -11,29 +11,29 @@ import com.wallet.tienda.repository.ISaleRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class SoldProductService implements ISoldProductService {
 
-    private final ISoldProductRepository soldProductRepository;
-    private final ISaleRepository saleRepository;
-    private final IProductRepository productRepository;
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ISoldProductRepository soldProductRepository;
+    @Autowired
+    private ISaleRepository saleRepository;
+    @Autowired
+    private IProductRepository productRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
-        Product product = productRepository.findById(soldProductDTOReq.getProduct().getId()).orElseThrow(
-                () -> new IdNotFoundException("No se encontro el producto")
-        );
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        System.out.println(soldProduct.getProduct().toString());
-        soldProduct.setPrice(soldProduct.getProduct().getPrice());
-        calculateStock(soldProduct, product);
+        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
+        soldProduct.setPrice(product.getPrice());
         soldProductRepository.save(soldProduct);
     }
 
@@ -50,15 +50,7 @@ public class SoldProductService implements ISoldProductService {
                 .stream()
                 .map(sp -> modelMapper.map(sp, SoldProductDTORes.class))
                 .toList();
-        return new PageImpl<>(soldProductDTORes, pageable , soldProductDTORes.size());
-    }
-
-    @Override
-    public void update(SoldProductDTOReq soldProductDTOReq) throws IdNotFoundException {
-        if (!soldProductRepository.existsById(soldProductDTOReq.getId())) {
-            throw new IdNotFoundException("El producto vendido con id " + soldProductDTOReq.getId() + " no se encuentra registrado en base de datos");
-        }
-        soldProductRepository.save(modelMapper.map(soldProductDTOReq, SoldProduct.class));
+        return new PageImpl<>(soldProductDTORes, pageable , soldProducts.getTotalElements());
     }
 
     @Override
