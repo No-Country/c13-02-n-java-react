@@ -8,6 +8,7 @@ import com.wallet.tienda.repository.IBoughtProductRepository;
 import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;

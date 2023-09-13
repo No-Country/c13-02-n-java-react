@@ -80,7 +80,7 @@ public class BrandController {
             description = "Actualiza una marca y devuelve un Codigo de estado 200"
     )
     @PatchMapping()
-    public ResponseEntity<HttpStatus> update(@RequestBody BrandDTOReq brandDTOReq) {
+    public ResponseEntity<HttpStatus> update(@RequestBody BrandDTOReq brandDTOReq) throws IdNotFoundException {
         brandService.update(brandDTOReq);
         return new ResponseEntity<>(HttpStatus.OK);
     }
