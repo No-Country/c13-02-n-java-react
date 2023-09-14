@@ -3,6 +3,8 @@ package com.wallet.tienda.service;
 import com.wallet.tienda.dto.request.SoldProductDTOReq;
 import com.wallet.tienda.dto.response.SoldProductDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
+import com.wallet.tienda.exception.StockNotFoundException;
+import com.wallet.tienda.model.Product;
 import com.wallet.tienda.model.SoldProduct;
 import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.repository.ISoldProductRepository;
@@ -30,9 +32,12 @@ public class SoldProductService implements ISoldProductService {
      */
     @Override
     public void save(SoldProductDTOReq soldProductDTOReq) throws Exception {
+        Product product = productRepository.findById(soldProductDTOReq.getProduct().getId()).orElseThrow(
+                () -> new IdNotFoundException("No se encontro el producto")
+        );
         SoldProduct soldProduct = modelMapper.map(soldProductDTOReq, SoldProduct.class);
-        var product = productRepository.findById(soldProduct.getProduct().getId()).orElseThrow(() -> new IdNotFoundException("El producto con id " + soldProduct.getProduct().getId() + " no se encuentra registrado"));
         soldProduct.setPrice(product.getPrice());
+        calculateStock(soldProduct, product);
         soldProductRepository.save(soldProduct);
     }
 
@@ -74,5 +79,15 @@ public class SoldProductService implements ISoldProductService {
             throw new IdNotFoundException("El producto vendido con id " + id + " no se encuentra registrado en base de datos");
         }
         soldProductRepository.deleteById(id);
+    }
+
+    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    public void calculateStock(SoldProduct soldProduct, Product product) throws StockNotFoundException {
+        if (product != null && product.getStock() >= soldProduct.getQuantity()){
+            product.setStock(product.getStock()-soldProduct.getQuantity());
+            productRepository.save(product);
+        }else{
+            throw new StockNotFoundException("No hay suficiente stock del producto " + product.getName());
+        }
     }
 }

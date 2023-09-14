@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * Clase de servicio de marcas
- * @Autor Maria Paez
+ * @Autor Thomen David
  */
 @Service
 public class BrandService implements IBrandService{

@@ -34,8 +34,10 @@ public class ExpenseService implements IExpenseService {
      */
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
-        if (expenseRepository.existsByName(expenseDTO.getName())) {
-            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe. Ingrese un nuevo nombre");
+        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
@@ -79,11 +81,10 @@ public class ExpenseService implements IExpenseService {
      */
     @Override
     public void updateExpense(ExpenseDTOReq expenseDTO) throws IdNotFoundException, NameExistsException {
-        var productDB = expenseRepository.findById(expenseDTO.getId())
-                .orElseThrow(() -> new IdNotFoundException("El id " + expenseDTO + " no existe. Ingrese un nuevo id"));
-        //valida que el nombre del gasto no exista y si existe que coincida con el gasto encontrado
-        if (!expenseDTO.getName().equals(productDB.getName()) && expenseRepository.existsByName(expenseDTO.getName())) {
-            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe. Ingrese un nuevo nombre");
+        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));

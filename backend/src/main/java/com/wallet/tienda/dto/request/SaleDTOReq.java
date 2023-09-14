@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -15,5 +16,6 @@ public class SaleDTOReq {
     private Long id;
     private CustomerUser user;
     @NotBlank(message = "Debe asignar al menos un producto vendido")
+    private LocalDateTime saleDate;
     private List<SoldProductDTOReq> soldProducts;
 }
