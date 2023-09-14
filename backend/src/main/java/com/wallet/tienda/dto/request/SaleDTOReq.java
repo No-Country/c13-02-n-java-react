@@ -15,7 +15,7 @@ import java.util.List;
 public class SaleDTOReq {
     private Long id;
     private CustomerUser user;
-    @NotBlank(message = "Debe asignar al menos un producto vendido")
     private LocalDateTime saleDate;
+    @NotBlank(message = "Debe asignar al menos un producto vendido")
     private List<SoldProductDTOReq> soldProducts;
 }
