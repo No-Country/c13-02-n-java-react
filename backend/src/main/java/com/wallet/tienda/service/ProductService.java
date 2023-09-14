@@ -5,6 +5,8 @@ import com.wallet.tienda.dto.response.ProductDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Product;
+import com.wallet.tienda.repository.IBrandRepository;
+import com.wallet.tienda.repository.ICategoryRepository;
 import com.wallet.tienda.repository.IProductRepository;
 import com.wallet.tienda.util.IWordsConverter;
 import org.modelmapper.ModelMapper;
@@ -22,13 +24,23 @@ public class ProductService implements IProductService{
     @Autowired
     private IProductRepository productRepository;
     @Autowired
+    private IBrandRepository brandRepository;
+    @Autowired
+    private ICategoryRepository categoryRepository;
+    @Autowired
     private IWordsConverter wordsConverter;
     @Autowired
     private ModelMapper modelMapper;
 
     //CREA UN PRODUCTO
     @Override
-    public void saveProduct(ProductDTOReq productDTO) throws NameExistsException {
+    public void saveProduct(ProductDTOReq productDTO) throws NameExistsException, IdNotFoundException {
+        if (brandRepository.existsById(productDTO.getBrand().getId())){
+            throw new IdNotFoundException("La marca ingresada no se encuentra registrada");
+        }
+        if (categoryRepository.existsById(productDTO.getCategory().getId())){
+            throw new IdNotFoundException("La categoria ingresada no se encuentra registrada");
+        }
         if (productRepository.existsByName(productDTO.getName())) {
             throw new NameExistsException("El nombre " + productDTO.getName() + " ya existe. Ingrese un nuevo nombre");
         }
@@ -62,6 +74,12 @@ public class ProductService implements IProductService{
     public void updateProduct(ProductDTOReq productDTO) throws IdNotFoundException, NameExistsException {
         var productDB = productRepository.findById(productDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + productDTO + " no existe. Ingrese un nuevo id"));
+        if (brandRepository.existsById(productDTO.getBrand().getId())){
+            throw new IdNotFoundException("La marca ingresada no se encuentra registrada");
+        }
+        if (categoryRepository.existsById(productDTO.getCategory().getId())){
+            throw new IdNotFoundException("La categoria ingresada no se encuentra registrada");
+        }
         //valida que el nombre del producto no exista y si existe que coincida con el producto encontrado
         if (!productDTO.getName().equals(productDB.getName()) && productRepository.existsByName(productDTO.getName())) {
             throw new NameExistsException("El nombre " + productDTO.getName() + " ya existe. Ingrese un nuevo nombre");
