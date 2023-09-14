@@ -3,6 +3,7 @@ package com.wallet.tienda.controller;
 import com.wallet.tienda.dto.request.BrandDTOReq;
 import com.wallet.tienda.dto.response.BrandDTORes;
 import com.wallet.tienda.exception.IdNotFoundException;
+import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.service.IBrandService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -50,7 +51,7 @@ public class BrandController {
             description = "Guarda la marca y devuelve un Codigo de estado 201 creado"
     )
     @PostMapping()
-    public ResponseEntity<HttpStatus> save(@RequestBody BrandDTOReq brandDTOReq) {
+    public ResponseEntity<HttpStatus> save(@RequestBody BrandDTOReq brandDTOReq) throws NameExistsException {
         brandService.save(brandDTOReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -66,7 +67,7 @@ public class BrandController {
             description = "Busca una marca por id y devuelve un Codigo de estado 200 y los datos de la marca"
     )
     @GetMapping("/{id}")
-    public ResponseEntity<BrandDTORes> getById(@PathVariable Long id) {
+    public ResponseEntity<BrandDTORes> getById(@PathVariable Long id) throws IdNotFoundException {
         return new ResponseEntity<>(brandService.searchById(id), HttpStatus.OK);
     }
 
@@ -80,7 +81,7 @@ public class BrandController {
             description = "Actualiza una marca y devuelve un Codigo de estado 200"
     )
     @PatchMapping()
-    public ResponseEntity<HttpStatus> update(@RequestBody BrandDTOReq brandDTOReq) {
+    public ResponseEntity<HttpStatus> update(@RequestBody BrandDTOReq brandDTOReq) throws NameExistsException {
         brandService.update(brandDTOReq);
         return new ResponseEntity<>(HttpStatus.OK);
     }
