@@ -32,18 +32,35 @@ public class ExpenseService implements IExpenseService {
      * @param expenseDTO dto de gasto
      * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
      */
+//    @Override
+//    public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
+//        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+//        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+//        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+//            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
+//        }
+//        //convierte la primer letra de cada palabra en mayúscula
+//        expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
+//
+//        expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
+//    }
+
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
-        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
-        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
-        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
-            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
+
+        if (expenseRepository.existsByName(expenseDTO.getName())){
+            var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+            //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+            if (expenseDTO.getDate().equals(expenseDB.get().getDate())) {
+                throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
+            }
         }
+
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
-
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
+
 
     /**
      * Devuelve un gasto por id
