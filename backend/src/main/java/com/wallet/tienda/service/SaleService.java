@@ -29,6 +29,11 @@ public class SaleService implements ISaleService{
     @Autowired
     private ModelMapper modelMapper;
 
+    /**
+     * Guarda una venta en base de datos
+     * @param saleDTOReq dto de venta
+     * @throws Exception mensaje de excepcion
+     */
     @Override
     public void save(SaleDTOReq saleDTOReq) throws Exception {
         Sale sale = modelMapper.map(saleDTOReq, Sale.class);
@@ -49,11 +54,22 @@ public class SaleService implements ISaleService{
         saleRepository.save(sale);
     }
 
+    /**
+     * Busca y devuelve una venta de BD por id
+     * @param id numero de id de venta
+     * @return dto de venta
+     * @throws IdNotFoundException mensaje de excepcion de id no encontrado
+     */
     @Override
     public SaleDTORes getById(Long id) throws IdNotFoundException {
         return modelMapper.map(saleRepository.findById(id).orElseThrow(() -> new IdNotFoundException("La venta con el id " + id + "no se encuentra en base de datos")), SaleDTORes.class);
     }
 
+    /**
+     * Devuelve una lista de ventas paginadas
+     * @param pageable configuracion de paginacion
+     * @return lista de ventas paginada
+     */
     @Override
     public Page<SaleDTORes> getAll(Pageable pageable) {
         var sales =  saleRepository.findAll(pageable);
@@ -61,6 +77,11 @@ public class SaleService implements ISaleService{
         return new PageImpl<>(salesDtoRes, pageable , sales.getTotalElements());
     }
 
+    /**
+     * Busca y actualiza una venta por id
+     * @param saleDTOReq dto de venta
+     * @throws IdNotFoundException mensaje de excepcion de id no encontrado
+     */
     @Override
     public void update(SaleDTOReq saleDTOReq) throws IdNotFoundException {
         if (!saleRepository.existsById(saleDTOReq.getId())) {
@@ -69,12 +90,22 @@ public class SaleService implements ISaleService{
         saleRepository.save(modelMapper.map(saleDTOReq, Sale.class));
     }
 
+    /**
+     * Elimina una venta por id
+     * @param id numero de id de venta
+     */
     @Override
     public void deleteById(Long id) {
         saleRepository.deleteById(id);
     }
 
-    //CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
+    /** CALCULA EL PRECIO TOTAL DE LA COMPRA REALIZADA
+     * @param soldProduct producto comprado
+     * @param price precio del producto
+     * @param product producto
+     * @return precio total de producto vendido
+     * @throws IdNotFoundException mensaje de excepcion de id de producto comprado no encontrado
+     */
     public Double calculatePrice(SoldProduct soldProduct, double price, Product product) throws IdNotFoundException {
         if (soldProduct != null && product.getStock() >= soldProduct.getQuantity()) {
             price += soldProduct.getPrice()*soldProduct.getQuantity();
@@ -84,7 +115,11 @@ public class SaleService implements ISaleService{
         return price;
     }
 
-    //AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+    /**
+     *  AJUSTA EL STOCK DEL PRODUCTO COMPRADO
+     * @param soldProduct producto comprado
+     * @param product producto
+     */
     public void calculateStock(SoldProduct soldProduct, Product product) {
         if (product != null){
             product.setStock(product.getStock()-soldProduct.getQuantity());

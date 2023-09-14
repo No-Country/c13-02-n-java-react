@@ -19,6 +19,12 @@ public class TokenService implements ITokenService{
     private ICustomerUserRepository userRepository;
 
 
+    /**
+     * Guarda en BD y devuelve un token de recuperacion de contraseña
+     * @param username email de usuario
+     * @return dto de token
+     * @throws UsernameNotFoundException mensaje de excepcion de email no encontrado
+     */
     @Override
     public Token saveToken(String username) throws UsernameNotFoundException {
 
@@ -41,12 +47,22 @@ public class TokenService implements ITokenService{
         }
     }
 
+    /**
+     * Devuelve el token guardado en base de datos por token
+     * @param token dto de token
+     * @return dto de token
+     * @throws Exception mensaje de excepcion
+     */
     @Override
     public Token getToken(String token) throws Exception {
         return tokenRepository.findByToken(token)
                 .orElseThrow(() -> new Exception("El token no ha sido encotrado"));
     }
 
+    /**
+     * Elimina el token de BD
+     * @param tokenId numero de id del token
+     */
     @Override
     public void deleteById(Long tokenId) {
         tokenRepository.deleteById(tokenId);

@@ -26,7 +26,11 @@ public class ProductService implements IProductService{
     @Autowired
     private ModelMapper modelMapper;
 
-    //CREA UN PRODUCTO
+    /**
+     * Guarda un producto en base de datos
+     * @param productDTO dto de producto
+     * @throws NameExistsException mensaje de excepcion de nombre de producto ya existe
+     */
     @Override
     public void saveProduct(ProductDTOReq productDTO) throws NameExistsException {
         if (productRepository.existsByName(productDTO.getName())) {
@@ -38,14 +42,23 @@ public class ProductService implements IProductService{
         productRepository.save(modelMapper.map(productDTO, Product.class));
     }
 
-    //MUESTRA UN PRODUCTO POR ID
+    /**
+     * Busca y devuelve un producto por id
+     * @param productId numero de id de producto
+     * @return dto de producto
+     * @throws IdNotFoundException mensaje de excepcion de id de producto no encontrado
+     */
     @Override
     public ProductDTORes getProductById(Long productId) throws IdNotFoundException {
         return modelMapper.map(productRepository.findById(productId)
                 .orElseThrow(() -> new IdNotFoundException("El id " + productId + " no exite. Ingrese un nuevo id")), ProductDTORes.class);
     }
 
-    //LISTA PRODUCTOS PAGINADOS
+    /**
+     * Devuelve una lista de productos paginados
+     * @param pageable configuracion de paginacion
+     * @return lista de productos paginados
+     */
     @Override
     public Page<ProductDTORes> getAllProducts(Pageable pageable) {
         var productsDB = productRepository.findAll(pageable);
@@ -57,7 +70,12 @@ public class ProductService implements IProductService{
         return new PageImpl<>(productsDTO, pageable, productsDB.getTotalElements());
     }
 
-    //ACTUALIZA UN PRODUCTO
+    /**
+     * Actualiza un producto por id en base de datos
+     * @param productDTO dto de producto
+     * @throws IdNotFoundException mensaje de excepcion de id de produccto no encontrado
+     * @throws NameExistsException mensaje de excepcion de nombre de producto ya exsiste
+     */
     @Override
     public void updateProduct(ProductDTOReq productDTO) throws IdNotFoundException, NameExistsException {
         var productDB = productRepository.findById(productDTO.getId())
@@ -71,7 +89,10 @@ public class ProductService implements IProductService{
         productRepository.save(modelMapper.map(productDTO, Product.class));
     }
 
-    //ELIMINA UN PRODUCTO
+    /**
+     * Elimina un producto de base de datos
+     * @param productID numero de id de producto
+     */
     @Override
     public void deleteProduct(Long productID) {
         productRepository.deleteById(productID);
