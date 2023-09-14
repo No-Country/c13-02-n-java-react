@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SoldProductDTOReq {
     private Long id;
-
-    private Double price;
     @NotBlank(message = "No puede estar vacio")
     private int quantity;
     @NotBlank(message = "No puede estar vacio")
