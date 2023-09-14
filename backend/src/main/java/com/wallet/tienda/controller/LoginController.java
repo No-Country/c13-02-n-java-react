@@ -11,16 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name= "Clase de controladora de login")
+/**
+ * Clase controladora de login
+ * @Autor Ivan Mieres
+ */
+@Tag(name= "Controlador de login")
 @RestController
 public class LoginController {
 
     @Autowired
     private ILoginService loginService;
 
+    /**
+     * Metodo de logueo de usuario por email y contraseña, devuelve respuesta http con el token JWT
+     * @param authDTO dto con email y contraseña de usuario
+     * @return respuesta http con token jwt
+     */
     @Operation(
             summary = "Login de usuario",
-            description = "")
+            description = "Logueo de usuario por email y contraseña, y devuelve una respuesta http con un token JWT")
     @PostMapping("api/v1/login")
     public ResponseEntity<AuthResponseDTORes> login(@RequestBody AuthRequestDTOReq authDTO){
         return ResponseEntity.ok(loginService.authenticate(authDTO));

@@ -34,6 +34,11 @@ public class EmailService implements IEmailService{
     @Value("${spring.mail.username}")
     private String email;
 
+    /**
+     * Envia email de recuperacion de contraseña
+     * @param token datos de token
+     * @throws MessagingException excepcion de envio de email
+     */
     @Override
     public void sendEmail(Token token) throws MessagingException {
 
@@ -51,6 +56,11 @@ public class EmailService implements IEmailService{
         javaMailSender.send(message);
     }
 
+    /**
+     * Resetea password en base de datos
+     * @param passDTO dto de password
+     * @throws Exception mensaje de excepcion
+     */
     @Override
     public void resetPassword(ResetPasswordDTOReq passDTO) throws Exception {
         if (!passDTO.getPassword().equals(passDTO.getConfirmPassword())){
@@ -77,7 +87,12 @@ public class EmailService implements IEmailService{
 
     }
 
-    //Template para el envio de email
+    /**
+     * Crea el template de contenido de mensaje
+     * @param link link de reseteo de contraseña
+     * @param username email
+     * @return cuerpo de mensaje de mail
+     */
     public String createMessage(String link, String username){
         return
                 "\n" +

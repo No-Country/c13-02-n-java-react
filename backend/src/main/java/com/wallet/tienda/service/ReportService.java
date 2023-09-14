@@ -24,7 +24,10 @@ public class ReportService implements IReportService{
     @Autowired
     private IExpenseRepository expenseRepository;
 
-
+    /**
+     * Devuelve datos de total diario, anual, costos anuales, y ganacias mensuales y anuales
+     * @return dtoo de reporte
+     */
     @Override
     public ReportDTORes balance(){
 
@@ -72,6 +75,10 @@ public class ReportService implements IReportService{
     }
 
 
+    /**
+     * Devuelve el balance del mes o vacio si no hay ventas
+     * @return dto de reporte
+     */
     @Override
     public Map<String, Double> balanceOfMonths(){
         var year = LocalDate.now().getYear();
