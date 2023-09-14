@@ -43,8 +43,7 @@ public class BuyService implements IBuyService{
         double totalPrice = 0.0;
         for (BoughtProductDTOReq boughtProductDTOReq : buyDTOReq.getPurchasedProducts()) {
             BoughtProduct boughtProduct = boughtProductRepository.findById(boughtProductDTOReq.getId()).orElseThrow(
-                    () -> new IdNotFoundException("No se encontro el producto comprado")
-            );
+                    () -> new IdNotFoundException("No se encontro el producto comprado"));
             buy.setTotalPrice(calculateTotalPrice(boughtProduct, totalPrice));
             calculateStock(boughtProduct);
         }

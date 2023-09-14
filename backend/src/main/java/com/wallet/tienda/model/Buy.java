@@ -19,7 +19,6 @@ public class Buy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double totalPrice;
-    @CreationTimestamp
     private LocalDateTime purchaseDate;
     @OneToMany
     private List<BoughtProduct> purchasedProducts;

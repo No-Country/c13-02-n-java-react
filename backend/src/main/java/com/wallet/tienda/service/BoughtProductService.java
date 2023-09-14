@@ -42,7 +42,6 @@ public class BoughtProductService implements IBoughtProductService {
         var product = productRepository.findById(boughtProductDTO.getProduct().getId())
                 .orElseThrow(() -> new IdNotFoundException("El producto ingresado no se encuentra registrado"));
         var boughtProduct = modelMapper.map(boughtProductDTO, BoughtProduct.class);
-        boughtProduct.setPrice(product.getPrice());
         repository.save(boughtProduct);
     }
 
