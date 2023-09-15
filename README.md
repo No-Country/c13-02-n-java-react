@@ -1,7 +1,31 @@
 
 ![michi_fima](https://github.com/No-Country/c13-02-n-java-react/assets/103857812/3ab5a808-e5d0-4be9-9435-3366ee8c599b)
 
-## Insertar descripción general de la aplicación 
+No Country - c13-02-n-java-react
+
+# Proyecto "FIMA: Finance & Inventory Manager"
+## Transformando la Gestión Financiera Empresarial
+
+Estimados colegas y partes interesadas,
+Nos complace presentarles el proyecto "FIMA: Finance & Inventory Manager", una solución integral diseñada por un equipo multidisciplinario de expertos en tecnología. Con el objetivo de simplificar y mejorar la gestión financiera de emprendimientos personales y pequeñas y medianas empresas (Pymes), FIMA ofrece una plataforma intuitiva y poderosa que revoluciona la manera en que se administran los negocios.
+
+## ¿Qué es FIMA y cuál es su enfoque?
+FIMA es una aplicación diseñada para simplificar la administración de operaciones de compra y venta de productos, brindando un control financiero efectivo sobre los gastos y las ganancias. Nuestra misión es empoderar a emprendedores y propietarios de pequeñas y medianas empresas (Pymes) proporcionándoles una herramienta sólida para el control de productos y análisis financiero de sus operaciones comerciales.
+
+## Funcionalidades Clave de FIMA:
+- Registro Detallado: FIMA permite a los usuarios llevar un registro minucioso de ingresos, egresos, ganancias y costos, brindando una visión completa de la salud financiera de su negocio.
+- Gestión de Inventarios: Facilitamos el seguimiento de compras y ventas de productos, así como la gestión de inventario, ayudando a optimizar la cadena de suministro.
+- Proveedores: Mantenga listas actualizadas de proveedores para una gestión más eficiente de las relaciones comerciales.
+- Visualización de Datos: FIMA ofrece gráficos detallados para comprender el desempeño financiero actual, pasados y futuros, proporcionando información valiosa para la toma de decisiones.
+
+## Ventajas de FIMA:
+- Simplicidad: Nuestra interfaz de usuario es intuitiva y fácil de usar, permitiendo que cualquier persona, incluso sin experiencia financiera, pueda aprovechar todas las características de FIMA.
+- Control Total: Brindamos a los usuarios un control absoluto sobre sus operaciones comerciales, ayudándoles a tomar decisiones informadas y estratégicas.
+- Planificación Efectiva: Con datos precisos y análisis detallados, los usuarios pueden planificar de manera efectiva los próximos pasos para el crecimiento de su negocio.
+
+## ¿Por qué FIMA?
+- FIMA es más que una aplicación, es una solución diseñada para empoderar a los emprendedores y Pymes. Creemos que la gestión financiera no debería ser una barrera para el éxito empresarial, y con FIMA, les brindamos la herramienta necesaria para simplificar y optimizar sus operaciones comerciales.
+A medida que avanzamos en este emocionante proyecto, esperamos trabajar de cerca con todos los interesados para asegurarnos de que FIMA se convierta en una parte esencial de su estrategia empresarial.
 
 ## Backend
 
