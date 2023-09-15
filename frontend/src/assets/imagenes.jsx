@@ -35,7 +35,7 @@ const Imagenes = {
 	google,
 	group2,
 	group3,
-	group6,
+	//group6,
 	group9,
 	negocio,
 	perfil,
