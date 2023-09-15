@@ -5,9 +5,9 @@ import useControlStock from "../../hooks/useControlStock";
 import useGetProducts from "../../hooks/useGetProducts";
 
 function TableP() {
-    // const { formatoMoneda, controlStock,  } =
-    //   useControlStock();
-    //
+   const { formatoMoneda, controlStock,  } =
+      useControlStock();
+    
     const {handleGetProducts, products} = useGetProducts();
 
 
@@ -20,55 +20,55 @@ function TableP() {
     }, []);
 
 
-    // const [query, setQuery] = useState();
-    //
-    // const handlechangeStock = (e) => {
-    //   setQuery(e.target.value);
-    //
-    //   filtrarStock(e.target.value);
-    // };
-    // const handlechangeCategory = (e) => {
-    //   setQuery(e.target.value);
-    //
-    //   filtrarCategory(e.target.value);
-    // };
-    //
-    //      /* filtro  Stock */
-    //      const filtrarCategory = (query) => {
-    //       var producto = productosPrueba.filter((product) => {
-    //
-    //        if( product.categoria === query ) {
-    //
-    //         return product
-    //
-    //        }else if(query == 'todos') {
-    //
-    //         return product
-    //
-    //        }
-    //       });
-    //       setTablaProductos(producto);
-    //     };
-    //
-    //
-    //
-    //      /* filtro  Stock */
-    //      const filtrarStock = (query) => {
-    //       var producto = productosPrueba.filter((product) => {
-    //         if (query == "alto") {
-    //           return product.cantidad > 90;
-    //         } else if (query == "medio") {
-    //           return product.cantidad >= 50 && product.cantidad < 80;
-    //         } else if (query == "bajo") {
-    //           return product.cantidad < 49;
-    //         }else if(query == 'todos') {
-    //
-    //           return product
-    //
-    //         }
-    //       });
-    //       setTablaProductos(producto);
-    //     };
+     const [query, setQuery] = useState();
+    
+     const handlechangeStock = (e) => {
+       setQuery(e.target.value);
+    
+       filtrarStock(e.target.value);
+     };
+     const handlechangeCategory = (e) => {
+       setQuery(e.target.value);
+    
+       filtrarCategory(e.target.value);
+     };
+    
+          /* filtro  Stock */
+          const filtrarCategory = (query) => {
+          var producto = productosPrueba.filter((product) => {
+  
+            if( product.categoria === query ) {
+    
+          return product
+    
+            }else if(query == 'todos') {
+    
+            return product
+  
+            }
+          });
+          setTablaProductos(producto);
+        };
+    
+    
+    
+         /* filtro  Stock */
+          const filtrarStock = (query) => {
+           var producto = productosPrueba.filter((product) => {
+            if (query == "alto") {
+              return product.cantidad > 90;
+             } else if (query == "medio") {
+               return product.cantidad >= 50 && product.cantidad < 80;
+    } else if (query == "bajo") {
+               return product.cantidad < 49;
+             }else if(query == 'todos') {
+  
+            return product
+  
+          }
+        });
+           setTablaProductos(producto);
+        };
 
   return (
     <>
@@ -76,7 +76,7 @@ function TableP() {
      <select
         className=" w-25  shadow-lg dropdown form-select"
         aria-label="Default select example"
-         // onChange={handlechangeStock}
+         onChange={handlechangeStock}
       >
         <optgroup>
           <option selected disabled>
@@ -95,7 +95,7 @@ function TableP() {
       <select
         className=" w-25  shadow-lg dropdown form-select"
         aria-label="Default select example"
-          //  onChange={handlechangeCategory}
+          onChange={handlechangeCategory}
       >
         <optgroup>
         
@@ -123,10 +123,10 @@ function TableP() {
             <tbody>
             {products.map((product) => (
                     <tr key={product.id}>
-                        <td></td>
+                        <td>{controlStock(product.stock)}  </td>
                         <td>{product.id} </td>
                         <td>{product.name} </td>
-                        <td>{product.price} </td>
+                        <td>{formatoMoneda(product.price)} </td>
                         <td>{product.stock} </td>
                         <td>{product.brand.name}</td>
                         <td>{product.category.name}</td>

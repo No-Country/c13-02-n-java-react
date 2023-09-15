@@ -21,7 +21,7 @@ function useGetScreen() {
       setIsDesktop(true);
 
       console.log("Pantalla de alta resolución");
-    } else {
+    } else if(anchoPantalla >= 500 && altoPantalla >= 900) {
       // Código para pantallas de baja resolución
       setIsDesktop(false);
     
