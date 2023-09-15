@@ -80,7 +80,7 @@ function TableP() {
             <Table size="sm" className="text-left ">
                 <thead className="rounded-5 text-center">
                 <tr>
-                    <th className="bg-primary text-white py-2   ">Estado</th>
+                    <th className="bg-primary text-white py-2   ">State</th>
                     <th className="bg-primary text-white py-2   ">ID</th>
                     <th className="bg-primary text-white py-2   ">Name</th>
                     <th className="bg-primary text-white py-2   ">Price</th>
