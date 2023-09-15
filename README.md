@@ -106,3 +106,30 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 - Pruebas de diseño e integración.
 - Pruebas de los endpoints de la API REST.
 - Pruebas de los componentes del front-end e integración con el back-en
+
+## Tareas Realizadas
+ 
+- Definición de Objetivos: identificación y definición de los objetivos del proyecto en términos de experiencia del usuario y diseño de la interfaz.
+
+- Benchmarking: realización de investigaciones y análisis competitivos para identificar las mejores prácticas y oportunidades de mejora en el diseño.
+ 
+- POV (Point of View):  desarrollo de un punto de vista claro y centrado en el usuario para guiar el diseño de la interfaz.
+
+- MVP (Producto Mínimo Viable): colaboración en la definición y diseño del Producto Mínimo Viable, asegurando que cumpla con los requisitos esenciales y sea una solución viable.
+
+- Arquitectura de la Información: creación de una estructura lógica y jerárquica para la información dentro de la interfaz de usuario, asegurando una navegación intuitiva.
+
+- User Flow: diseño de los flujos de usuario, mapeando las interacciones y acciones del usuario a través de la aplicación.
+
+- Diseño de Wireframes: creación de wireframes en baja, media y alta fidelidad que sirvieron como guía visual para el desarrollo de la interfaz.
+
+## Tecnologias:
+
+<div align="center">
+	<table>
+		<tr>
+			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></td>
+            <td><img width="50" src="https://avatars.githubusercontent.com/u/4542585?s=200&v=4" alt="Photoshop" title="Photoshop"/></td>
+		</tr>
+	</table>
+</div>
