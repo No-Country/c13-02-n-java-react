@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useEffect} from "react";
-
+import {useContext, useEffect} from "react";
 import Imagenes from "../../assets/imagenes";
 
 function Sidebar() {
-  
   const navigate = useNavigate();
 
   const handleLogout = () => {
     window.sessionStorage.clear();
     window.localStorage.clear();
-  
+
     navigate("/");
   };
 
@@ -28,11 +26,6 @@ function Sidebar() {
       icon: `fa-solid fa-money-bill-transfer`,
       route: "/dashboard/egresos",
     },
-   /*  {
-      label: "Inventario",
-      icon: `fa-solid fa-box`,
-      route: "/dashboard/inventario",
-    }, */
     {
       label: "Productos",
       icon: `fa-solid fa-list-check`,

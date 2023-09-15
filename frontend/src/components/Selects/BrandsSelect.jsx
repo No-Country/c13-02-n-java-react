@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import createCategory from "../../services/products.js";
 
-function BrandsSelect() {
+function BrandsSelect({onBrandChange}) {
   const [brands, setBrands] = useState([]);
 
   const getBrands = async () => {
@@ -16,12 +16,17 @@ function BrandsSelect() {
     }
   };
 
+  const handleBrandChange = (e) => {
+    const selectedCategory = e.target.value;
+    onBrandChange(selectedCategory);
+  };
+
   useEffect(() => {
     getBrands();
   }, []);
 
   return (
-    <Form.Select  aria-label="Default select example">
+      <Form.Select aria-label="Default select example" onChange={handleBrandChange}>
       <option>--Seleccione marca--</option>
 
       {brands
