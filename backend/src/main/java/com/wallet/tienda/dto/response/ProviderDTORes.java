@@ -14,4 +14,5 @@ public class ProviderDTORes {
     private int phone;
     private String email;
     private String web;
+    private String description;
 }

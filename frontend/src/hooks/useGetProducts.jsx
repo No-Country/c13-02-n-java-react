@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from "react";
 import createCategory from "../services/products.js";
 import useAlert from "./useAlert.jsx";
 
@@ -7,7 +7,7 @@ function useGetProducts() {
 
   const handleGetProducts = async () => {
     try {
-      const ProductsData = await createCategory.getAll('products');
+      const ProductsData = await createCategory.getAll("products");
       setProducts(ProductsData.content);
       return ProductsData.content;
     } catch (error) {
@@ -21,8 +21,7 @@ function useGetProducts() {
     }
   };
 
-  return {handleGetProducts, products};
-
+  return { handleGetProducts, products };
 }
 
-export default useGetProducts
+export default useGetProducts;

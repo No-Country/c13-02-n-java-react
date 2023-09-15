@@ -10,14 +10,20 @@ function Dashboard() {
   const year = currentDate.getFullYear();
 
   const [data, setData] = useState();
-  const [dataMonths, setDataMonths] = useState([["Task", "Hours per Day"]]);
-
+  const [dataMonths, setDataMonths] = useState([["Task", "Hours per Day"],['Abril',57.657 ],
+  ['Mayo',59.657 ],
+  ['Junio',57.657 ],
+  ['Julio',52.699 ],
+  ['Agosto',57.657 ],
+  ['Setiembre',57.657 ]
+]);
+  
   const getChart = async () => {
     const monthsResponse = await getReport.getAll("reports/months");
-
+    
     const arrayValor = Object.values(monthsResponse);
     const arrayKeys = Object.keys(monthsResponse);
-
+    
     const dataNew = arrayKeys.concat(arrayValor);
 
     setDataMonths([...dataMonths, dataNew]);
