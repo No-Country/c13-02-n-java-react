@@ -52,12 +52,12 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 | <img src="https://avatars.githubusercontent.com/u/103857812?v=4" width=80/>|
 |:-:|
 | **Ivan Mieres** |
-|<a href="https://github.com/Iv-Mieres"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ivan-mieres/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/Iv-Mieres"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ivan-mieres/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 | <img src="https://avatars.githubusercontent.com/u/109114128?v=4" width=80/>|
 |:-:|
 | **Damian Della Corte** |
-|<a href="https://github.com/DamianCanteros"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/DamianCanteros"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 | <img src="https://avatars.githubusercontent.com/u/83872939?v=4" width=80/>|
 |:-:|
@@ -91,12 +91,12 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 | <img src="https://avatars.githubusercontent.com/u/89054682?v=4" width=80/>|
 |:-:|
 | **Exequiel Schiavo** |
-|<a href="https://github.com/Exeq10"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/exequiel-schiavo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/Exeq10"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/exequiel-schiavo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 | <img src="https://avatars.githubusercontent.com/u/98625121?v=4" width=80/>|
 |:-:|
 | **Julio Sevillano** |
-|<a href="https://github.com/AcirDeveloper"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/julio-sevillano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
+|<a href="https://github.com/AcirDeveloper"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/julio-sevillano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 
 ## ✔ Testing
