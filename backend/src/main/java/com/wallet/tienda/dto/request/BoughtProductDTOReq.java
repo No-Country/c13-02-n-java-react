@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BoughtProductDTOReq {
     private Long id;
-    @NotNull(message = "Debe asignar una compra")
-    private BuyDTOReq buy;
+    @NotNull(message = "No puede estar vacio")
+    private int quantity;
+    private Double price;
     @NotNull(message = "Debe asignar un producto")
     private ProductDTOReq product;
 }

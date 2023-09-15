@@ -4,7 +4,7 @@ import com.wallet.tienda.dto.request.UserDTOReq;
 import com.wallet.tienda.dto.response.UserDTORes;
 import com.wallet.tienda.exception.EmailExistsException;
 import com.wallet.tienda.exception.IdNotFoundException;
-import com.wallet.tienda.exception.PasswordException;
+import com.wallet.tienda.exception.ConfirmPasswordException;
 import com.wallet.tienda.model.CustomerUser;
 import com.wallet.tienda.repository.ICustomerUserRepository;
 import com.wallet.tienda.repository.IRoleRepository;
@@ -24,20 +24,23 @@ public class CustomerUserService implements ICustomerUserService {
 
     @Autowired
     private ICustomerUserRepository userRepository;
-
     @Autowired
     private ModelMapper modelMapper;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private IRoleRepository roleRepository;
 
 
-    //CREAR USUARIO
+    /**
+     * Guarda un usuario
+     * @param userDTO dto de usuario
+     * @throws EmailExistsException mensaje de excepcion de email ya existe
+     * @throws ConfirmPasswordException mensaje de excepcion de coincidencia de password incorrecto
+     * @throws RoleNotFoundException mensaje de excepcion de id de role no existe
+     */
     @Override
-    public void saveUser(UserDTOReq userDTO) throws EmailExistsException, PasswordException, RoleNotFoundException {
+    public void saveUser(UserDTOReq userDTO) throws EmailExistsException, ConfirmPasswordException, RoleNotFoundException {
         this.validateDataBeforeSavingUser(userDTO);
         var saveUser = modelMapper.map(userDTO, CustomerUser.class);
         saveUser.setEnable(true);
@@ -47,28 +50,43 @@ public class CustomerUserService implements ICustomerUserService {
         userRepository.save(saveUser);
     }
 
-    //MOSTRAR UN USUARIO POR ID
+    /**
+     * Busca en base de datos y devuelve un usuario por id
+     * @param userId numero de id de usuario
+     * @return dto de usuario
+     * @throws IdNotFoundException mensaje de excepcion de id de usuario no encontrado
+     */
     @Override
     public UserDTORes getUserById(Long userId) throws IdNotFoundException {
         return modelMapper.map(userRepository.findById(userId)
                 .orElseThrow(() -> new IdNotFoundException("El id " + userId + " no se encuentra registrado")), UserDTORes.class);
     }
 
-    //LISTAR USUARIOS
+    /**
+     * Devuelve lista de usuarios paginados
+     * @param pageable configuracion de paginado
+     * @return lista de usuarios paginados
+     */
     @Override
     public Page<UserDTORes> getAllUsers(Pageable pageable) {
-        var usersBD = userRepository.findAll(pageable);
+        var usersDB = userRepository.findAll(pageable);
         var usersDTO = new ArrayList<UserDTORes>();
 
-        for (CustomerUser user : usersBD) {
+        for (CustomerUser user : usersDB) {
             if(user.isEnable()) usersDTO.add(modelMapper.map(user, UserDTORes.class));
         }
-        return new PageImpl<>(usersDTO, pageable, usersDTO.size());
+        return new PageImpl<>(usersDTO, pageable, usersDB.getTotalElements());
     }
 
-    //MODIFICAR USUARIO
+    /**
+     * Actualiza un usuario en base de datos
+     * @param userDTO dto de usuario
+     * @throws EmailExistsException mensaje de excepcion de email ya existe en BD
+     * @throws IdNotFoundException mensaje de excepcion de id de usuario no encontrado
+     * @throws ConfirmPasswordException mensaje de excepcion de password no coincide
+     */
     @Override
-    public void updateUser(UserDTOReq userDTO) throws EmailExistsException, IdNotFoundException, PasswordException {
+    public void updateUser(UserDTOReq userDTO) throws EmailExistsException, IdNotFoundException, ConfirmPasswordException {
         var userBD = userRepository.findById(userDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + userDTO.getId() + " no se encuentra registrado"));
 
@@ -79,7 +97,11 @@ public class CustomerUserService implements ICustomerUserService {
         userRepository.save(saveUser);
     }
 
-    //ELIMINADO LÓGICO DE USUARIO
+    /**
+     * Elimina un usuario de BD
+     * @param userId numero de id de usuario
+     * @throws IdNotFoundException mensaje de excepcion de id no encontrado
+     */
     @Override
     public void deleteUser(Long userId) throws IdNotFoundException {
         var userBD = userRepository.findById(userId)
@@ -89,25 +111,36 @@ public class CustomerUserService implements ICustomerUserService {
     }
 
 
-    //VALIDA DATOS ANTES DE GUARDAR UN USUARIO
-    public void validateDataBeforeSavingUser(UserDTOReq userDTO) throws EmailExistsException, PasswordException {
+    /**
+     * Valida los datos de usuario eantes de guardar en BD
+     * @param userDTO dto de usuario
+     * @throws EmailExistsException mensaje de excepcion email ya existe
+     * @throws ConfirmPasswordException mensaje de excepcion de error de coincidencia de password
+     */
+    public void validateDataBeforeSavingUser(UserDTOReq userDTO) throws EmailExistsException, ConfirmPasswordException {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
             throw new EmailExistsException("El Email " + userDTO.getUsername() + " ya se encuentra registrado." +
                     " Ingrese un nuevo Email");
         }
         if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
-            throw new PasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
+            throw new ConfirmPasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
         }
     }
 
-    //VALIDA DATOS ANTES DE MODIFICAR UN USUARIO
-    public void validateDataBeforeUpdatingUser(UserDTOReq userDTO, String usernameDB) throws EmailExistsException, PasswordException {
+    /**
+     * Valida datos de usuario antes de actualizar usuario
+     * @param userDTO dto de uduario
+     * @param usernameDB email
+     * @throws EmailExistsException mensaje de excepcion email ya existe en base de datos
+     * @throws ConfirmPasswordException mensaje de excepcio de error de coincidencia de password
+     */
+    public void validateDataBeforeUpdatingUser(UserDTOReq userDTO, String usernameDB) throws EmailExistsException, ConfirmPasswordException {
 
         if (!userDTO.getUsername().equals(usernameDB) && userRepository.existsByUsername(userDTO.getUsername())) {
             throw new EmailExistsException("El Email " + userDTO.getUsername() + " ya se encuentra registrado");
         }
         if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
-            throw new PasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
+            throw new ConfirmPasswordException("Los campos contraseña y confirmar contraseña deben coincidir");
         }
 
     }

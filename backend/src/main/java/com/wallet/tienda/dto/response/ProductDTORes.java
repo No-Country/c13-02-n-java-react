@@ -1,5 +1,6 @@
 package com.wallet.tienda.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wallet.tienda.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,9 +16,7 @@ public class ProductDTORes {
     private Double price;
     private int stock;
     private String imageUrl;
-    private CustomerUser user;
-    private Brand brand;
-    private Category category;
-    private Provider provider;
-    private Order order;
+    private BrandDTORes brand;
+    private CategoryDTORes category;
+
 }

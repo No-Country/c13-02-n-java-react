@@ -22,4 +22,8 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=TRUE
       - MYSQL_DB=fima
+    volumes:
+      - mysql_data:/var/lib/mysql
     restart: always
+volumes:
+  mysql_data:

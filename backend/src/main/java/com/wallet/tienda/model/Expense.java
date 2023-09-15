@@ -4,19 +4,19 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
-@Entity(name = "orders")
+@Entity
+@Table(name = "expenses")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
-
+public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String clientName;
-    @ManyToOne
-    @JoinColumn(name = "fk_user")
-    private CustomerUser user;
-
+    private String name;
+    private Double price;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 }

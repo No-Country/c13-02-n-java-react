@@ -25,14 +25,14 @@ public class CustomerUser implements UserDetails {
     private String username;
     private String password;
     private String photoUrl;
-    private int phone;
+    private String phone;
     private String businessName;
     private boolean isEnable;
+    @OneToOne(mappedBy = "customerUser")
+    private Token token;
     @ManyToOne
     @JoinColumn(name = "fk_role")
     private Role role;
-    @ManyToMany(mappedBy = "users")
-    private List<Provider> provider;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

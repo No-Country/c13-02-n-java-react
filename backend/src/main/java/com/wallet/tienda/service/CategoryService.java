@@ -7,6 +7,7 @@ import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Category;
 import com.wallet.tienda.repository.ICategoryRepository;
 import com.wallet.tienda.util.IWordsConverter;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,14 +19,20 @@ import java.util.ArrayList;
 
 @Service
 public class CategoryService implements ICategoryService{
-    @Autowired
-    private static ICategoryRepository categoryRepository;
-    @Autowired
-    private static IWordsConverter wordsConverter;
-    @Autowired
-    private static ModelMapper modelMapper;
 
-    //CREA UNA CATEGORIA
+    @Autowired
+    private ICategoryRepository categoryRepository;
+    @Autowired
+    private IWordsConverter wordsConverter;
+    @Autowired
+    private ModelMapper modelMapper;
+
+
+    /**
+     * Guarda una categoria  en base de datos
+     * @param categoryDTO dto de categoria
+     * @throws NameExistsException mensaje de excepcion de nombre ya existe
+     */
     @Override
     public void saveCategory(CategoryDTOReq categoryDTO) throws NameExistsException {
         if (categoryRepository.existsByName(categoryDTO.getName())) {
@@ -37,14 +44,23 @@ public class CategoryService implements ICategoryService{
         categoryRepository.save(modelMapper.map(categoryDTO, Category.class));
     }
 
-    //MUESTRA UNA CATEGORIA POR ID
+    /**
+     * Devuelve una categoria pór id
+     * @param categoryId numero de id de categoria
+     * @return dto de categoria
+     * @throws IdNotFoundException mensaje de excepcion de nombre ya existe
+     */
     @Override
     public CategoryDTORes getCategoryById(Long categoryId) throws IdNotFoundException {
         return modelMapper.map(categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no exite. Ingrese un nuevo id")), CategoryDTORes.class);
+                .orElseThrow(() -> new IdNotFoundException("El id " + categoryId + " no existe. Ingrese un nuevo id")), CategoryDTORes.class);
     }
 
-    //LISTA CATEGORIAS PAGINADAS
+    /**
+     * Devuelve una lista de categorias paginadas
+     * @param pageable configuracion de paginacion
+     * @return lista de categorias paginada
+     */
     @Override
     public Page<CategoryDTORes> getAllCategories(Pageable pageable) {
         var categoriesDB = categoryRepository.findAll(pageable);
@@ -53,10 +69,15 @@ public class CategoryService implements ICategoryService{
         for (Category category : categoriesDB) {
             categoriesDTO.add(modelMapper.map(category, CategoryDTORes.class));
         }
-        return new PageImpl<>(categoriesDTO, pageable, categoriesDTO.size());
+        return new PageImpl<>(categoriesDTO, pageable, categoriesDB.getTotalElements());
     }
 
-    //ACTUALIZA UNA CATEGORIA
+    /**
+     * Actualiza una categoria por id
+     * @param categoryDTO dto de categoria
+     * @throws IdNotFoundException mensaje de excepcion de nombre ya existe
+     * @throws NameExistsException mensaje de excepcion de nombre ya existe
+     */
     @Override
     public void updateCategory(CategoryDTOReq categoryDTO) throws IdNotFoundException, NameExistsException {
         var categoryDB = categoryRepository.findById(categoryDTO.getId())
@@ -70,7 +91,10 @@ public class CategoryService implements ICategoryService{
         categoryRepository.save(modelMapper.map(categoryDTO, Category.class));
     }
 
-    //ELIMINA UNA CATEGORIA
+    /**
+     * Elimina una categoria por id
+     * @param categoryID numero de id de categoria
+     */
     @Override
     public void deleteCategory(Long categoryID) {
         categoryRepository.deleteById(categoryID);

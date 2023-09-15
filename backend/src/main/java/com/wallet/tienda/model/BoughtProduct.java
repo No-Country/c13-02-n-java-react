@@ -19,8 +19,5 @@ public class BoughtProduct {
     @ManyToOne
     @JoinColumn(name = "fk_product")
     private Product product;
-    @ManyToOne
-    @JoinColumn(name = "fk_buy")
-    private Buy buy;
 
 }
