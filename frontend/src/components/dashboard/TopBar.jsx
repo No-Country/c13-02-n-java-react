@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Imagenes from "../../assets/imagenes.jsx";
+import Imagenes from "../../assets/Imagenes.jsx";
 import {getLocalStorageIdUtil} from "../../config/utils/getLocalStorageIdUtil.js";
 import userProfile from "../../services/products.js";
 import {useEffect, useState} from "react";

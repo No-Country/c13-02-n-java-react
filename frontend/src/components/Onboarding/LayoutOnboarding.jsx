@@ -1,5 +1,5 @@
 import './Onboarding.css'
-import Imagenes from '../../assets/imagenes'
+import Imagenes from '../../assets/Imagenes.jsx'
 import {Link, Outlet} from 'react-router-dom'
 import {useLocation, useNavigate} from 'react-router-dom'
 

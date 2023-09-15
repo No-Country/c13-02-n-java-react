@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../css/Landing.css";
 import Footer from "../Footer/Footer.jsx";
-import Imagenes from "../../assets/imagenes.jsx";
+import Imagenes from "../../assets/Imagenes.jsx";
 
 function Landing() {
   return (
@@ -62,7 +62,7 @@ function Landing() {
             <p>Crea tu cuenta y carga el perfil de tu negocio</p>
           </div>
           <div className="container_icon">
-            <img src={Imagenes.group6} alt="icons" />
+              <img src={Imagenes.groupSeis} alt="icons"/>
             <p>Lleva un control tus ventas y calcula tus ganancias</p>
           </div>
           <div className="container_icon">
