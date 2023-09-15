@@ -4,8 +4,16 @@ import ProtectedRoute from "./hooks/ProtectedRoute.jsx";
 // Pages
 import * as Pages from "./pages";
 import ErrorPage from "./pages/404/ErrorPage.jsx";
+import useGetScreen from "./hooks/useGetScreen.jsx";
+
+import LayoutOnboarding from "./components/Onboarding/LayoutOnboarding.jsx";
+import OnboardingOne from "./components/Onboarding/OnboardingOne.jsx";
+import Onboardingtwo from "./components/Onboarding/Onboardingtwo.jsx";
+import Onboardingthree from "./components/Onboarding/Onboardingthree.jsx";
 
 function App() {
+
+  const {setIsDesktop,isdesktop,getScreen} = useGetScreen()
   const [auth, setAuth] = useState(localStorage.getItem('auth') || false );
 
   useEffect(() => {
@@ -14,12 +22,38 @@ function App() {
       :''
   }, [auth]);
 
+
+  
+
+  useEffect(() => {
+
+
+    getScreen()
+
+   
+  }, [])
+  
+
+
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           {/* Rutas sin proteger  */}
-          <Route path="/" element={<Pages.Landing />} />
+          {
+
+            isdesktop ?<Route path="/" element={<Pages.Landing />} />   :<Route path="/" element={ <LayoutOnboarding   />} children={[
+
+
+
+              <Route index={true}  element={<OnboardingOne/>}  />,
+              <Route path="/onboardingtwo" element={<Onboardingtwo/>}  />,
+              <Route path="/onboardingthree" element={<Onboardingthree/>}  />
+
+            ]} /> 
+          }
+
           <Route path="/login" element={<Pages.Login auth={auth} setAuth={setAuth} />} />
           <Route path="/register" element={<Pages.Register />} />
           <Route path="/recoverPassword" element={<Pages.RecoverPassword />} />

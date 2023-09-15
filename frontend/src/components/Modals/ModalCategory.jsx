@@ -5,10 +5,10 @@ import Modal from "react-bootstrap/Modal";
 import useNewCategory from "../../hooks/useNewCategory";
 
 
-function ModalCategory({ setShow, show, handleClose, handleShow, showControl}) {
+function ModalCategory({show, handleClose}) {
 
 
-const {handleSubmit,category,setCategory,categories, setCategories} = useNewCategory()
+    const {handleSubmit, category, setCategory} = useNewCategory()
 
   return (
     <>
@@ -40,10 +40,6 @@ const {handleSubmit,category,setCategory,categories, setCategories} = useNewCate
 
     
   );
-
-  return {
-    
-  }
 }
 
 export default ModalCategory;

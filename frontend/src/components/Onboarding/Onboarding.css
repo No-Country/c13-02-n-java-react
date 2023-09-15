@@ -1,0 +1,33 @@
+.bg-onboarding {
+
+
+    background-image: url('../../assets/img/onboarding1.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+
+.btn-boarding{
+    display: flex;
+  width: 70%;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+ 
+  font-feature-settings: "calt" off;
+  font-family: Helvetica, system-ui, Avenir, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.18px;
+  gap: 8px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #594fff 0%, #4c46aa 100%);
+  border: none;
+  transition: all 300ms ease-in;
+
+
+}
+

@@ -26,7 +26,7 @@ function TopBar() {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item  d-flex justify-content-center  align-items-center ">
 
-            {userData.fullName}
+            <p className="text-capitalize m-0 ">{userData.fullName}</p>
             <Link className="nav-link " to={"/dashboard/settings"}>
               
               <img className="img-profile rounded-circle" src={Imagenes.avatar} alt="avatar"/>

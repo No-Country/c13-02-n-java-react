@@ -67,9 +67,9 @@ function ModalProduct({
                 type="text"
                 placeholder="Nombre producto"
                 value={product.name}
-                onChange={(e) => {
+                onChange={(e) =>
                   handleChange("name", e.target.value)
-                }}
+                }
                 autoFocus
               />
 

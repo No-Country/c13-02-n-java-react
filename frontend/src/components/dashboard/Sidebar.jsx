@@ -9,7 +9,6 @@ function Sidebar() {
   const handleLogout = () => {
     window.sessionStorage.clear();
     window.localStorage.clear();
-    setToken(null)
 
     navigate("/");
   };
@@ -27,11 +26,6 @@ function Sidebar() {
       icon: `fa-solid fa-money-bill-transfer`,
       route: "/dashboard/egresos",
     },
-   /*  {
-      label: "Inventario",
-      icon: `fa-solid fa-box`,
-      route: "/dashboard/inventario",
-    }, */
     {
       label: "Productos",
       icon: `fa-solid fa-list-check`,

@@ -2,9 +2,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-image: url('bg.svg');
-  background-position: right center;
-    background-repeat: no-repeat;
+    background: var(--Fondos, linear-gradient(180deg, #4E73DF 0%, #244CC0 100%));
 }
 
 
@@ -55,6 +53,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  
 }
 
 .register_input label {
@@ -116,7 +115,29 @@ outline-color: #4c46aa;
 }
 
 
-@media(max-width:768px) {
+
+
+
+/* mediaQueries  */
+
+@media (max-width: 767px) {
+  /* Estilos para pantallas con un ancho máximo de 767px (móviles) */
+.register_panel{
+
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+.--50{
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
 
   .register h1 {
     margin: 0 auto 30px auto;
@@ -125,11 +146,79 @@ outline-color: #4c46aa;
   .register_panel form {
     width: 80%;
     margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+   
+  
+    gap:10px;
+  
+  }
+
+  .register_panel div {
+    width: 100%;
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 20px
+  }
+
+
+  .div_container_input{
+
+    margin: 10 0 0 0;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para pantallas con un ancho mínimo de 768px y un ancho máximo de 1023px (tablets y pantallas pequeñas) */
+   .register h1 {
+    margin: 0 auto 30px auto;
+  }
+
+  
+  
+  .register_panel form {
+    width: 100%;
+    margin: 30 auto;
+    
+
+  }
+
+  
+
+  .div_container_input{
+
+    flex-direction: row;
+  }
+ 
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  /* Estilos para pantallas con un ancho mínimo de 1024px y un ancho máximo de 1365px (tablets y computadoras portátiles) */
+  .register h1 {
+    margin: 0 auto 30px 0 ;
+  }
+  
+  .register_panel form {
+    width: 100%;
+    margin: 0 auto;
   }
 
   .div_container_input{
 
-    flex-direction: column;
+    flex-direction: flex;
   }
-  
+
 }
+
+@media (min-width: 1366px) {
+  /* Estilos para pantallas con un ancho mínimo de 1366px (computadoras de escritorio) */
+  
+
+}
+

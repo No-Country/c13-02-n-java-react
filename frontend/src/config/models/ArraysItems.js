@@ -18,49 +18,9 @@ const menuItems = [
 ];
 
 
-/* data para las cards de prueba  */
-const dataCardsDashboard = [
-  {
-    type: "Ganancias netas (Mes)",
-    mount: `$ ${12000}`,
-    icon: "fas fa-calendar",
-    color: "primary",
-  },
-  {
-    type: "Ganancias Diarias",
-    mount: `$ ${5000}`,
-    icon: "fas fa-calendar",
-    color: "warning",
-  },
-  {
-    type: "Pedidos Entregados",
-    mount: 75,
-    icon: "fa-solid fa-truck",
-    color: "success",
-  },
-  {
-    type: "Costos",
-    mount: `$ ${5900}`,
-    icon: "fa-regular fa-clock",
-    color: "danger",
-  },
-];
 
-const dataMeses = [
-  ["Meses", "Ganancias"],
-  ["Enero", 1150],
-  ["Febrero", 12200],
-  ["Marzo", 7851],
-  ["Abril", 5230],
-  ["Mayo ", 7845],
-  ["Junio ", 9632],
-  ["Julio", 4123],
-  ["Agosto", 12008],
-  ["Setiembre", 7895],
-  ["Octubre", 7451],
-  ["Noviembre", 12365],
-  ["Diciembre", 4578],
-];
+
+
 
 /* meses para mostrar en ingresos y egresos */
 const months = {
@@ -271,8 +231,8 @@ const currentDate = new Date();
 export {
   menuItems,
   // formGroups,
-  dataCardsDashboard,
-  dataMeses,
+
+ 
   currentDate,
   months,
   productosPrueba,
