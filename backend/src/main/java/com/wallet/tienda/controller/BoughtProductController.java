@@ -6,6 +6,7 @@ import com.wallet.tienda.exception.IdNotFoundException;
 import com.wallet.tienda.service.IBoughtProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de productos vendidos")
 @RestController
-@RequestMapping("api/v1/bought-product")
-@RequiredArgsConstructor
+@RequestMapping("api/v1/bought-products")
 public class BoughtProductController {
 
-    private final IBoughtProductService boughtProductService;
+    @Autowired
+    private IBoughtProductService boughtProductService;
 
     //@Operation(
     //summary = "Guarda un producto vendido",

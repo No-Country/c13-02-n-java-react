@@ -18,12 +18,13 @@ import java.util.ArrayList;
 
 @Service
 public class ProductService implements IProductService{
+
     @Autowired
-    private static IProductRepository productRepository;
+    private IProductRepository productRepository;
     @Autowired
-    private static IWordsConverter wordsConverter;
+    private IWordsConverter wordsConverter;
     @Autowired
-    private static ModelMapper modelMapper;
+    private ModelMapper modelMapper;
 
     //CREA UN PRODUCTO
     @Override
@@ -53,7 +54,7 @@ public class ProductService implements IProductService{
         for (Product product : productsDB) {
             productsDTO.add(modelMapper.map(product, ProductDTORes.class));
         }
-        return new PageImpl<>(productsDTO, pageable, productsDTO.size());
+        return new PageImpl<>(productsDTO, pageable, productsDB.getTotalElements());
     }
 
     //ACTUALIZA UN PRODUCTO

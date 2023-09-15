@@ -1,0 +1,8 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tabler:home">
+<g id="Group">
+<path id="Vector" d="M5 12.5H3L12 3.5L21 12.5H19M5 12.5V19.5C5 20.0304 5.21071 20.5391 5.58579 20.9142C5.96086 21.2893 6.46957 21.5 7 21.5H17C17.5304 21.5 18.0391 21.2893 18.4142 20.9142C18.7893 20.5391 19 20.0304 19 19.5V12.5" stroke="#545454" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M9 21.5V15.5C9 14.9696 9.21071 14.4609 9.58579 14.0858C9.96086 13.7107 10.4696 13.5 11 13.5H13C13.5304 13.5 14.0391 13.7107 14.4142 14.0858C14.7893 14.4609 15 14.9696 15 15.5V21.5" stroke="#545454" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

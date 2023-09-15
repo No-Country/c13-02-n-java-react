@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 //@Tag(name = "Controlador de categorias")
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     @Autowired

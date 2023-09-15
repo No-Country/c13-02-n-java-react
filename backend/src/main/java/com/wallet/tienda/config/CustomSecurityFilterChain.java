@@ -2,7 +2,6 @@ package com.wallet.tienda.config;
 
 import com.wallet.tienda.config.filter.JWTAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,9 +39,26 @@ public class CustomSecurityFilterChain {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/**", "/api/v1/login", "/api/v1/register", "/swagger-ui/**", "/v3/api-docs/**")
-                                .permitAll()
-                                .anyRequest().authenticated()
+                        auth.requestMatchers("/api/v1/password/**", "/api/v1/login", "/swagger-ui/**", "/v3/api-docs/**")
+                                .permitAll())
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers(
+                                "/api/v1/products",
+                                "/api/v1/sales",
+                                "/api/v1/sold-products",
+                                "/api/v1/brands",
+                                "/api/v1/buys",
+                                "/api/v1/bought-products",
+                                "/api/v1/providers",
+                                "/api/v1/categories").hasAnyRole("USER", "ADMIN")
+
+                )
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/api/v1/users", "/api/v1/reports").hasRole("ADMIN")
+
+                )
+                .authorizeHttpRequests(
+                        auth -> auth.anyRequest().authenticated()
                 )
                 .sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

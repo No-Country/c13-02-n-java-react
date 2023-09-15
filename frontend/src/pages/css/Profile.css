@@ -1,0 +1,18 @@
+.card_profile {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    margin: 2%;
+}
+
+.card_profile .nav-link.active {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;    
+}
+
+.image__profile {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
