@@ -10,6 +10,8 @@ function TableP() {
     
     const {handleGetProducts, products} = useGetProducts();
 
+    const [tablaProductos,setTablaProductos]=useState(products)
+
 
     useEffect(() => {
         handleGetProducts().then((data) => {
@@ -35,7 +37,7 @@ function TableP() {
     
           /* filtro  Stock */
           const filtrarCategory = (query) => {
-          var producto = productosPrueba.filter((product) => {
+          var producto = tablaProductos.filter((product) => {
   
             if( product.categoria === query ) {
     
@@ -54,7 +56,7 @@ function TableP() {
     
          /* filtro  Stock */
           const filtrarStock = (query) => {
-           var producto = productosPrueba.filter((product) => {
+           var producto = tablaProductos.filter((product) => {
             if (query == "alto") {
               return product.cantidad > 90;
              } else if (query == "medio") {
@@ -72,7 +74,7 @@ function TableP() {
 
   return (
     <>
-     <div className="d-flex gap-2  w-100 ">
+ {/*     <div className="d-flex gap-2  w-100 ">
      <select
         className=" w-25  shadow-lg dropdown form-select"
         aria-label="Default select example"
@@ -106,7 +108,7 @@ function TableP() {
           })}
         </optgroup>
       </select>
-     </div>
+     </div> */}
 
         <Table size="sm" className="mt-5 text-center">
         <thead className="rounded-5">
