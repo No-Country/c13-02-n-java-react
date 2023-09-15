@@ -1,5 +1,5 @@
 import Imagenes from "../../assets/imagenes";
-import "../css/Footer.css";
+import "../css/Landing.css";
 
 function Footer() {
   return (

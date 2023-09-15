@@ -4,7 +4,7 @@ import {categorias, opciones, productosPrueba} from "../../config/models/ArraysI
 import useControlStock from "../../hooks/useControlStock";
 import useGetProducts from "../../hooks/useGetProducts";
 import {Card, Container} from "react-bootstrap";
-import "../../pages/css/products.css"
+import "../../pages/css/Landing.css"
 
 function TableP() {
     const {formatoMoneda, controlStock,} = useControlStock();

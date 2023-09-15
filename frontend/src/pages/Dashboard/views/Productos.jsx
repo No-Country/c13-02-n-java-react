@@ -4,7 +4,6 @@ import ModalCategory from "../../../components/Modals/ModalCategory.jsx";
 import ModalProduct from "../../../components/Modals/ModalProduct.jsx";
 import ModalBrand from "../../../components/Modals/ModalBrand.jsx";
 import {Card, Container} from "react-bootstrap";
-import "../../css/products.css";
 
 function Productos() {
     const [showCategory, setShowCategory] = useState(false);
