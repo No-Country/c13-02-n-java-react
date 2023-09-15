@@ -5,19 +5,28 @@ import Modal from "react-bootstrap/Modal";
 import CategoriesSelect from "../Selects/CategoriesSelect";
 import BrandsSelect from "../Selects/BrandsSelect";
 import { Link } from "react-router-dom";
+import useCreateProducts from "../../hooks/useCreateProducts.jsx";
 
 function ModalProduct({
-  setShow,
   show,
   handleClose,
-  handleShow,
   handleShowBrand,
   handleShowCategory,
 }) {
+
+  const {product, setProduct, handleChange, CreateProducts} = useCreateProducts();
   const showControl = (modal) => {
     handleClose();
 
     modal();
+  };
+
+  const handleCategoryChange = (selectedCategoryId) => {
+    console.log(`Categoría seleccionada: ${selectedCategoryId}`);
+    setProduct({
+      ...product,
+      category: selectedCategoryId,
+    });
   };
 
   return (
@@ -31,7 +40,7 @@ function ModalProduct({
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="mt-2">Categoría</Form.Label>
 
-              <CategoriesSelect />
+              <CategoriesSelect onCategoryChange={handleCategoryChange}/>
               <div className="mt-2 d-flex justify-content-end ">
                 <button
                   onClick={() => showControl(handleShowCategory)}
@@ -57,6 +66,10 @@ function ModalProduct({
               <Form.Control
                 type="text"
                 placeholder="Nombre producto"
+                value={product.name}
+                onChange={(e) => {
+                  handleChange("name", e.target.value)
+                }}
                 autoFocus
               />
 
@@ -66,6 +79,8 @@ function ModalProduct({
                   <Form.Control
                     type="number"
                     placeholder="Ingrese Stock"
+                    value={product.stock}
+                    onChange={(e) => handleChange("stock", e.target.value)}
                     autoFocus
                   />
                 </div>
@@ -76,6 +91,8 @@ function ModalProduct({
                   <Form.Control
                     type="Number"
                     placeholder="Precio Producto"
+                    value={product.price}
+                    onChange={(e) => handleChange("price", e.target.value)}
                     autoFocus
                   />
                 </div>

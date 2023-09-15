@@ -12,7 +12,7 @@ function useNewCategory() {
             try {
                 if (category) {
                     const categoryData = await createCategory.create('categories', {name: category});
-                    setCategory("");
+                    setCategory(categoryData.content);
                 }
 
                 useAlert({
