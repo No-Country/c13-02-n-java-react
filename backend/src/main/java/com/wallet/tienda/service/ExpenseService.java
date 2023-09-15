@@ -7,7 +7,6 @@ import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Expense;
 import com.wallet.tienda.repository.IExpenseRepository;
 import com.wallet.tienda.util.IWordsConverter;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,40 +26,25 @@ public class ExpenseService implements IExpenseService {
     @Autowired
     private ModelMapper modelMapper;
 
-
-//    @Override
-//    public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
-//        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
-//        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
-//        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
-//            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
-//        }
-//        //convierte la primer letra de cada palabra en mayúscula
-//        expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
-//
-//        expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
-//    }
-
     /**
      * Guardar un gasto en base de datos
      * @param expenseDTO dto de gasto
      * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
      */
+
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
-
-        if (expenseRepository.existsByName(expenseDTO.getName())){
-            var expenseDB = expenseRepository.findByName(expenseDTO.getName());
-            //valida que el nombre del gasto no exista y si existe que no se repita la fecha
-            if (expenseDTO.getDate().equals(expenseDB.get().getDate())) {
-                throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
-            }
+        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
-
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
+
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
+
 
 
     /**
