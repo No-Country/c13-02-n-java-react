@@ -2,21 +2,25 @@ import '../../components/css/spinner.css'
 
 function SpinnerLoad() {
   return (
-      <>
-      <div className="sk-folding-cube">
-        <div className="sk-cube1 sk-cube"></div>
-        <div className="sk-cube2 sk-cube"></div>
-        <div className="sk-cube4 sk-cube"></div>
-        <div className="sk-cube3 sk-cube"></div>
+      <div className='container_spinner'>
+      <div className="sk-fading-circle">
+  <div className="sk-circle1 sk-circle"></div>
+  <div className="sk-circle2 sk-circle"></div>
+  <div className="sk-circle3 sk-circle"></div>
+  <div className="sk-circle4 sk-circle"></div>
+  <div className="sk-circle5 sk-circle"></div>
+  <div className="sk-circle6 sk-circle"></div>
+  <div className="sk-circle7 sk-circle"></div>
+  <div className="sk-circle8 sk-circle"></div>
+  <div className="sk-circle9 sk-circle"></div>
+  <div className="sk-circle10 sk-circle"></div>
+  <div className="sk-circle11 sk-circle"></div>
+  <div className="sk-circle12 sk-circle"></div>
+</div>
       </div>
 
 
-          <div className="spinner">
-              <div className="bounce1"></div>
-              <div className="bounce2"></div>
-              <div className="bounce3"></div>
-          </div>
-      </>
+         
   )
 }
 

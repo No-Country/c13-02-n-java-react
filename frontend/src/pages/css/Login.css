@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(220, 220, 220, 0.459);
+  background: var(--Fondos, linear-gradient(180deg, #4E73DF 0%, #244CC0 100%));
   font-family: 'Nunito', sans-serif !important;
 }
 
@@ -13,7 +13,7 @@
   margin: 0 auto;
  
   width: 30.5%;
-    height: 90%;
+   min-height: 90%;
 
   background-color: white;
   display: flex;
@@ -135,6 +135,7 @@
 
 .--mt {
   margin-top: 20px;
+  text-align: center;
 }
 
 .option_login {
@@ -148,7 +149,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
+font-size: 10px;
   gap: 10px;
   border-radius: 6px;
   border: 1px solid #000;
@@ -177,3 +178,69 @@
     font-size:16px
 
 }
+
+
+
+
+
+
+/* mediaQueries  */
+
+@media (max-width: 767px) {
+  /* Estilos para pantallas con un ancho máximo de 767px (móviles) */
+  .login_panel{
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2{
+    font-size: 14px;
+    text-align: center;
+  }
+
+  
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para pantallas con un ancho mínimo de 768px y un ancho máximo de 1023px (tablets y pantallas pequeñas) */
+  .login_panel{
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  
+  }
+
+
+h2{
+  font-size: 14px;
+  text-align: center;
+}
+  .google_login{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  /* Estilos para pantallas con un ancho mínimo de 1024px y un ancho máximo de 1365px (tablets y computadoras portátiles) */
+  .login_panel{
+    width: 30.5%;
+  }
+  .google_login{
+    font-size: 14px;
+  }
+
+}
+
+@media (min-width: 1366px) {
+  /* Estilos para pantallas con un ancho mínimo de 1366px (computadoras de escritorio) */
+  .login_panel{
+    width: 30.5%;
+  }
+  .google_login{
+    font-size: 14px;
+  }
+
+}
+

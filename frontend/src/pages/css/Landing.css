@@ -305,9 +305,10 @@ letter-spacing: -0.32px;
 }
 
 .barras_landing img {
-  width: 520px;
-  height: 188px;
+  width: 100%;
+ 
   flex-shrink: 0;
+  margin-bottom: 150px;
 }
 
 .banner_landing {
@@ -315,12 +316,13 @@ letter-spacing: -0.32px;
   justify-content: end;
   align-items: center;
   gap: 89px;
-  margin-top: -120px;
+  
 }
 
 .banner_landing img {
-  width: 583px;
-  height: 340px;
+  width: 50%;
+
+ 
 }
 
 .banner_landing .--absolute {
@@ -331,8 +333,9 @@ letter-spacing: -0.32px;
 }
 
 .banner_landing p {
-  width: 430px;
-  margin-right: 231px;
+  width: 100%;
+  margin-left: 50px;
+  
   color: #2d3648;
   font-family: Helvetica;
   font-size: 40px;
@@ -350,4 +353,83 @@ letter-spacing: -0.32px;
   align-items: start;
   margin-bottom: -100px;
   z-index: -1;
+}
+
+
+/* mediaQueries  */
+
+@media (max-width: 767px) {
+  /* Estilos para pantallas con un ancho máximo de 767px (móviles) */
+  .logo_landing{
+
+    flex-direction: column;
+  }
+
+  .logo_landing p{
+    display: none;
+  }
+
+  .header_landing{
+
+    justify-content: center;
+  }
+  .navigation_landing{
+
+    display: none;
+  }
+  .hero_landing{
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img_hero_landing{
+
+    display: none;
+    text-align: center;
+  }
+
+ .action_hero_landing h1{
+  width: 100%;
+  font-size: 20px;
+ }
+
+
+ .cards_container_landing{
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+
+ }
+
+ .info_landing{
+
+  font-size:  10px;
+ }
+
+
+ .info_icons_landing{
+  grid-column:  1;
+ }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para pantallas con un ancho mínimo de 768px y un ancho máximo de 1023px (tablets y pantallas pequeñas) */
+ 
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  /* Estilos para pantallas con un ancho mínimo de 1024px y un ancho máximo de 1365px (tablets y computadoras portátiles) */
+  
+
+}
+
+@media (min-width: 1366px) {
+  /* Estilos para pantallas con un ancho mínimo de 1366px (computadoras de escritorio) */
+ 
+
 }

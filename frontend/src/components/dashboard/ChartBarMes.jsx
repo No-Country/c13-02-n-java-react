@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import {Chart} from "react-google-charts";
 
 function ChartBarMes({data, titulo}) {
 
+ 
+    
 
     const options = {
         title: titulo,

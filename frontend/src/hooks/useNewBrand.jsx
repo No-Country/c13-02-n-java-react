@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAlert from "./useAlert";
 import { useContext } from "react";
-import { UserContext } from "../context/UserProvider";
+
 import createCategory from "../services/products.js";
 function useNewBrand() {
   const [brand, setBrand] = useState("");

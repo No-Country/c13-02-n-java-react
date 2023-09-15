@@ -8,7 +8,7 @@ function BrandsSelect() {
 
   const getBrands = async () => {
     try {
-      const bransData = await createCategory.getAll('brands');
+      const bransData = await createCategory.getAll('brands?size=150');
       setBrands(bransData.content);
       console.log(bransData);
     } catch (error) {
@@ -21,7 +21,7 @@ function BrandsSelect() {
   }, []);
 
   return (
-    <Form.Select aria-label="Default select example">
+    <Form.Select  aria-label="Default select example">
       <option>--Seleccione marca--</option>
 
       {brands

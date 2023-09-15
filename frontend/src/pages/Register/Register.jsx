@@ -90,8 +90,8 @@ function Register() {
             </div>
           </div>
 
-          <div className="d-flex align-items-center ">
-            <p className="w-50 ">
+          <div className="d-flex align-items-center justify-content-center  ">
+            <p className="md:w-50 lg:w-50  w-75 text-center   ">
               Acepto los Términos y condiciones y autorizo el uso de mis datos
               de acuerdo a la Declaración de Privacidad.
             </p>
@@ -99,8 +99,8 @@ function Register() {
           <div className="w-25  mb-3 mt-3 mx-auto ">
             {isLoading ? <SpinnerLoad /> : ""}
           </div>
+          <div className=" mt-3 d-flex justify-content-center flex-column  ">
           <input type="submit" className="--50" value={"Crear cuenta"} />
-          <div className=" mt-3 ">
             <p className="text-center ">
               ¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión </Link>
             </p>

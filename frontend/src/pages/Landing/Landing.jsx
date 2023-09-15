@@ -13,7 +13,7 @@ function Landing() {
                 </picture> 
          
 
-                <p>Fima</p>
+                <p>Fima</p> 
         </div>
 
         <nav className="navigation_landing">
@@ -84,14 +84,14 @@ function Landing() {
           </div>
         </div>
       </div>
-      <div className="barras_landing">
-        <img src={Imagenes.barras} alt="imagen" />
+      <div className="barras_landing  ">
+        <img src={Imagenes.respo} alt="imagen" />
       </div>
 
       <div className="banner_landing">
-        <img src={Imagenes.alcancia} alt="img" />
-        <img className="--absolute" src={Imagenes.rectangle} alt="img" />
+      
         <p>Digitalízate con FIMA y optimiza el rendimiento de tu negocio</p>
+        <img className=" " src={Imagenes.respo2} alt="img" />
       </div>
 
       {/* <div className='bubbles_landing'>
