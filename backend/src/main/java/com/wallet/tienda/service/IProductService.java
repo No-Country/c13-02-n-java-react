@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
 
-    void saveProduct(ProductDTOReq productDTO) throws NameExistsException;
+    void saveProduct(ProductDTOReq productDTO) throws NameExistsException, IdNotFoundException;
     ProductDTORes getProductById(Long productId) throws IdNotFoundException;
 
     Page<ProductDTORes> getAllProducts(Pageable pageable);

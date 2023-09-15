@@ -12,6 +12,7 @@ public class BoughtProductDTOReq {
     private Long id;
     @NotNull(message = "No puede estar vacio")
     private int quantity;
+    private Double price;
     @NotNull(message = "Debe asignar un producto")
     private ProductDTOReq product;
 }

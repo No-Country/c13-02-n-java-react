@@ -7,7 +7,6 @@ import com.wallet.tienda.exception.NameExistsException;
 import com.wallet.tienda.model.Expense;
 import com.wallet.tienda.repository.IExpenseRepository;
 import com.wallet.tienda.util.IWordsConverter;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,11 +26,18 @@ public class ExpenseService implements IExpenseService {
     @Autowired
     private ModelMapper modelMapper;
 
-    //CREAR UN GASTO
+    /**
+     * Guardar un gasto en base de datos
+     * @param expenseDTO dto de gasto
+     * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
+     */
+
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
-        if (expenseRepository.existsByName(expenseDTO.getName())) {
-            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe. Ingrese un nuevo nombre");
+        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
@@ -39,14 +45,25 @@ public class ExpenseService implements IExpenseService {
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
 
-    //MUESTRA UN GASTO POR ID
+
+
+    /**
+     * Devuelve un gasto por id
+     * @param id numero de id de gasto
+     * @return dto de gasto
+     * @throws IdNotFoundException mensaje de excepcion de id de gasto no encontrado
+     */
     @Override
     public ExpenseDTORes getExpenseById(Long id) throws IdNotFoundException {
         return modelMapper.map(expenseRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException("El id " + id + " no existe")), ExpenseDTORes.class);
     }
 
-    //LISTA GASTOS PAGINADOS
+    /**
+     * Devuelve todos los gastos
+     * @param pageable configuracion de paginacion
+     * @return lista de gastos paginados
+     */
     @Override
     public Page<ExpenseDTORes> getExpenses(Pageable pageable) {
         var expenses = expenseRepository.findAll(pageable);
@@ -58,21 +75,30 @@ public class ExpenseService implements IExpenseService {
         return new PageImpl<>(expensesDTO, pageable, expenses.getTotalElements());
     }
 
-    //MODIFICA UN GASTO POR ID
+    /**
+     * Actualiza un gasto por id
+     * @param expenseDTO dto de gasto
+     * @throws NameExistsException mensaje de excepcion de nombre ya existe en base de datos
+     */
     @Override
-    public void updateExpense(ExpenseDTOReq expenseDTO) throws IdNotFoundException, NameExistsException {
-        var productDB = expenseRepository.findById(expenseDTO.getId())
-                .orElseThrow(() -> new IdNotFoundException("El id " + expenseDTO + " no existe. Ingrese un nuevo id"));
-        //valida que el nombre del gasto no exista y si existe que coincida con el gasto encontrado
-        if (!expenseDTO.getName().equals(productDB.getName()) && expenseRepository.existsByName(expenseDTO.getName())) {
-            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe. Ingrese un nuevo nombre");
+    public void updateExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
+        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+
+        //valida que el nombre del gasto no exista y si existe que no se repita la fecha
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) &&
+                !expenseDB.get().getName().equals(expenseDTO.getName())
+                && expenseRepository.existsByName(expenseDTO.getName())){
+            throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula
         expenseDTO.setName(wordsConverter.capitalizeWords(expenseDTO.getName()));
         expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
     }
 
-    //ELIMINA UN GASTO POR ID
+    /**
+     * Elimina un gasto de base de datos
+     * @param id numero de id de gasto
+     */
     @Override
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);

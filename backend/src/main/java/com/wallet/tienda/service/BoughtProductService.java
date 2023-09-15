@@ -16,6 +16,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/**
+ * Clase de servicio que realiza el crud de productos comprados
+ * @Autor Damian Della Corte
+ */
 @Service
 public class BoughtProductService implements IBoughtProductService {
 
@@ -28,15 +32,24 @@ public class BoughtProductService implements IBoughtProductService {
     @Autowired
     private ModelMapper modelMapper;
 
+    /**
+     * Metodo para guardar un producto comprados y sus detalles, devuelve una excepcion de id no encotraqdo si no existe la compra o el producto relacionado
+     * @param boughtProductDTO dto con la informacion del producto comprado
+     * @throws IdNotFoundException mensaje de excepcion para id no encontrado
+     */
     @Override
     public void saveBoughtProduct(BoughtProductDTOReq boughtProductDTO) throws IdNotFoundException {
         var product = productRepository.findById(boughtProductDTO.getProduct().getId())
                 .orElseThrow(() -> new IdNotFoundException("El producto ingresado no se encuentra registrado"));
         var boughtProduct = modelMapper.map(boughtProductDTO, BoughtProduct.class);
-        boughtProduct.setPrice(product.getPrice());
         repository.save(boughtProduct);
     }
 
+    /**
+     * Metodo para traer todos los productos comprados paginados
+     * @param pageable configuracion de paginacion por default o suministrada por el usuario
+     * @return lista de productos paginados
+     */
     @Override
     public Page<BoughtProductDTORes> getAllBoughtProducts(Pageable pageable) {
         var boughtProducts = repository.findAll(pageable);
@@ -48,6 +61,12 @@ public class BoughtProductService implements IBoughtProductService {
         return new PageImpl<>(productsDTO, pageable, boughtProducts.getTotalElements());
     }
 
+    /**
+     * Metodo para traer un producto comprado de base de datos por id
+     * @param id numero de identificacion
+     * @return dto de producto comprado
+     * @throws IdNotFoundException mensaje de excepcion para id no encontrado
+     */
     @Override
     public BoughtProductDTORes getBoughtProductById(Long id) throws IdNotFoundException {
         var boughtProduct = repository.findById(id).orElseThrow(
@@ -55,6 +74,10 @@ public class BoughtProductService implements IBoughtProductService {
         return modelMapper.map(boughtProduct, BoughtProductDTORes.class);
     }
 
+    /**
+     * Meodo para eliminar un producto comprado por id
+     * @param id numero de identificacion
+     */
     @Override
     public void deleteBoughtProduct(Long id) {
         repository.deleteById(id);

@@ -20,7 +20,6 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double price;
-    @CreationTimestamp
     private LocalDateTime saleDate;
     @ManyToOne
     @JoinColumn(name = "fk_user")

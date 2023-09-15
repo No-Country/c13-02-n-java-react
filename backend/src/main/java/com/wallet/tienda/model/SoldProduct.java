@@ -18,7 +18,6 @@ public class SoldProduct {
     private Long id;
     private Double price;
     private int quantity;
-    private LocalDate localDate;
     @ManyToOne
     @JoinColumn(name = "fk_product")
     private Product product;
