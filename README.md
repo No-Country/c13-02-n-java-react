@@ -107,7 +107,21 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 - Pruebas de los endpoints de la API REST.
 - Pruebas de los componentes del front-end e integración con el back-en
 
-## Tareas Realizadas
+## Tecnologías aplicadas
+
+<div align="center">
+	<table>
+		<tr>
+			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/></td>
+			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript" title="JavaScript"/></td>
+			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/183423507-c056a6f9-1ba8-4312-a350-19bcbc5a8697.png" alt="Python" title="Python"/></td>
+			<td><img width="50" src="https://static-00.iconduck.com/assets.00/ms-excel-icon-512x506-kad3cmyu.png" alt="Excel" title="Excel"/></td>
+			<td><img width="50" src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger" title="Swagger"/></td>
+		</tr>
+	</table>
+</div>
+
+## Lista de Tareas ✅
  
 - Definición de Objetivos: identificación y definición de los objetivos del proyecto en términos de experiencia del usuario y diseño de la interfaz.
 
@@ -123,7 +137,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 
 - Diseño de Wireframes: creación de wireframes en baja, media y alta fidelidad que sirvieron como guía visual para el desarrollo de la interfaz.
 
-## Tecnologias:
+## Tecnologías aplicadas
 
 <div align="center">
 	<table>
