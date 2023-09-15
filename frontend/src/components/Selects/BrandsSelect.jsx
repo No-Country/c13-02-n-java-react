@@ -17,8 +17,8 @@ function BrandsSelect({onBrandChange}) {
   };
 
   const handleBrandChange = (e) => {
-    const selectedCategory = e.target.value;
-    onBrandChange(selectedCategory);
+    const selectedBrand = e.target.value;
+    onBrandChange(selectedBrand);
   };
 
   useEffect(() => {

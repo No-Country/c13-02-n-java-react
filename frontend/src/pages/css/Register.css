@@ -1,224 +1,217 @@
 .register {
-  width: 100vw;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
 
     background: var(--Fondos, linear-gradient(180deg, #4E73DF 0%, #244CC0 100%));
 }
 
 
-
 .register h1 {
-  color: #000;
+    color: #000;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 24px; /* 75% */
-  letter-spacing: -0.32px;
-  margin-bottom: 106px;
-  margin-left: 89px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 75% */
+    letter-spacing: -0.32px;
+    margin-bottom: 106px;
+    margin-left: 89px;
 }
 
 .register_panel {
-  width: 65%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
-  align-items: start;
-  justify-content: center;
-  background-color: white;
+    align-items: start;
+    justify-content: center;
+    background-color: white;
 }
 
 .register_panel form {
-  margin-left: 89px;
+    margin-left: 89px;
 
-  width: 80%;
+    width: 80%;
 }
 
 .div_container_input {
-  flex-direction: row;
+    flex-direction: row;
 
-  margin-bottom: 35px;
+    margin-bottom: 35px;
 }
-.register_panel div {
-  width: 100%;
-  display: flex;
 
-  gap: 35px;
+.register_panel div {
+    width: 100%;
+    display: flex;
+
+    gap: 35px;
 }
 
 .register_input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
 }
 
 .register_input label {
-  position: absolute;
-  margin-top: -15px;
-  margin-left: 13px;
-  padding: 2px 3px;
-  border-radius: 10px;
+    position: absolute;
+    margin-top: -15px;
+    margin-left: 13px;
+    padding: 2px 3px;
+    border-radius: 10px;
 
-  z-index: 10;
+    z-index: 10;
 
-  text-align: start;
-  background-color: white;
-  color: black;
+    text-align: start;
+    background-color: white;
+    color: black;
 }
 
 .register_input input {
-  height: 50px;
-  border-radius: 5px;
-  border: 1px solid rgb(128, 128, 128);
-  background-color: transparent;
-  padding: 10px 5px;
-  width: 100%;
-  transition: all 300ms;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid rgb(128, 128, 128);
+    background-color: transparent;
+    padding: 10px 5px;
+    width: 100%;
+    transition: all 300ms;
 
 }
 
 .register_input input:focus {
-  background-color: transparent;
-  
+    background-color: transparent;
 
-  transform: scale(1.01);
-outline-color: #4c46aa;
+
+    transform: scale(1.01);
+    outline-color: #4c46aa;
 }
 
 .--50 {
-  display: flex;
-  width: 50%;
-  padding: 10px 24px;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-feature-settings: "calt" off;
-  font-family: Helvetica;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 24px; /* 133.333% */
-  letter-spacing: -0.18px;
-  gap: 8px;
-  border-radius: 6px;
-  background: linear-gradient(180deg, #594fff 0%, #4c46aa 100%);
-  border: none;
-  transition: all 300ms ease-in;
+    display: flex;
+    width: 50%;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-feature-settings: "calt" off;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.18px;
+    gap: 8px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #594fff 0%, #4c46aa 100%);
+    border: none;
+    transition: all 300ms ease-in;
 }
 
-.--50:hover{
-  transform: scale(1.01);
+.--50:hover {
+    transform: scale(1.01);
 }
-
-
-
 
 
 /* mediaQueries  */
 
 @media (max-width: 767px) {
-  /* Estilos para pantallas con un ancho máximo de 767px (móviles) */
-.register_panel{
+    /* Estilos para pantallas con un ancho máximo de 767px (móviles) */
+    .register_panel {
 
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-
-
-.--50{
-  width: 50%;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-}
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 
 
-  .register h1 {
-    margin: 0 auto 30px auto;
-  }
-  
-  .register_panel form {
-    width: 80%;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-   
-  
-    gap:10px;
-  
-  }
-
-  .register_panel div {
-    width: 100%;
-    display: flex;
-  
-    align-items: center;
-  
-    gap: 20px
-  }
+    .--50 {
+        width: 50%;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+    }
 
 
-  .div_container_input{
+    .register h1 {
+        margin: 0 auto 30px auto;
+    }
 
-    margin: 10 0 0 0;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
+    .register_panel form {
+        width: 80%;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+
+
+        gap: 10px;
+
+    }
+
+    .register_panel div {
+        width: 100%;
+        display: flex;
+
+        align-items: center;
+
+        gap: 20px
+    }
+
+
+    .div_container_input {
+
+        margin: 10px 0 0 0;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
 }
 
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Estilos para pantallas con un ancho mínimo de 768px y un ancho máximo de 1023px (tablets y pantallas pequeñas) */
-   .register h1 {
-    margin: 0 auto 30px auto;
-  }
+    /* Estilos para pantallas con un ancho mínimo de 768px y un ancho máximo de 1023px (tablets y pantallas pequeñas) */
+    .register h1 {
+        margin: 0 auto 30px auto;
+    }
 
-  
-  
-  .register_panel form {
-    width: 100%;
-    margin: 30 auto;
-    
 
-  }
+    .register_panel form {
+        width: 100%;
+        margin: 30px auto;
 
-  
 
-  .div_container_input{
+    }
 
-    flex-direction: row;
-  }
- 
+
+    .div_container_input {
+
+        flex-direction: row;
+    }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1365px) {
-  /* Estilos para pantallas con un ancho mínimo de 1024px y un ancho máximo de 1365px (tablets y computadoras portátiles) */
-  .register h1 {
-    margin: 0 auto 30px 0 ;
-  }
-  
-  .register_panel form {
-    width: 100%;
-    margin: 0 auto;
-  }
+    /* Estilos para pantallas con un ancho mínimo de 1024px y un ancho máximo de 1365px (tablets y computadoras portátiles) */
+    .register h1 {
+        margin: 0 auto 30px 0;
+    }
 
-  .div_container_input{
+    .register_panel form {
+        width: 100%;
+        margin: 0 auto;
+    }
 
-    flex-direction: flex;
-  }
+    .div_container_input {
+        flex-direction: row;
+    }
 
 }
 
 @media (min-width: 1366px) {
-  /* Estilos para pantallas con un ancho mínimo de 1366px (computadoras de escritorio) */
-  
+    /* Estilos para pantallas con un ancho mínimo de 1366px (computadoras de escritorio) */
+
 
 }
 

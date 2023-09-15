@@ -32,6 +32,14 @@ function ModalProduct({
     });
   };
 
+  const handleBrandChange = (selectedBrandId) => {
+    console.log(`Marca seleccionada: ${selectedBrandId}`);
+    setProduct({
+      ...product,
+      brand: selectedBrandId,
+    });
+  };
+
 
 
   const FalsaCarga = () => {
@@ -71,7 +79,7 @@ function ModalProduct({
               </div>
               <Form.Label className="mt-2">Marca</Form.Label>
 
-              <BrandsSelect />
+              <BrandsSelect onBrandChange={handleBrandChange}/>
               <div className="mt-2 d-flex justify-content-end ">
                 <button
                   onClick={() => showControl(handleShowBrand)}
@@ -125,7 +133,7 @@ function ModalProduct({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={ ()=>{  FalsaCarga() }}>
+          <Button variant="success" onClick={CreateProducts}>
             Cargar Producto
           </Button>
         </Modal.Footer>

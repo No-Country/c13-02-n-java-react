@@ -1,16 +1,28 @@
 import Table from "react-bootstrap/Table";
 import {useEffect, useState} from "react";
-import { categorias, opciones, productosPrueba } from "../../config/models/ArraysItems";
+import {categorias, opciones, productosPrueba} from "../../config/models/ArraysItems";
 import useControlStock from "../../hooks/useControlStock";
 import useGetProducts from "../../hooks/useGetProducts";
+import {Card, Container} from "react-bootstrap";
+import "../../pages/css/products.css"
 
 function TableP() {
-   const { formatoMoneda, controlStock,  } =
-      useControlStock();
-    
+    const {formatoMoneda, controlStock,} = useControlStock();
     const {handleGetProducts, products} = useGetProducts();
+    const [tablaProductos, setTablaProductos] = useState(products);
+    const [query, setQuery] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 10;
 
-    const [tablaProductos,setTablaProductos]=useState(products)
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
 
     useEffect(() => {
@@ -21,111 +33,66 @@ function TableP() {
         });
     }, []);
 
+    const handlechangeStock = (e) => {
+        setQuery(e.target.value);
 
-     const [query, setQuery] = useState();
-    
-     const handlechangeStock = (e) => {
-       setQuery(e.target.value);
-    
-       filtrarStock(e.target.value);
-     };
-     const handlechangeCategory = (e) => {
-       setQuery(e.target.value);
-    
-       filtrarCategory(e.target.value);
-     };
-    
-          /* filtro  Stock */
-          const filtrarCategory = (query) => {
-          var producto = tablaProductos.filter((product) => {
-  
-            if( product.categoria === query ) {
-    
-          return product
-    
-            }else if(query == 'todos') {
-    
-            return product
-  
+        filtrarStock(e.target.value);
+    };
+    const handlechangeCategory = (e) => {
+        setQuery(e.target.value);
+
+        filtrarCategory(e.target.value);
+    };
+    /* filtro  Stock */
+    const filtrarCategory = (query) => {
+        const producto = tablaProductos.filter((product) => {
+
+            if (product.categoria === query) {
+
+                return product
+
+            } else if (query === 'todos') {
+
+                return product
+
             }
-          });
-          setTablaProductos(producto);
-        };
-    
-    
-    
-         /* filtro  Stock */
-          const filtrarStock = (query) => {
-           var producto = tablaProductos.filter((product) => {
-            if (query == "alto") {
-              return product.cantidad > 90;
-             } else if (query == "medio") {
-               return product.cantidad >= 50 && product.cantidad < 80;
-    } else if (query == "bajo") {
-               return product.cantidad < 49;
-             }else if(query == 'todos') {
-  
-            return product
-  
-          }
         });
-           setTablaProductos(producto);
-        };
+        setTablaProductos(producto);
+    };
+    /* filtro  Stock */
+    const filtrarStock = (query) => {
+        const producto = tablaProductos.filter((product) => {
+            if (query === "alto") {
+                return product.cantidad > 90;
+            } else if (query === "medio") {
+                return product.cantidad >= 50 && product.cantidad < 80;
+            } else if (query === "bajo") {
+                return product.cantidad < 49;
+            } else if (query === 'todos') {
+                return product
+            }
+        });
+        setTablaProductos(producto);
+    };
 
-  return (
-    <>
- {/*     <div className="d-flex gap-2  w-100 ">
-     <select
-        className=" w-25  shadow-lg dropdown form-select"
-        aria-label="Default select example"
-         onChange={handlechangeStock}
-      >
-        <optgroup>
-          <option selected disabled>
-            Stock
-          </option>
-
-          <option value={"todos"}>Todos</option>
-         {opciones.map((op,key)=> {
-
-          return(
-            <option value={op}>{op.label} </option>
-          )
-         })}
-        </optgroup>
-      </select>
-      <select
-        className=" w-25  shadow-lg dropdown form-select"
-        aria-label="Default select example"
-          onChange={handlechangeCategory}
-      >
-        <optgroup>
-        
-          <option selected disabled value="todos">Todas las categorías</option>
-
-          {categorias.map((cat, key) => {
-            return <option value={cat}>{cat} </option>;
-          })}
-        </optgroup>
-      </select>
-     </div> */}
-
-        <Table size="sm" className="mt-5 text-center">
-        <thead className="rounded-5">
-          <tr>
-            <th className="bg-primary text-white py-2   ">Estado</th>
-            <th className="bg-primary text-white py-2   ">ID</th>
-              <th className="bg-primary text-white py-2   ">Name</th>
-              <th className="bg-primary text-white py-2   ">Price</th>
-              <th className="bg-primary text-white py-2   ">Stock</th>
-              <th className="bg-primary text-white py-2    ">Brand</th>
-              <th className="bg-primary text-white py-2    ">Category</th>
-          </tr>
-        </thead>
-            <tbody>
-            {products.map((product) => (
-                    <tr key={product.id}>
-                        <td>{controlStock(product.stock)}  </td>
+    return (
+        <>
+            <Table size="sm" className="text-left ">
+                <thead className="rounded-5 text-center">
+                <tr>
+                    <th className="bg-primary text-white py-2   ">Estado</th>
+                    <th className="bg-primary text-white py-2   ">ID</th>
+                    <th className="bg-primary text-white py-2   ">Name</th>
+                    <th className="bg-primary text-white py-2   ">Price</th>
+                    <th className="bg-primary text-white py-2   ">Stock</th>
+                    <th className="bg-primary text-white py-2    ">Brand</th>
+                    <th className="bg-primary text-white py-2    ">Category</th>
+                </tr>
+                </thead>
+                <tbody className="table-text__products">
+                {currentProducts.map((product, key) => (
+                    <tr key={product.id} className="my-2 ">
+                        <td className="text-center">{controlStock(product.stock)}  </td>
                         <td>{product.id} </td>
                         <td>{product.name} </td>
                         <td>{formatoMoneda(product.price)} </td>
@@ -134,12 +101,24 @@ function TableP() {
                         <td>{product.category.name}</td>
                         <td></td>
                     </tr>
-                )
-            )}
-            </tbody>
-      </Table>
-    </>
-  );
+                ))}
+                </tbody>
+            </Table>
+            <div className='pagination'>
+                {
+                    Array.from({length: totalPages}, (_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handlePageChange(index + 1)}
+                            className={index + 1 === currentPage ? 'active' : null}
+                        >
+                            {index + 1}
+                        </button>
+                    ))
+                }
+            </div>
+        </>
+    );
 }
 
 export default TableP;
