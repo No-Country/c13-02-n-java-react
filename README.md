@@ -26,13 +26,13 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 - Documentación de la API en Swagger.
 - Contenerización en Docker para ejecutar localmente y en producción.
 
-## Diagrama UML
+### Diagrama UML
 
 <div align="left">
     <img width="60%" src="https://github.com/No-Country/c13-02-n-java-react/assets/103857812/00bf3f5a-adbd-4868-8311-f1aba0612b63.png">
 </div>
 
-## Tecnologías aplicadas
+### Tecnologías aplicadas
 <div align="center">
 	<table>
 		<tr>
@@ -48,7 +48,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 	</table>
 </div>
 
-## Equipo de back
+### Equipo de back
 | <img src="https://avatars.githubusercontent.com/u/103857812?v=4" width=80/>|
 |:-:|
 | **Ivan Mieres** |
@@ -72,7 +72,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 - Implementación de arquitectura de seguridad con interceptores JWT.
 - Conexión con una API REST.
 - Despliegue de front-end en Vercel.
-## Tecnologías aplicadas
+### Tecnologías aplicadas
 <div align="center">
 	<table>
 		<tr>
@@ -86,7 +86,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 	</table>
 </div>
 
-## Equipo de front
+### Equipo de front
 
 | <img src="https://avatars.githubusercontent.com/u/89054682?v=4" width=80/>|
 |:-:|
@@ -99,15 +99,27 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 |<a href="https://github.com/AcirDeveloper"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/julio-sevillano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 
-## ✔ Testing
+## Testing
 
 #### Lista de Tareas ✅
 
-- Pruebas de diseño e integración.
-- Pruebas de los endpoints de la API REST.
-- Pruebas de los componentes del front-end e integración con el back-en
+- Verificar Cumplimiento de Requisitos Funcionales: Asegurarse de que el software cumple con los requisitos funcionales especificados en la documentación del proyecto.
 
-## Tecnologías aplicadas
+- Validar Satisfacción de Necesidades del Cliente: Evaluar si el software satisface las necesidades y expectativas del cliente, garantizando la satisfacción del usuario final.
+
+- Identificar y Documentar Defectos: Encontrar y registrar cualquier problema o defecto en el software, proporcionando detalles para su resolución.
+
+- Realizar Pruebas de Rendimiento: Evaluar la velocidad, eficiencia y capacidad de respuesta del software bajo diferentes condiciones de carga y estrés.
+
+- Realizar Pruebas de Seguridad: Verificar la protección de datos y la integridad del software, identificando vulnerabilidades y mitigando riesgos.
+
+- Realizar Pruebas de Usabilidad: Evaluar la facilidad de uso y la experiencia del usuario, asegurando que la interfaz sea intuitiva.
+
+- Generar Informes de Pruebas: Crear informes detallados que documenten los resultados de las pruebas y las observaciones relevantes.
+
+
+
+### Tecnologías aplicadas
 
 <div align="center">
 	<table>
@@ -121,7 +133,9 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 	</table>
 </div>
 
-## Lista de Tareas ✅
+## UX/UI
+
+### Lista de Tareas ✅
  
 - Definición de Objetivos: identificación y definición de los objetivos del proyecto en términos de experiencia del usuario y diseño de la interfaz.
 
@@ -137,7 +151,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 
 - Diseño de Wireframes: creación de wireframes en baja, media y alta fidelidad que sirvieron como guía visual para el desarrollo de la interfaz.
 
-## Tecnologías aplicadas
+### Tecnologías aplicadas
 
 <div align="center">
 	<table>
