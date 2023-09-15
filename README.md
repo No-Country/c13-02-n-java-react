@@ -56,8 +56,8 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 
 | <img src="https://avatars.githubusercontent.com/u/109114128?v=4" width=80/>|
 |:-:|
-| **Damian Della Corte** |
-|<a href="https://github.com/DamianCanteros"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| **Damian Canteros** |
+|<a href="https://github.com/DamianCanteros"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/damian-canteros"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 | <img src="https://avatars.githubusercontent.com/u/83872939?v=4" width=80/>|
 |:-:|
