@@ -26,7 +26,11 @@ public class ProviderService implements IProviderService{
     @Autowired
     private ModelMapper modelMapper;
 
-    //CREA UN PROOVEDOR
+    /**
+     * Guarda un proveedor en base de datos
+     * @param providerDTO dto de proveedor
+     * @throws NameExistsException mensaje de excepcion de nombre de proveedor ya existe
+     */
     @Override
     public void saveProvider(ProviderDTOReq providerDTO) throws NameExistsException {
         if (providerRepository.existsByName(providerDTO.getName())) {
@@ -38,14 +42,23 @@ public class ProviderService implements IProviderService{
         providerRepository.save(modelMapper.map(providerDTO, Provider.class));
     }
 
-    //MUESTRA UN PROOVEDOR POR ID
+    /**
+     * Busca y devuelve un proveedor por id
+     * @param providerId numero de id de proveedor
+     * @return dto de proveedor
+     * @throws IdNotFoundException mensaje de excepcion de id no encontrado
+     */
     @Override
     public ProviderDTORes getProviderById(Long providerId) throws IdNotFoundException {
         return modelMapper.map(providerRepository.findById(providerId)
                 .orElseThrow(() -> new IdNotFoundException("El id " + providerId + " no exite. Ingrese un nuevo id")), ProviderDTORes.class);
     }
 
-    //LISTA PROOVEDORES PAGINADOS
+    /**
+     * Busca y devuelve una lista de proveedores paginada
+     * @param pageable configuracion de paginacion
+     * @return lista de proveedores paginada
+     */
     @Override
     public Page<ProviderDTORes> getAllProviders(Pageable pageable) {
         var providersDB = providerRepository.findAll(pageable);
@@ -57,7 +70,12 @@ public class ProviderService implements IProviderService{
         return new PageImpl<>(providersDTO, pageable, providersDB.getTotalElements());
     }
 
-    //ACTUALIZA UN PROOVEDOR
+    /**
+     * Actualiza un proveedor por id
+     * @param providerDTO dto de proveedor
+     * @throws IdNotFoundException mensaje de excepcion de id de proveedor no encontrado
+     * @throws NameExistsException mensaje de excepcion de nombre de proveedor ya existe en BD
+     */
     @Override
     public void updateProvider(ProviderDTOReq providerDTO) throws IdNotFoundException, NameExistsException {
         var providerDB = providerRepository.findById(providerDTO.getId())
@@ -71,7 +89,10 @@ public class ProviderService implements IProviderService{
         providerRepository.save(modelMapper.map(providerDTO, Provider.class));
     }
 
-    //ELIMINA UN PROOVEDOR
+    /**
+     * Elimina un proveedor de BD
+     * @param providerID numero de id de proveedor
+     */
     @Override
     public void deleteProvider(Long providerID) {
         providerRepository.deleteById(providerID);

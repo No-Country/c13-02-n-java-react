@@ -6,6 +6,7 @@ import com.wallet.tienda.service.ICustomerUserService;
 import com.wallet.tienda.service.IEmailService;
 import com.wallet.tienda.service.ITokenService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -21,6 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clase controladora de envio de mails
+ * @Autor Ivan Mieres
+ */
+@Tag(name = "Controlador de envio de correos")
 @RestController
 @RequestMapping("api/v1/password")
 public class EmailSenderController {
@@ -37,6 +43,13 @@ public class EmailSenderController {
     @Autowired
     private ModelMapper modelMapper;
 
+    /**
+     * Genera un token para la recuperacion de contraseña
+     * @param user dto de recuperacion de usuario
+     * @return respuesta http con token y tiempo de expiracion
+     * @throws UsernameNotFoundException mensaje de excepcion de email no encontrado
+     * @throws MessagingException mensaje de excepcion
+     */
     @Operation(summary = "Enviar mail con token",
             description = "Genera un token para la recuperacion de contraseña y la envia por correo al usuario, devuelve un codigo de estado creado ")
     @PostMapping("/recovery")
@@ -57,6 +70,12 @@ public class EmailSenderController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    /**
+     * Actualiza la contraseña del usuario en base de datos
+     * @param resetPassword dto de reseteo de contraseña
+     * @return respuesta http con estado ok
+     * @throws Exception mensaje de excepcion
+     */
     @Operation(summary = "Cambiar la contraseña",
             description = "Actualiza la contraseña del usuario en base de datos y devuelve una respuesta http con codigo de estado 200 ok"
     )

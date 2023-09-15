@@ -8,6 +8,7 @@ import com.wallet.tienda.repository.IBoughtProductRepository;
 import com.wallet.tienda.repository.IBuyRepository;
 import com.wallet.tienda.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -41,7 +42,6 @@ public class BoughtProductService implements IBoughtProductService {
         var product = productRepository.findById(boughtProductDTO.getProduct().getId())
                 .orElseThrow(() -> new IdNotFoundException("El producto ingresado no se encuentra registrado"));
         var boughtProduct = modelMapper.map(boughtProductDTO, BoughtProduct.class);
-        boughtProduct.setPrice(product.getPrice());
         repository.save(boughtProduct);
     }
 

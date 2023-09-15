@@ -54,7 +54,8 @@ public class CustomSecurityFilterChain {
                                 "/api/v1/buys",
                                 "/api/v1/bought-products",
                                 "/api/v1/providers",
-                                "/api/v1/categories").hasAnyRole("USER", "ADMIN")
+                                "/api/v1/categories",
+                                "/api/v1/expenses").hasAnyRole("USER", "ADMIN")
 
                 )
                 .authorizeHttpRequests(auth ->

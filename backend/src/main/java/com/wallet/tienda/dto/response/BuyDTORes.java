@@ -15,7 +15,8 @@ import java.util.List;
 public class BuyDTORes {
     private Long id;
     private double totalPrice;
-    private List<BoughtProductDTORes> purchasedProducts;
-    private Provider provider;
     private LocalDateTime purchaseDate;
+    private Provider provider;
+    private List<BoughtProductDTORes> purchasedProducts;
+
 }

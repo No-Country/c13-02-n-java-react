@@ -1,10 +1,12 @@
 package com.wallet.tienda.dto.request;
 
 import com.wallet.tienda.model.CustomerUser;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -13,5 +15,6 @@ import java.util.List;
 public class SaleDTOReq {
     private Long id;
     private CustomerUser user;
+    private LocalDateTime saleDate;
     private List<SoldProductDTOReq> soldProducts;
 }
