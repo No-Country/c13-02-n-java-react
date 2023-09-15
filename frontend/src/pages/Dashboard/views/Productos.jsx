@@ -74,9 +74,7 @@ function Productos() {
                 </Card.Header>
                 <hr/>
                 <Card.Body className="card-body__products">
-                    <Card.Body className="card-container">
-                        <TableP/>
-                    </Card.Body>
+                    <TableP/>
                 </Card.Body>
             </Card>
         </Container>

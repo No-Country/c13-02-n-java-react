@@ -80,13 +80,13 @@ function TableP() {
             <Table size="sm" className="text-left ">
                 <thead className="rounded-5 text-center">
                 <tr>
-                    <th className="bg-primary text-white py-2   ">State</th>
+                    <th className="bg-primary text-white py-2   ">Estado</th>
                     <th className="bg-primary text-white py-2   ">ID</th>
-                    <th className="bg-primary text-white py-2   ">Name</th>
-                    <th className="bg-primary text-white py-2   ">Price</th>
+                    <th className="bg-primary text-white py-2   ">Nombre</th>
+                    <th className="bg-primary text-white py-2   ">Precio</th>
                     <th className="bg-primary text-white py-2   ">Stock</th>
-                    <th className="bg-primary text-white py-2    ">Brand</th>
-                    <th className="bg-primary text-white py-2    ">Category</th>
+                    <th className="bg-primary text-white py-2    ">Marcas</th>
+                    <th className="bg-primary text-white py-2    ">Categorias</th>
                 </tr>
                 </thead>
                 <tbody className="table-text__products">
