@@ -133,6 +133,13 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 	</table>
 </div>
 
+### Equipo de testing
+
+| <img src="https://avatars.githubusercontent.com/u/21957764?v=4" width=80/>|
+|:-:|
+| **Kevin Matias Tea** |
+|<a href="https://github.com/kevintea"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/kevintea/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
 ## UX/UI
 
 ### Lista de Tareas ✅
