@@ -78,13 +78,9 @@
  
 }
 
-
 .bg-select{
   background-color: white !important
 }
-
-
-
 
 .login_input input {
   width: 100%;
@@ -179,7 +175,70 @@ font-size: 10px;
 
 }
 
+.conainer-products {
+  margin: 20px;
+}
 
+.card-products .card-header__products {
+  margin-bottom: 10px; /* Añade un margen inferior para separar */
+  border-bottom: none; /* Elimina la línea horizontal inferior del Card.Header */
+  background: white;
+  padding: 30px 20px 0 30px;
+}
+
+.card-products .card-body__products {
+  padding: 10px 30px 30px 30px; /* Añade un relleno inferior para separar */
+
+}
+
+.table-text__products {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.size {
+
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+/* Estilo para la tabla dentro de la Card */
+.card-container .table {
+  margin-top: 10px; /* Margen superior para la tabla */
+}
+
+/* Estilo para la paginación dentro de la Card */
+.card-container .pagination {
+  margin-top: 20px; /* Margen superior para la paginación */
+}
+
+/* Estilos para la paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Estilos para los botones de paginación */
+.pagination button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Estilo para el botón activo */
+.pagination button.active {
+  background-color: #007bff; /* Color de fondo para el botón activo */
+  color: #fff; /* Color del texto para el botón activo */
+}
 
 
 

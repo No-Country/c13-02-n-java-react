@@ -71,25 +71,19 @@ letter-spacing: -0.32px;
 }
 
 .btnCustom {
-  text-decoration: none;
-
-  font-family: Helvetica;
+    text-decoration-line: none;
+    font-family: Helvetica, serif;
   font-size: 16px;
-
   font-weight: 700;
   line-height: 24px; /* 150% */
-
   display: flex;
   padding: 12px 20px;
   justify-content: center;
   align-items: center;
-
   gap: 8px;
   border-radius: 6px;
   background: linear-gradient(180deg, #594fff 0%, #4c46aa 100%);
   color: white;
-  padding: 12px 20px;
-
   transition: all 300ms ease-in;
 }
 .btnCustom:hover {
@@ -100,27 +94,23 @@ letter-spacing: -0.32px;
 
 .notBg {
   text-decoration: none;
-
-  font-family: Helvetica;
+    font-family: Helvetica, serif;
   font-size: 16px;
-
   font-weight: 700;
   line-height: 24px; /* 150% */
-
   display: flex;
   padding: 12px 20px;
   justify-content: center;
   align-items: center;
-
   gap: 8px;
   border-radius: 6px;
   background-color: white;
   color: #4c46aa;
   border: 1px solid #4c46aa;
-  padding: 12px 20px;
   width: 156px;
   transition: all 300ms ease-in;
 }
+
 .notBg:hover {
   background: linear-gradient(180deg, #594fff 0%, #4c46aa 100%);
   color: white;
@@ -414,6 +404,69 @@ letter-spacing: -0.32px;
  .info_icons_landing{
   grid-column:  1;
  }
+}
+
+/* ///////////////// FOOTER //////////////// */
+.footer {
+    width: 100%;
+    display: flex;
+    min-height: 337px;
+    background: white linear-gradient(
+            360deg,
+            #244cc0 0%,
+            rgba(36, 76, 192, 0.85) 25.52%,
+            rgba(36, 76, 192, 0.62) 60.04%,
+            rgba(36, 76, 192, 0) 100%
+    );
+    margin-top: 200px;
+    padding: 35px 20px 20px 109px;
+}
+
+.logo {
+    width: 346px;
+    margin-right: 45px;
+    color: white;
+    display: flex;
+    gap: 20px;
+}
+
+.logo_data {
+    width: 346px;
+    margin-right: 45px;
+    color: white;
+    display: flex;
+    gap: 20px;
+}
+
+.text-logo {
+    padding-left: 10px;
+    border-left: 1px solid white;
+}
+
+
+.logo_data img {
+    width: 150px;
+}
+
+
+.logo p {
+    width: 195px;
+    font-size: 16px;
+}
+
+.icon_red_footer {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_red_footer i {
+    color: #254dc0;
+    font-size: 25px;
 }
 
 
