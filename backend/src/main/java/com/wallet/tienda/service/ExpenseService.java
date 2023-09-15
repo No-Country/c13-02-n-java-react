@@ -27,11 +27,7 @@ public class ExpenseService implements IExpenseService {
     @Autowired
     private ModelMapper modelMapper;
 
-    /**
-     * Guardar un gasto en base de datos
-     * @param expenseDTO dto de gasto
-     * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
-     */
+
 //    @Override
 //    public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
 //        var expenseDB = expenseRepository.findByName(expenseDTO.getName());
@@ -45,6 +41,11 @@ public class ExpenseService implements IExpenseService {
 //        expenseRepository.save(modelMapper.map(expenseDTO, Expense.class));
 //    }
 
+    /**
+     * Guardar un gasto en base de datos
+     * @param expenseDTO dto de gasto
+     * @throws NameExistsException mensaje de exccepcion de nombre ya existe en BD
+     */
     @Override
     public void saveExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
 
@@ -93,14 +94,16 @@ public class ExpenseService implements IExpenseService {
     /**
      * Actualiza un gasto por id
      * @param expenseDTO dto de gasto
-     * @throws IdNotFoundException mensaje de excepcion de id de gasto no encontrado en BD
      * @throws NameExistsException mensaje de excepcion de nombre ya existe en base de datos
      */
     @Override
-    public void updateExpense(ExpenseDTOReq expenseDTO) throws IdNotFoundException, NameExistsException {
+    public void updateExpense(ExpenseDTOReq expenseDTO) throws NameExistsException {
         var expenseDB = expenseRepository.findByName(expenseDTO.getName());
+
         //valida que el nombre del gasto no exista y si existe que no se repita la fecha
-        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) && expenseRepository.existsByName(expenseDTO.getName())) {
+        if (expenseDTO.getDate().equals(expenseDB.get().getDate()) &&
+                !expenseDB.get().getName().equals(expenseDTO.getName())
+                && expenseRepository.existsByName(expenseDTO.getName())){
             throw new NameExistsException("El nombre " + expenseDTO.getName() + " ya existe con la fecha " + expenseDTO.getDate() +". Ingrese un nuevo nombre");
         }
         //convierte la primer letra de cada palabra en mayúscula

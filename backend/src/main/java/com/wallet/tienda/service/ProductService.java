@@ -39,10 +39,10 @@ public class ProductService implements IProductService{
      */
     @Override
     public void saveProduct(ProductDTOReq productDTO) throws NameExistsException, IdNotFoundException {
-        if (brandRepository.existsById(productDTO.getBrand().getId())){
+        if (!brandRepository.existsById(productDTO.getBrand().getId())){
             throw new IdNotFoundException("La marca ingresada no se encuentra registrada");
         }
-        if (categoryRepository.existsById(productDTO.getCategory().getId())){
+        if (!categoryRepository.existsById(productDTO.getCategory().getId())){
             throw new IdNotFoundException("La categoria ingresada no se encuentra registrada");
         }
         if (productRepository.existsByName(productDTO.getName())) {
@@ -92,10 +92,10 @@ public class ProductService implements IProductService{
     public void updateProduct(ProductDTOReq productDTO) throws IdNotFoundException, NameExistsException {
         var productDB = productRepository.findById(productDTO.getId())
                 .orElseThrow(() -> new IdNotFoundException("El id " + productDTO + " no existe. Ingrese un nuevo id"));
-        if (brandRepository.existsById(productDTO.getBrand().getId())){
+        if (!brandRepository.existsById(productDTO.getBrand().getId())){
             throw new IdNotFoundException("La marca ingresada no se encuentra registrada");
         }
-        if (categoryRepository.existsById(productDTO.getCategory().getId())){
+        if (!categoryRepository.existsById(productDTO.getCategory().getId())){
             throw new IdNotFoundException("La categoria ingresada no se encuentra registrada");
         }
         //valida que el nombre del producto no exista y si existe que coincida con el producto encontrado
