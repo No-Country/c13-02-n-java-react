@@ -7,12 +7,15 @@ import BrandsSelect from "../Selects/BrandsSelect";
 import { Link } from "react-router-dom";
 import useCreateProducts from "../../hooks/useCreateProducts.jsx";
 
+import useAlert from "../../hooks/useAlert";
 function ModalProduct({
   show,
   handleClose,
   handleShowBrand,
   handleShowCategory,
 }) {
+
+  
 
   const {product, setProduct, handleChange, CreateProducts} = useCreateProducts();
   const showControl = (modal) => {
@@ -28,6 +31,23 @@ function ModalProduct({
       category: selectedCategoryId,
     });
   };
+
+
+
+  const FalsaCarga = () => {
+   setTimeout(() => {
+
+    useAlert({
+      type: "success",
+      title: "Cargado con exito",
+      text: '',
+  }   )
+
+
+  handleClose()
+    
+   }, 1500);
+  }
 
   return (
     <>
@@ -105,13 +125,15 @@ function ModalProduct({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleClose}>
+          <Button variant="success" onClick={ ()=>{  FalsaCarga() }}>
             Cargar Producto
           </Button>
         </Modal.Footer>
       </Modal>
+
     </>
   );
 }
 
 export default ModalProduct;
+
