@@ -22,6 +22,9 @@ Lista de Tareas ✅
 </div>
 
 ## Tecnologías aplicadas
-Insertar tarjetas de las herramientas usadas
+<div>
+<img width="8%" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png"</img>
+    <img width="6%" src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png"</img>
+</div>
 
 ## Front
