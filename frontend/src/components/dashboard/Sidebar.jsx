@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {useContext, useEffect} from "react";
-import { UserContext } from "../../context/UserProvider";
 import Imagenes from "../../assets/imagenes";
 
 function Sidebar() {
-  const {setToken} = useContext(UserContext)
   const navigate = useNavigate();
 
   const handleLogout = () => {
