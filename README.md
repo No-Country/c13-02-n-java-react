@@ -178,7 +178,7 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 
 ## Team Lider
 
-Agradecemos la participacion y colaboracion para que nuestro proyecto salga adelante a nuestra TL que estuvo ahi para guiarnos con sus consejos
+##### Agradecemos la participacion y colaboracion para que nuestro proyecto salga adelante a nuestra TL que estuvo ahi para guiarnos con sus consejos
 
 | <img src="https://avatars.githubusercontent.com/u/73199952?v=4" width=80/> |
 |:-:|
