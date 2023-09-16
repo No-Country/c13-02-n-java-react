@@ -175,3 +175,12 @@ FIMA es una aplicación diseñada para simplificar la administración de operaci
 |:-:|
 | **Karem Carranza** |
 |<a href="https://github.com/KaremCarranza"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/karemcarranza/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+## Team Lider
+
+Agradecemos la participacion y colaboracion para que nuestro proyecto salga adelante a nuestra TL que estuvo ahi para guiarnos con sus consejos
+
+| <img src="https://avatars.githubusercontent.com/u/73199952?v=4" width=80/> |
+|:-:|
+| **Adriana Sanchez Mejia** |
+|<a href="https://github.com/Adri-ESM"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/adriana-sanchez-mejias/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
