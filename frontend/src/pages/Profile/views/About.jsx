@@ -2,7 +2,10 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 const About = () => {
-	return <Container>Acerca de</Container>;
+	return <Container className="container-comming">
+		<h1>Comming Soom.....</h1>
+	</Container>;
+	;
 };
 
 export default About;
