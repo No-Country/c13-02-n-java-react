@@ -1,7 +1,7 @@
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import SpinnerLoad from "../../components/spinner/SpinnerLoad.jsx";
-import Imagenes from "../../assets/imagenes.jsx";
+import Imagenes from "../../assets/Imagenes.jsx";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import useAlert from "../../hooks/useAlert";

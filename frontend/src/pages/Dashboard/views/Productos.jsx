@@ -4,7 +4,6 @@ import ModalCategory from "../../../components/Modals/ModalCategory.jsx";
 import ModalProduct from "../../../components/Modals/ModalProduct.jsx";
 import ModalBrand from "../../../components/Modals/ModalBrand.jsx";
 import {Card, Container} from "react-bootstrap";
-import "../../css/products.css";
 
 function Productos() {
     const [showCategory, setShowCategory] = useState(false);
@@ -75,9 +74,7 @@ function Productos() {
                 </Card.Header>
                 <hr/>
                 <Card.Body className="card-body__products">
-                    <Card.Body className="card-container">
-                        <TableP/>
-                    </Card.Body>
+                    <TableP/>
                 </Card.Body>
             </Card>
         </Container>

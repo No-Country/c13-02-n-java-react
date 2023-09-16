@@ -1,4 +1,4 @@
-import Imagenes from "../../assets/imagenes"
+import Imagenes from "../../assets/Imagenes.jsx"
 
 function OnboardingOne() {
     return (

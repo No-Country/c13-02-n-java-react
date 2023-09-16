@@ -3,8 +3,9 @@ import {useEffect, useState} from "react";
 import {categorias, opciones, productosPrueba} from "../../config/models/ArraysItems";
 import useControlStock from "../../hooks/useControlStock";
 import useGetProducts from "../../hooks/useGetProducts";
-import {Card, Container} from "react-bootstrap";
-import "../../pages/css/products.css"
+import {Card, Container, Button} from "react-bootstrap";
+import "../../pages/css/Landing.css"
+import {BiEdit, BiTrash} from 'react-icons/bi';
 
 function TableP() {
     const {formatoMoneda, controlStock,} = useControlStock();
@@ -46,15 +47,10 @@ function TableP() {
     /* filtro  Stock */
     const filtrarCategory = (query) => {
         const producto = tablaProductos.filter((product) => {
-
             if (product.categoria === query) {
-
                 return product
-
             } else if (query === 'todos') {
-
                 return product
-
             }
         });
         setTablaProductos(producto);
@@ -80,13 +76,14 @@ function TableP() {
             <Table size="sm" className="text-left ">
                 <thead className="rounded-5 text-center">
                 <tr>
-                    <th className="bg-primary text-white py-2   ">State</th>
+                    <th className="bg-primary text-white py-2   ">Estado</th>
                     <th className="bg-primary text-white py-2   ">ID</th>
-                    <th className="bg-primary text-white py-2   ">Name</th>
-                    <th className="bg-primary text-white py-2   ">Price</th>
+                    <th className="bg-primary text-white py-2   ">Nombre</th>
+                    <th className="bg-primary text-white py-2   ">Precio</th>
                     <th className="bg-primary text-white py-2   ">Stock</th>
-                    <th className="bg-primary text-white py-2    ">Brand</th>
-                    <th className="bg-primary text-white py-2    ">Category</th>
+                    <th className="bg-primary text-white py-2    ">Marcas</th>
+                    <th className="bg-primary text-white py-2    ">Categorias</th>
+                    <th className="bg-primary text-white py-2    ">E&E</th>
                 </tr>
                 </thead>
                 <tbody className="table-text__products">
@@ -99,7 +96,11 @@ function TableP() {
                         <td>{product.stock} </td>
                         <td>{product.brand.name}</td>
                         <td>{product.category.name}</td>
-                        <td></td>
+                        {/* Darle un gap a los botones*/}
+                        <td>
+                            <Button variant="outline-primary" className="btn-sm mr-2"><BiEdit/></Button>
+                            <Button variant="outline-danger" className="btn-sm"><BiTrash/></Button>
+                        </td>
                     </tr>
                 ))}
                 </tbody>

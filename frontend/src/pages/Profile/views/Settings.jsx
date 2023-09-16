@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { BsEnvelopeFill } from "react-icons/bs";
-import Imagenes from "../../../assets/imagenes.jsx";
+import Imagenes from "../../../assets/Imagenes.jsx";
 // import {formGroups} from "../../../config/models/ArraysItems.js";
 import axios from "axios";
 import userProfile from "../../../services/products.js";

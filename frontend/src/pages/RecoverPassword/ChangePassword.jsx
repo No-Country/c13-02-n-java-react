@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useChangePassword from "../../hooks/useChangePassword";
-import Imagenes from "../../assets/imagenes";
+import Imagenes from "../../assets/Imagenes.jsx";
 
 function ChangePassword() {
   const token = useParams();

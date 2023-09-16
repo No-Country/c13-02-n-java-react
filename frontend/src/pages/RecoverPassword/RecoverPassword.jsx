@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useRecovery from "../../hooks/useRecovery";
-import Imagenes from "../../assets/imagenes";
+import Imagenes from "../../assets/Imagenes.jsx";
 
 function RecoverPassword() {
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {useContext, useEffect} from "react";
-import Imagenes from "../../assets/imagenes";
+import Imagenes from "../../assets/Imagenes.jsx";
 
 function Sidebar() {
   const navigate = useNavigate();

@@ -36,73 +36,72 @@ function Ingresos() {
 
     const provedores = ["Proveedor 1", "Proveedor 2", "Proveedor 3", "Proveedor 4", "Proveedor 5", "Proveedor 6", "Proveedor 7", "Proveedor 8", "Proveedor 9"]
 
-    return (
-        <Container>
-            <Card>
-                <Card.Header>
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Comprar Producto</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+    return (<>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Comprar Producto</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                                    <Form.Select aria-label="Default select example">
-                                        <option>--Seleccione proveedor--</option>
+                            <Form.Select aria-label="Default select example">
+                                <option>--Seleccione proveedor--</option>
 
-                                        {provedores ? provedores.map((prov, key) => {
-                                            return (<option key={key} value={prov}>
-                                                {prov}{" "}
-                                            </option>);
-                                        }) : ""}
-                                    </Form.Select>
-                                    <Form.Label className='mt-4'>Nombre Producto</Form.Label>
-                                    <Form.Control
-                                        type="text"
+                                {provedores ? provedores.map((prov, key) => {
+                                    return (<option key={key} value={prov}>
+                                        {prov}{" "}
+                                    </option>);
+                                }) : ""}
+                            </Form.Select>
+                            <Form.Label className='mt-4'>Nombre Producto</Form.Label>
+                            <Form.Control
+                                type="text"
 
-                                        autoFocus
-                                    />
+                                autoFocus
+                            />
 
-                                    <Form.Label className='mt-4'>Cantidad</Form.Label>
-                                    <Form.Control
-                                        type="number"
+                            <Form.Label className='mt-4'>Cantidad</Form.Label>
+                            <Form.Control
+                                type="number"
 
-                                        autoFocus
-                                    />
-                                    <Form.Label className='mt-4'>Marca</Form.Label>
-                                    <Form.Control
-                                        type="text"
+                                autoFocus
+                            />
+                            <Form.Label className='mt-4'>Marca</Form.Label>
+                            <Form.Control
+                                type="text"
 
-                                        autoFocus
-                                    />
-                                </Form.Group>
+                                autoFocus
+                            />
+                        </Form.Group>
 
-                            </Form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="danger" onClick={handleClose}>
-                                Cancelar
-                            </Button>
-                            <Button variant="primary" onClick={falsaCarga}>
-                                Comprar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </Card.Header>
-                <hr/>
-                <Card.Body>
-                    <div>
-                        <h1 className='fs-4 mb-2 text-gray-500'>Ingresos</h1>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={falsaCarga}>
+                        Comprar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Container className="conainer-products">
+                <Card className="card-products">
+                    <Card.Header className="card-header__products">
+                        <Card.Title className='fs-4 mb-2 text-gray-500'>Ingresos</Card.Title>
                         {ViewMonth(month, months)}
                         <Button variant="primary" className='mt-3 ' onClick={handleShow}>
                             Comprar Productos
                         </Button>
+                    </Card.Header>
+                    <hr/>
+                    <Card.Body className="card-body__products">
                         <TableI/>
-                    </div>
-                </Card.Body>
-            </Card>
-        </Container>
+                    </Card.Body>
+                </Card>
+            </Container>
+        </>
     )
 }
 
