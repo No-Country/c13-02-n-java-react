@@ -60,7 +60,7 @@ function Landing() {
                         <p>Crea tu cuenta y carga el perfil de tu negocio</p>
                     </div>
                     <div className="container_icon">
-                        <img src={""} alt="icons"/>
+                        <img src={Imagenes.groupSeis} alt="icons"/>
                         <p>Lleva un control tus ventas y calcula tus ganancias</p>
                     </div>
                     <div className="container_icon">

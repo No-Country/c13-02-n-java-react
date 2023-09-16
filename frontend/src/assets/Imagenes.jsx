@@ -4,7 +4,7 @@ import dinero from "./icons/dinero.svg";
 import google from "./icons/google.svg";
 import group2 from "./icons/Group2.svg";
 import group3 from "./icons/group3.svg";
-import groupSeis from "./icons/group6.svg";
+import groupSeis from "./icons/Group6.svg";
 import group9 from "./icons/Group9.svg";
 import negocio from "./icons/negocio.svg";
 import perfil from "./icons/perfil.svg";
