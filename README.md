@@ -1,5 +1,5 @@
 
-![michi_fima](https://github.com/No-Country/c13-02-n-java-react/assets/103857812/3ab5a808-e5d0-4be9-9435-3366ee8c599b)
+![FIMA](https://github.com/No-Country/c13-02-n-java-react/assets/103857812/f064a128-0144-4470-a73c-aeb074297f9a)
 
 No Country - c13-02-n-java-react
 
